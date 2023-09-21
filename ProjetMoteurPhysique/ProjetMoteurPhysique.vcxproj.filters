@@ -19,6 +19,9 @@
     <Filter Include="Fichiers d%27en-tête\imgui">
       <UniqueIdentifier>{3164f22a-50db-4171-bbc1-464ce03d6fc5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\GLFW">
+      <UniqueIdentifier>{fc1742b6-4605-4b67-bceb-519938390d2b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProjetMoteurPhysique.cpp">
@@ -70,6 +73,12 @@
     </ClInclude>
     <ClInclude Include="imgui\imgui.h">
       <Filter>Fichiers d%27en-tête\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFW\glfw3.h">
+      <Filter>Fichiers d%27en-tête\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFW\glfw3native.h">
+      <Filter>Fichiers d%27en-tête\GLFW</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
