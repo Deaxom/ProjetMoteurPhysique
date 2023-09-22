@@ -22,6 +22,12 @@
     <Filter Include="Fichiers d%27en-tête\GLFW">
       <UniqueIdentifier>{fc1742b6-4605-4b67-bceb-519938390d2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\glad">
+      <UniqueIdentifier>{818698bd-f68c-4a68-b98f-6aecebc96527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\glad">
+      <UniqueIdentifier>{a3dabb9c-e724-4b35-a016-804e770c0915}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProjetMoteurPhysique.cpp">
@@ -47,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
       <Filter>Fichiers sources\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="glad\src\glad.c">
+      <Filter>Fichiers sources\glad</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,5 +89,19 @@
     <ClInclude Include="GLFW\glfw3native.h">
       <Filter>Fichiers d%27en-tête\GLFW</Filter>
     </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_opengl3_loader.h">
+      <Filter>Fichiers d%27en-tête\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="glad\include\glad\glad.h">
+      <Filter>Fichiers d%27en-tête\glad</Filter>
+    </ClInclude>
+    <ClInclude Include="glad\include\KHR\khrplatform.h">
+      <Filter>Fichiers d%27en-tête\glad</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="GLFW\glfw3.lib">
+      <Filter>Fichiers de ressources</Filter>
+    </Library>
   </ItemGroup>
 </Project>
