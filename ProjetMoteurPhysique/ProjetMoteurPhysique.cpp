@@ -5,7 +5,7 @@
 #include "glad.h"
 #include <iostream>
 
-int main()
+/*int main()
 {
 	//Youtube Victor Gordan pour initialisation et création de la fenêtre
 	glfwInit();
@@ -40,4 +40,4 @@ int main()
 	
 
     std::cout << "Hello World!\n";
-}
+}*/
