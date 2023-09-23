@@ -1,12 +1,14 @@
 #include "Vecteur3D.h"
 #include <math.h>
 
+//Constructeur
 Vecteur3D::Vecteur3D(double x, double y, double z) {
 	this->setX(x);
 	this->setY(y);
 	this->setZ(z);
 }
 
+//GETTERS
 double Vecteur3D::getX() {
 	return this->x;
 }
@@ -19,6 +21,7 @@ double Vecteur3D::getZ() {
 	return this->z;
 }
 
+//SETTERS
 void Vecteur3D::setX(double newX) {
 	this->x = newX;
 }
@@ -31,6 +34,7 @@ void Vecteur3D::setZ(double newZ) {
 	this->z = newZ;
 }
 
+//Calcul de la norme du vecteur, renvoie un double
 double Vecteur3D::calculNorme() {
 	double x2 = this->x * this->x;
 	double y2 = this->y * this->y;
@@ -38,6 +42,7 @@ double Vecteur3D::calculNorme() {
 	return sqrt(x2 + y2 + z2);
 }
 
+//Calcul du vecteur unitaire, renvoie un autre Vecteur3D
 Vecteur3D Vecteur3D::calculVecteurUnitaire() {
 	double norme = this->calculNorme();
 	double newX = this->x / norme;
@@ -46,6 +51,7 @@ Vecteur3D Vecteur3D::calculVecteurUnitaire() {
 	return Vecteur3D(newX, newY, newZ);
 }
 
+//Calcul de la multiplication par un scalaire, renvoie un autre Vecteur3D
 Vecteur3D Vecteur3D::multiplicationScalaire(double scalaire) {
 	double newX = this->x * scalaire;
 	double newY = this->y * scalaire;
@@ -53,6 +59,7 @@ Vecteur3D Vecteur3D::multiplicationScalaire(double scalaire) {
 	return Vecteur3D(newX, newY, newZ);
 }
 
+//Calcul de l'addition entre 2 Vecteur3D, renvoie un autre Vecteur3D
 Vecteur3D Vecteur3D::addition(Vecteur3D vecteur) {
 	double newX = this->x + vecteur.getX();
 	double newY = this->y + vecteur.getY();
@@ -60,6 +67,7 @@ Vecteur3D Vecteur3D::addition(Vecteur3D vecteur) {
 	return Vecteur3D(newX, newY, newZ);
 }
 
+//Calcul de la soustraction entre 2 Vecteur3D, renvoie un autre Vecteur3D
 Vecteur3D Vecteur3D::soustraction(Vecteur3D vecteur) {
 	double newX = this->x - vecteur.getX();
 	double newY = this->y - vecteur.getY();
@@ -67,6 +75,7 @@ Vecteur3D Vecteur3D::soustraction(Vecteur3D vecteur) {
 	return Vecteur3D(newX, newY, newZ);
 }
 
+//Calcul du produit scalaire entre 2 Vecteur3D, renvoie un double
 double Vecteur3D::produitScalaire(Vecteur3D vecteur) {
 	double sumX = this->x * vecteur.getX();
 	double sumY = this->y * vecteur.getY();
@@ -74,6 +83,7 @@ double Vecteur3D::produitScalaire(Vecteur3D vecteur) {
 	return (sumX + sumY + sumZ);
 }
 
+//Calcul du produit vectoriel entre 2 Vecteur3D, renvoie un autre Vecteur3D
 Vecteur3D Vecteur3D::produitVectoriel(Vecteur3D vecteur) {
 	double newX = this->y * vecteur.getZ() - this->z * vecteur.getY();
 	double newY = this->z * vecteur.getX() - this->x * vecteur.getZ();

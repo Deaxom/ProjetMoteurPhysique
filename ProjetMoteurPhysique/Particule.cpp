@@ -1,5 +1,6 @@
 #include "Particule.h"
 
+//Constructeur
 Particule::Particule(double positionX, double positionY, double positionZ, Vecteur3D vitesse, Vecteur3D acceleration) {
 	this->setPositionX(positionX);
 	this->setPositionY(positionY);
@@ -8,6 +9,7 @@ Particule::Particule(double positionX, double positionY, double positionZ, Vecte
 	this->setAcceleration(acceleration);
 }
 
+//GETTERS
 double Particule::getPositionX() {
 	return this->positionX;
 }
@@ -28,6 +30,7 @@ Vecteur3D Particule::getacceleration(){
 	return this->acceleration;
 }
 
+//SETTERS
 void Particule::setPositionX(double newPositionX){
 	this->positionX = newPositionX;
 }
