@@ -4,7 +4,7 @@
 class Integrateur
 {
 public:
-	Vecteur3D UpdatePositionParticule(Particule particule, double deltaTime);
-	double UpdateVelocityParticule(Particule particule);
+	Vecteur3D MiseAJourPositionParticule(Particule particule, double deltaTime);
+	Vecteur3D MiseAJourVelociteParticule(Particule particule, double deltaTime);
 };
 

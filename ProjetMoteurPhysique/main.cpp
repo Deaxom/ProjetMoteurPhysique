@@ -125,8 +125,9 @@ int main(int, char**)
     EMSCRIPTEN_MAINLOOP_BEGIN
 #else
 
-    float deltaTime = 0.0f;
-    float lastFrameTime = glfwGetTime();
+    //Test Classe Integrateur
+    double deltaTime = 0.0f;
+    double lastFrameTime = glfwGetTime();
 
     while (!glfwWindowShouldClose(window))
 #endif
@@ -197,14 +198,18 @@ int main(int, char**)
         vecteurposition = vecteurposition+vecteurvitesse;
         vecteurvitesse = vecteurvitesse+vecteuracceleration;
 
-         float currentFrameTime = glfwGetTime();
+        //Test Classe Integrateur
+         double currentFrameTime = glfwGetTime();
          deltaTime = currentFrameTime - lastFrameTime;
          lastFrameTime = currentFrameTime;
 
          Particule Particule(vecteurposition, vecteurvitesse, vecteuracceleration);
          Integrateur integrateur;
-         Particule.setPosition(integrateur.UpdatePositionParticule(Particule, deltaTime));
+         Particule.setPosition(integrateur.MiseAJourPositionParticule(Particule, deltaTime));
          std::cout << "Particule update position Y : " << Particule.getPosition().getY() << std::endl;
+
+         Particule.setVitesse(integrateur.MiseAJourVelociteParticule(Particule, deltaTime));
+         std::cout << "Particule update vitesse X : " << Particule.getVitesse().getX() << std::endl;
     }
 #ifdef __EMSCRIPTEN__
     EMSCRIPTEN_MAINLOOP_END;
