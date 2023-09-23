@@ -10,7 +10,7 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-#include "Vecteur3D.h"
+#include "Integrateur.h"
 #include "Constantes.h"
 #include <stdio.h>
 #define GL_SILENCE_DEPRECATION
@@ -123,6 +123,10 @@ int main(int, char**)
     io.IniFilename = nullptr;
     EMSCRIPTEN_MAINLOOP_BEGIN
 #else
+
+    float deltaTime = 0.0f;
+    float lastFrameTime = glfwGetTime();
+
     while (!glfwWindowShouldClose(window))
 #endif
     {
@@ -191,6 +195,15 @@ int main(int, char**)
         std::cout << "Vecteur vitesse: (" << vecteurvitesse.getX() << "," << vecteurvitesse.getY() << "," << vecteurvitesse.getZ() << ")" << std::endl;
         vecteurposition = vecteurposition+vecteurvitesse;
         vecteurvitesse = vecteurvitesse+vecteuracceleration;
+
+         float currentFrameTime = glfwGetTime();
+         deltaTime = currentFrameTime - lastFrameTime;
+         lastFrameTime = currentFrameTime;
+
+         Particule Particule(vecteurposition, vecteurvitesse, vecteuracceleration);
+         Integrateur integrateur;
+         Particule.setPosition(integrateur.UpdatePositionParticule(Particule, deltaTime));
+         std::cout << "Particule update position Y : " << Particule.getPosition().getY() << std::endl;
     }
 #ifdef __EMSCRIPTEN__
     EMSCRIPTEN_MAINLOOP_END;
