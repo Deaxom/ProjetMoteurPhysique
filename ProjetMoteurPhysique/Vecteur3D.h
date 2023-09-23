@@ -19,5 +19,6 @@ public:
 	Vecteur3D addition(Vecteur3D vecteur);
 	Vecteur3D soustraction(Vecteur3D vecteur);
 	double produitScalaire(Vecteur3D vecteur);
+	Vecteur3D produitVectoriel(Vecteur3D vecteur);
 };
 

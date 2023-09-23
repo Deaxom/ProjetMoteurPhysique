@@ -68,5 +68,15 @@ Vecteur3D Vecteur3D::soustraction(Vecteur3D vecteur) {
 }
 
 double Vecteur3D::produitScalaire(Vecteur3D vecteur) {
+	double sumX = this->x * vecteur.getX();
+	double sumY = this->y * vecteur.getY();
+	double sumZ = this->z * vecteur.getZ();
+	return (sumX + sumY + sumZ);
+}
 
+Vecteur3D Vecteur3D::produitVectoriel(Vecteur3D vecteur) {
+	double newX = this->y * vecteur.getZ() - this->z * vecteur.getY();
+	double newY = this->z * vecteur.getX() - this->x * vecteur.getZ();
+	double newZ = this->x * vecteur.getY() - this->y * vecteur.getX();
+	return Vecteur3D(newX, newY, newZ);
 }
