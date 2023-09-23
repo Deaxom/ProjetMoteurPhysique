@@ -188,8 +188,8 @@ int main(int, char**)
         //Test Classe Vecteur3D
         std::cout << "Vecteur position: (" << vecteurposition.getX() << "," << vecteurposition.getY() << "," << vecteurposition.getZ() << ")" << std::endl;
         std::cout << "Vecteur vitesse: (" << vecteurvitesse.getX() << "," << vecteurvitesse.getY() << "," << vecteurvitesse.getZ() << ")" << std::endl;
-        vecteurposition = vecteurposition.addition(vecteurvitesse);
-        vecteurvitesse = vecteurvitesse.addition(vecteuracceleration);
+        vecteurposition = vecteurposition+vecteurvitesse;
+        vecteurvitesse = vecteurvitesse+vecteuracceleration;
     }
 #ifdef __EMSCRIPTEN__
     EMSCRIPTEN_MAINLOOP_END;

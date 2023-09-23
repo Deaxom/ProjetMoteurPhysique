@@ -58,7 +58,7 @@ Vecteur3D Vecteur3D::calculVecteurUnitaire() {
 }
 
 //Calcul de la multiplication par un scalaire, renvoie un autre Vecteur3D
-Vecteur3D Vecteur3D::multiplicationScalaire(double scalaire) {
+Vecteur3D Vecteur3D::operator*(double scalaire) {
 	double newX = this->x * scalaire;
 	double newY = this->y * scalaire;
 	double newZ = this->z * scalaire;
@@ -66,7 +66,7 @@ Vecteur3D Vecteur3D::multiplicationScalaire(double scalaire) {
 }
 
 //Calcul de l'addition entre 2 Vecteur3D, renvoie un autre Vecteur3D
-Vecteur3D Vecteur3D::addition(Vecteur3D vecteur) {
+Vecteur3D Vecteur3D::operator+(Vecteur3D vecteur) {
 	double newX = this->x + vecteur.getX();
 	double newY = this->y + vecteur.getY();
 	double newZ = this->z + vecteur.getZ();
@@ -74,7 +74,7 @@ Vecteur3D Vecteur3D::addition(Vecteur3D vecteur) {
 }
 
 //Calcul de la soustraction entre 2 Vecteur3D, renvoie un autre Vecteur3D
-Vecteur3D Vecteur3D::soustraction(Vecteur3D vecteur) {
+Vecteur3D Vecteur3D::operator-(Vecteur3D vecteur) {
 	double newX = this->x - vecteur.getX();
 	double newY = this->y - vecteur.getY();
 	double newZ = this->z - vecteur.getZ();

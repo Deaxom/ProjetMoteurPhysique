@@ -16,9 +16,9 @@ public:
 	void setZ(double newZ);
 	double calculNorme();
 	Vecteur3D calculVecteurUnitaire();
-	Vecteur3D multiplicationScalaire(double scalaire);
-	Vecteur3D addition(Vecteur3D vecteur);
-	Vecteur3D soustraction(Vecteur3D vecteur);
+	Vecteur3D operator*(double scalaire);
+	Vecteur3D operator+(Vecteur3D vecteur);
+	Vecteur3D operator-(Vecteur3D vecteur);
 	double produitScalaire(Vecteur3D vecteur);
 	Vecteur3D produitVectoriel(Vecteur3D vecteur);
 };
