@@ -1,5 +1,6 @@
 #include "Integrateur.h"
 #include <iostream>
+#include "Constantes.h"
 
 
 Vecteur3D Integrateur::MiseAJourPositionParticule(Particule particule, double deltaTime) {
@@ -8,6 +9,6 @@ Vecteur3D Integrateur::MiseAJourPositionParticule(Particule particule, double de
 }
 
 Vecteur3D Integrateur::MiseAJourVelociteParticule(Particule particule, double deltaTime) {
-	Vecteur3D newVelocity = particule.getVitesse() * 0.8  + (particule.getAcceleration() * deltaTime);
+	Vecteur3D newVelocity = particule.getVitesse() * DAMPING_VALUE + (particule.getAcceleration() * deltaTime);
 	return newVelocity;
 }
