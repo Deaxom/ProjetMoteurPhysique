@@ -10,9 +10,8 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-//#include "Vecteur3D.h"
-//#include "Particule.h"
 #include "Integrateur.h"
+#include "Constantes.h"
 #include <stdio.h>
 #define GL_SILENCE_DEPRECATION
 #if defined(IMGUI_IMPL_OPENGL_ES2)
