@@ -10,6 +10,7 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#include "Vecteur3D.h"
 #include <stdio.h>
 #define GL_SILENCE_DEPRECATION
 #if defined(IMGUI_IMPL_OPENGL_ES2)
@@ -28,6 +29,7 @@
 #ifdef __EMSCRIPTEN__
 #include "../libs/emscripten/emscripten_mainloop_stub.h"
 #endif
+#include <iostream>
 
 static void glfw_error_callback(int error, const char* description)
 {
@@ -108,6 +110,11 @@ int main(int, char**)
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
+    //Test Classe Vecteur3D
+    Vecteur3D vecteurposition(0, 0, 0);
+    Vecteur3D vecteurvitesse(0, 2, -1);
+    Vecteur3D vecteuracceleration(1, 0, 0);
+
     // Main loop
 #ifdef __EMSCRIPTEN__
     // For an Emscripten build we are disabling file-system access, so let's not attempt to do a fopen() of the imgui.ini file.
@@ -177,6 +184,12 @@ int main(int, char**)
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
+
+        //Test Classe Vecteur3D
+        std::cout << "Vecteur position: (" << vecteurposition.getX() << "," << vecteurposition.getY() << "," << vecteurposition.getZ() << ")" << std::endl;
+        std::cout << "Vecteur vitesse: (" << vecteurvitesse.getX() << "," << vecteurvitesse.getY() << "," << vecteurvitesse.getZ() << ")" << std::endl;
+        vecteurposition = vecteurposition.addition(vecteurvitesse);
+        vecteurvitesse = vecteurvitesse.addition(vecteuracceleration);
     }
 #ifdef __EMSCRIPTEN__
     EMSCRIPTEN_MAINLOOP_END;

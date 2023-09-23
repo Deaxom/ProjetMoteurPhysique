@@ -1,7 +1,13 @@
 #include "Vecteur3D.h"
 #include <math.h>
 
-//Constructeur
+//Constructeurs
+Vecteur3D::Vecteur3D() {
+	this->setX(0);
+	this->setY(0);
+	this->setZ(0);
+}
+
 Vecteur3D::Vecteur3D(double x, double y, double z) {
 	this->setX(x);
 	this->setY(y);

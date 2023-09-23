@@ -6,6 +6,7 @@ private:
 	double y;
 	double z;
 public:
+	Vecteur3D();
 	Vecteur3D(double x, double y, double z);
 	double getX();
 	double getY();

@@ -1,46 +1,28 @@
 #include "Particule.h"
 
 //Constructeur
-Particule::Particule(double positionX, double positionY, double positionZ, Vecteur3D vitesse, Vecteur3D acceleration) {
-	this->setPositionX(positionX);
-	this->setPositionY(positionY);
-	this->setPositionZ(positionZ);
+Particule::Particule(Vecteur3D position, Vecteur3D vitesse, Vecteur3D acceleration) {
+	this->setPosition(position);
 	this->setVitesse(vitesse);
 	this->setAcceleration(acceleration);
 }
 
 //GETTERS
-double Particule::getPositionX() {
-	return this->positionX;
+Vecteur3D Particule::getPosition() {
+	return this->position;
 }
 
-double Particule::getPositionY() {
-	return this->positionY;
-}
-
-double Particule::getPositionZ(){
-	return this->positionZ;
-}
-
-Vecteur3D Particule::getvitesse(){
+Vecteur3D Particule::getVitesse(){
 	return this->vitesse;
 }
 
-Vecteur3D Particule::getacceleration(){
+Vecteur3D Particule::getAcceleration(){
 	return this->acceleration;
 }
 
 //SETTERS
-void Particule::setPositionX(double newPositionX){
-	this->positionX = newPositionX;
-}
-
-void Particule::setPositionY(double newPositionY){
-	this->positionY = newPositionY;
-}
-
-void Particule::setPositionZ(double newPositionZ){
-	this->positionZ = newPositionZ;
+void Particule::setPosition(Vecteur3D newPosition){
+	this->position = newPosition;
 }
 
 void Particule::setVitesse(Vecteur3D newVitesse){
