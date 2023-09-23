@@ -7,6 +7,7 @@
 // - Documentation        https://dearimgui.com/docs (same as your local docs/ folder).
 // - Introduction, links and more at the top of imgui.cpp
 
+#include "Vecteur3D.h"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -37,6 +38,19 @@ static void glfw_error_callback(int error, const char* description)
 // Main code
 int main(int, char**)
 {
+#pragma region Vecteur3 Test
+
+    // Test class Vecteur3D
+    Vector3f v1 = Vector3f(1.f, 2.f, 3.f);
+    std::cout << v1 << std::endl;
+    Vector3f v2 = Vector3f(3.f, 2.f, 1.f);
+    Vector3f v3 = v1 + v2;
+    std::cout << v3 << std::endl;
+    printf("Hello World !");
+
+#pragma endregion
+
+
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
         return 1;
