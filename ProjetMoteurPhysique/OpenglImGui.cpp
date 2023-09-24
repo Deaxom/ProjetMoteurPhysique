@@ -39,6 +39,12 @@ ImGuiIO* OpenGlImGui::GetIO()
     return &ImGui::GetIO();
 }
 
+void OpenGlImGui::Render()
+{
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
 void OpenGlImGui::NewFrame()
 {
     ImGui_ImplOpenGL3_NewFrame();

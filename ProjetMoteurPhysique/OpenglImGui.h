@@ -14,6 +14,8 @@ public:
 	ImGuiContext* GetContext();
 	ImGuiIO* GetIO();
 
+	void Render();
+
 	void NewFrame();
 
 	OpenGlImGui& operator=(const OpenGlImGui&) = delete;
