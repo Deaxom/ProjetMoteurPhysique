@@ -3,8 +3,13 @@
 
 //Constructeur
 Jeu::Jeu(GLFWwindow* window) {
+    if (window == nullptr) {
+        return;
+    }
     this->setEtat(false);
     this->setWindow(window);
+    this->setDeltaTime(0.0f);
+    this->setLastFrameTime(0.0f);
 }
 
 bool Jeu::getEtat() {
@@ -41,9 +46,9 @@ void Jeu::setLastFrameTime(double newLastFrameTime) {
 
 void Jeu::start() {
     this->setEtat(true);
-    glfwMakeContextCurrent(this->getWindow());
+    /*glfwMakeContextCurrent(this->getWindow());
     const char* glsl_version = "#version 130";
-    OpenGlImGui imgui(window, glsl_version);
+    OpenGlImGui imgui(window, glsl_version);*/
     this->setDeltaTime(0.0f);
     this->setLastFrameTime(glfwGetTime());
 }
@@ -53,6 +58,7 @@ void Jeu::update() {
         float currentFrame = static_cast<float>(glfwGetTime());
         this->setDeltaTime(currentFrame - this->getLastFrameTime());
         this->setLastFrameTime(currentFrame);
+        //processInput(window);
         //...
     }
 }
