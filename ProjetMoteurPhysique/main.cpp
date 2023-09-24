@@ -120,11 +120,6 @@ int main(int, char**)
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    //Test Classe Vecteur3D
-    Vecteur3D vecteurposition(0, 0, 0);
-    Vecteur3D vecteurvitesse(0, 2, -1);
-    Vecteur3D vecteuracceleration(1, 0, 0);
-
     // Main loop
 #ifdef __EMSCRIPTEN__
     // For an Emscripten build we are disabling file-system access, so let's not attempt to do a fopen() of the imgui.ini file.
@@ -132,6 +127,11 @@ int main(int, char**)
     io.IniFilename = nullptr;
     EMSCRIPTEN_MAINLOOP_BEGIN
 #else
+
+    //Test Classe Vecteur3D
+    Vecteur3D vecteurposition(0, 0, 0);
+    Vecteur3D vecteurvitesse(0, 2, -1);
+    Vecteur3D vecteuracceleration(1, 0, 0);
 
     //Test Classe Integrateur
     double deltaTime = 0.0f;
