@@ -141,6 +141,7 @@
     <ClCompile Include="Integrateur.cpp" />
     <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenglImGui.cpp" />
     <ClCompile Include="Particule.cpp" />
     <ClCompile Include="ProjetMoteurPhysique.cpp" />
     <ClCompile Include="Vecteur3D.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="Integrateur.h" />
     <ClInclude Include="Jeu.h" />
+    <ClInclude Include="OpenglImGui.h" />
     <ClInclude Include="Particule.h" />
     <ClInclude Include="Vecteur3D.h" />
   </ItemGroup>
