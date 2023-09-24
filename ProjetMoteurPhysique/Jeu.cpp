@@ -3,9 +3,6 @@
 
 //Constructeur
 Jeu::Jeu(GLFWwindow* window) {
-    if (window == nullptr) {
-        return;
-    }
     this->setEtat(false);
     this->setWindow(window);
     this->setDeltaTime(0.0f);
