@@ -113,6 +113,8 @@ void Jeu::update() {
         this->getParticule().setPosition(this->getParticule().getVitesse() + this->getParticule().getVitesse());
         this->getParticule().setVitesse(this->getParticule().getVitesse() + this->getParticule().getAcceleration());
 
+        this->getParticule().setPosition(this->getParticule().getPosition() + this->getParticule().getVitesse());
+
         //Test Classe Integrateur
         double currentFrameTime = glfwGetTime();
         deltaTime = currentFrameTime - lastFrameTime;
