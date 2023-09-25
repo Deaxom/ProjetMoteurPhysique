@@ -1,6 +1,15 @@
 #include "Particule.h"
 
-//Constructeur
+//Constructeurs
+Particule::Particule() {
+	Vecteur3D newPosition;
+	Vecteur3D newVitesse;
+	Vecteur3D newAcceleration;
+	this->setPosition(newPosition);
+	this->setVitesse(newVitesse);
+	this->setAcceleration(newAcceleration);
+}
+
 Particule::Particule(Vecteur3D position, Vecteur3D vitesse, Vecteur3D acceleration) {
 	this->setPosition(position);
 	this->setVitesse(vitesse);

@@ -8,6 +8,7 @@ private:
 	Vecteur3D vitesse;
 	Vecteur3D acceleration;
 public:
+	Particule();
 	Particule(Vecteur3D position, Vecteur3D vitesse, Vecteur3D acceleration);
 	Vecteur3D getPosition();
 	Vecteur3D getVitesse();
