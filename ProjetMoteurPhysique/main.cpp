@@ -13,10 +13,13 @@ int main(int, char**)
 
     // Init by OpenGlImGui class
     OpenGlImGui imgui(window);
-    Jeu(imgui);
+    Jeu jeu(&imgui, Particule());
+    jeu.start();
 
     while (!GLFW.ShouldClose())
     {
+        jeu.update();
+
         // Graphics Update
         GLFW.Update();
 

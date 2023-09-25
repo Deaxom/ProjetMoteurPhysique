@@ -12,7 +12,7 @@ Jeu::Jeu() {
     this->setParticule(newParticule);
 }
 
-Jeu::Jeu(GLFWwindow* window, Particule particule) {
+Jeu::Jeu(OpenGlImGui* window, Particule particule) {
     this->setEtat(false);
     this->setWindow(window);
     this->setDeltaTime(0.0f);
@@ -20,11 +20,20 @@ Jeu::Jeu(GLFWwindow* window, Particule particule) {
     this->setParticule(particule);
 }
 
+Jeu::Jeu(OpenGlImGui* window) {
+    this->setEtat(false);
+    this->setWindow(window);
+    this->setDeltaTime(0.0f);
+    this->setLastFrameTime(0.0f);
+    Particule newParticule;
+    this->setParticule(newParticule);
+}
+
 bool Jeu::getEtat() {
     return this->etat;
 }
 
-GLFWwindow* Jeu::getWindow() {
+OpenGlImGui* Jeu::getWindow() {
     return this->window;
 }
 
@@ -44,7 +53,7 @@ void Jeu::setEtat(bool newEtat) {
     this->etat = newEtat;
 }
 
-void Jeu::setWindow(GLFWwindow* newWindow) {
+void Jeu::setWindow(OpenGlImGui* newWindow) {
     this->window = newWindow;
 }
 
