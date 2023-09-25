@@ -8,5 +8,5 @@ Pour le développement, nous avons décidé de suivre l'architecture que vous no
 
 Contribution:
 Alain: classe Vecteur3D, classe Particules, classe Jeu, documentation sur partie graphique, intégration des outils ImGui, Glad et GLFW dans le projet, rédaction du Journal de Développement. (..%)
-Charle: classe Intégrateur, documentation sur partie graphique, rédaction Journal de Développement. (..%)
+Charles: classe Intégrateur, documentation sur partie graphique, rédaction Journal de Développement. (..%)
 Thomas: classe Vecteur3D, classe OpenGlFLFW, classe OpenGlImGui, documentation sur partie graphique, intégration d'OpenGl dans le projet (..%)
