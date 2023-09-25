@@ -70,21 +70,17 @@ void Jeu::start() {
 
 void Jeu::update() {
     if (etat) {
-        float currentFrame = static_cast<float>(glfwGetTime());
+        double currentFrame = glfwGetTime();
         this->setDeltaTime(currentFrame - this->getLastFrameTime());
         this->setLastFrameTime(currentFrame);
 
         //Test Classe Vecteur3D
-        std::cout << "Vecteur position: (" << this->getParticule().getPosition().getX() << "," << this->getParticule().getPosition().getY() << "," << this->getParticule().getPosition().getZ() << ")" << std::endl;
+        /*std::cout << "Vecteur position: (" << this->getParticule().getPosition().getX() << "," << this->getParticule().getPosition().getY() << "," << this->getParticule().getPosition().getZ() << ")" << std::endl;
         std::cout << "Vecteur vitesse: (" << this->getParticule().getVitesse().getX() << "," << this->getParticule().getVitesse().getY() << "," << this->getParticule().getVitesse().getZ() << ")" << std::endl;
         this->getParticule().setPosition(this->getParticule().getVitesse() + this->getParticule().getVitesse());
-        this->getParticule().setVitesse(this->getParticule().getVitesse() + this->getParticule().getAcceleration());
+        this->getParticule().setVitesse(this->getParticule().getVitesse() + this->getParticule().getAcceleration());*/
 
         //Test Classe Integrateur
-        double currentFrameTime = glfwGetTime();
-        deltaTime = currentFrameTime - lastFrameTime;
-        lastFrameTime = currentFrameTime;
-
         Particule Particule(this->getParticule().getPosition(), this->getParticule().getVitesse(), this->getParticule().getAcceleration());
         Integrateur integrateur;
         Particule.setPosition(integrateur.MiseAJourPositionParticule(Particule, deltaTime));
