@@ -3,6 +3,7 @@
 #include "Jeu.h"
 //#include <glfw3.h> // Will drag system OpenGL headers
 #include <iostream>
+#include <vector>
 
 // Main code
 int main(int, char**)
@@ -38,6 +39,7 @@ int main(int, char**)
         imgui.Render();
 
         GLFW.SwapBuffers();
+
     }
 
     return 0;

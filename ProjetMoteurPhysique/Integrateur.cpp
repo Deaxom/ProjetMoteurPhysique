@@ -4,6 +4,7 @@
 
 
 Vecteur3D Integrateur::MiseAJourPositionParticule(Particule particule, double deltaTime) {
+	//double deltaTime = 1;
 	Vecteur3D newPosition = particule.getPosition() + (particule.getVitesse() * deltaTime);
 	return newPosition;
 }

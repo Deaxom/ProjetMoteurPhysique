@@ -1,6 +1,7 @@
 #pragma once
 #include <glfw3.h>
 #include "Integrateur.h"
+#include <vector>
 
 class Jeu
 {
@@ -9,7 +10,9 @@ private:
     GLFWwindow* window;
     double deltaTime;
     double lastFrameTime;
+    Integrateur integrateur;
     Particule particule;
+    std::vector<Particule> listeParticule;
 
 public:
     Jeu();
