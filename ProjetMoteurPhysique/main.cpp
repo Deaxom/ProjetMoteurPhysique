@@ -3,6 +3,7 @@
 #include "Jeu.h"
 //#include <glfw3.h> // Will drag system OpenGL headers
 #include <iostream>
+#include <vector>
 
 // Main code
 int main(int, char**)
@@ -12,10 +13,13 @@ int main(int, char**)
 
     // Init by OpenGlImGui class
     OpenGlImGui imgui(window);
-    Jeu(imgui);
+    Jeu jeu(&imgui, Particule());
+    jeu.start();
 
     while (!GLFW.ShouldClose())
     {
+        jeu.update();
+
         // Graphics Update
         GLFW.Update();
 
@@ -38,6 +42,7 @@ int main(int, char**)
         imgui.Render();
 
         GLFW.SwapBuffers();
+
     }
 
     return 0;
