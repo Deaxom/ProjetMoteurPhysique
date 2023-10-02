@@ -144,7 +144,6 @@
     <ClCompile Include="OpenGlGLFW.cpp" />
     <ClCompile Include="OpenglImGui.cpp" />
     <ClCompile Include="Particule.cpp" />
-    <ClCompile Include="ProjetMoteurPhysique.cpp" />
     <ClCompile Include="Vecteur3D.cpp" />
   </ItemGroup>
   <ItemGroup>
