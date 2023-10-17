@@ -6,7 +6,7 @@
 #include <vector>
 
 // Main code
-int main(int, char**)
+/*int main(int, char**)
 {
     OpenGlGLFW GLFW;
     GLFWwindow* window = GLFW.Init();
@@ -94,3 +94,4 @@ int main(int, char**)
 
     return 0;
 }
+*/

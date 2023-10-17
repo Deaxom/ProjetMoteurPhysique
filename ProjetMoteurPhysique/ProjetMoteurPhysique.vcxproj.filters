@@ -13,47 +13,38 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers sources\imgui">
-      <UniqueIdentifier>{ccb66cf8-8263-43fb-a042-730ae22bc4e6}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\libs">
+      <UniqueIdentifier>{5e03c5b0-c057-4188-b3e4-092893a8563f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\imgui">
-      <UniqueIdentifier>{3164f22a-50db-4171-bbc1-464ce03d6fc5}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\libs\glad">
+      <UniqueIdentifier>{95cec52c-08ad-4e84-9eb2-9b2a26742187}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\GLFW">
-      <UniqueIdentifier>{fc1742b6-4605-4b67-bceb-519938390d2b}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\libs\GLFW">
+      <UniqueIdentifier>{647d0e7c-bdc0-45ab-ae17-4d6f67d38400}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\glad">
-      <UniqueIdentifier>{818698bd-f68c-4a68-b98f-6aecebc96527}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\libs\glm">
+      <UniqueIdentifier>{6f7afabb-347b-4cce-b56d-007553fff352}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\glad">
-      <UniqueIdentifier>{a3dabb9c-e724-4b35-a016-804e770c0915}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\libs\imgui">
+      <UniqueIdentifier>{db0449ac-1d8c-4798-b10b-2db1ccdd367a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\libs\LearnOpenGL">
+      <UniqueIdentifier>{33ad45f8-b41a-4f31-9cdc-db43a682ce3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\libs">
+      <UniqueIdentifier>{3765d6f5-e878-48c2-92a0-8d00207b49bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\libs\glad">
+      <UniqueIdentifier>{55465e07-18e2-4ef6-947e-a32e5139081f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\libs\LearnOpenGL">
+      <UniqueIdentifier>{5e6142a2-c5f5-441d-8ff8-bb852faef6c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\libs\imgui">
+      <UniqueIdentifier>{54aa0a0f-1fc8-43f8-b9e7-d18b238bfcb0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="imgui\imgui_demo.cpp">
-      <Filter>Fichiers sources\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_draw.cpp">
-      <Filter>Fichiers sources\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_impl_glfw.cpp">
-      <Filter>Fichiers sources\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_impl_opengl3.cpp">
-      <Filter>Fichiers sources\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_tables.cpp">
-      <Filter>Fichiers sources\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_widgets.cpp">
-      <Filter>Fichiers sources\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui.cpp">
-      <Filter>Fichiers sources\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="glad\src\glad.c">
-      <Filter>Fichiers sources\glad</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -75,47 +66,35 @@
     <ClCompile Include="OpenGlGLFW.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="libs\LearnOpenGL\camera_class.cpp">
+      <Filter>Fichiers sources\libs\LearnOpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui.cpp">
+      <Filter>Fichiers sources\libs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_demo.cpp">
+      <Filter>Fichiers sources\libs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_draw.cpp">
+      <Filter>Fichiers sources\libs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_impl_glfw.cpp">
+      <Filter>Fichiers sources\libs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Fichiers sources\libs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_tables.cpp">
+      <Filter>Fichiers sources\libs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_widgets.cpp">
+      <Filter>Fichiers sources\libs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\glad\src\glad.c">
+      <Filter>Fichiers sources\libs\glad</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="imgui\imgui_impl_glfw.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui_impl_opengl3.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui_internal.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imstb_rectpack.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imstb_textedit.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imstb_truetype.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imconfig.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="GLFW\glfw3.h">
-      <Filter>Fichiers d%27en-tête\GLFW</Filter>
-    </ClInclude>
-    <ClInclude Include="GLFW\glfw3native.h">
-      <Filter>Fichiers d%27en-tête\GLFW</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui_impl_opengl3_loader.h">
-      <Filter>Fichiers d%27en-tête\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="glad\include\glad\glad.h">
-      <Filter>Fichiers d%27en-tête\glad</Filter>
-    </ClInclude>
-    <ClInclude Include="glad\include\KHR\khrplatform.h">
-      <Filter>Fichiers d%27en-tête\glad</Filter>
-    </ClInclude>
     <ClInclude Include="Vecteur3D.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -137,9 +116,74 @@
     <ClInclude Include="OpenglImGui.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="libs\glad\include\glad\glad.h">
+      <Filter>Fichiers d%27en-tête\libs\glad</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\glad\include\KHR\khrplatform.h">
+      <Filter>Fichiers d%27en-tête\libs\glad</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\GLFW\glfw3.h">
+      <Filter>Fichiers d%27en-tête\libs\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\GLFW\glfw3native.h">
+      <Filter>Fichiers d%27en-tête\libs\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\glm\glm.hpp">
+      <Filter>Fichiers d%27en-tête\libs\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\LearnOpenGL\camera.h">
+      <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\LearnOpenGL\filesystem.h">
+      <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\LearnOpenGL\shader_m.h">
+      <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\stb_image.h">
+      <Filter>Fichiers d%27en-tête\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imconfig.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imgui.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imgui_impl_glfw.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imgui_impl_opengl3.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imgui_internal.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imstb_rectpack.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imstb_textedit.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imstb_truetype.h">
+      <Filter>Fichiers d%27en-tête\libs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\LearnOpenGL\root_directory.h">
+      <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="GLFW\glfw3.lib">
+    <None Include="libs\LearnOpenGL\7.4.camera.fs">
+      <Filter>Fichiers sources\libs\LearnOpenGL</Filter>
+    </None>
+    <None Include="libs\LearnOpenGL\7.4.camera.vs">
+      <Filter>Fichiers sources\libs\LearnOpenGL</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="libs\GLFW\glfw3.lib">
       <Filter>Fichiers de ressources</Filter>
     </Library>
   </ItemGroup>
