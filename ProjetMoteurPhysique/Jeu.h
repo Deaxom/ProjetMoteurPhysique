@@ -13,7 +13,7 @@ private:
     double lastFrameTime;
     Integrateur integrateur;
     Particule particule;
-    std::vector<Particule> listeParticule;
+    std::vector<Particule*> listeParticule;
 
 public:
     Jeu();
