@@ -1,5 +1,6 @@
 Bonjour, voici le journal de développement!
 
+Phase 1:
 Pour cette première partie de projet la plus grosse difficulté à été la mise en place de l'affichage graphique de nos particules via l'utilisation d'OpenGL et d'ImGui pour créer notre petit jeu.
 En effet, aucun d'entre nous n'était familier à l'utilisation de ces librairies.
 
@@ -10,3 +11,13 @@ Contribution:
 Alain: classe Vecteur3D, classe Particules, classe Jeu, documentation sur partie graphique, intégration des outils ImGui, Glad et GLFW dans le projet, rédaction du Journal de Développement, début de la simulation des particules. (45%)
 Charles: classe Intégrateur, documentation sur partie graphique, rédaction Journal de Développement, fin de la simulation des particules. (25%)
 Thomas: classe Vecteur3D, classe OpenGlFLFW, classe OpenGlImGui, documentation sur partie graphique, intégration d'OpenGl dans le projet (30%)
+
+
+Phase 2:
+Pour cette deuxième partie, nous avons intégré LearnOpenGL qui nous manquait la dernière fois.
+...
+
+Contribution:
+Alain:
+Charles:
+Thomas:
