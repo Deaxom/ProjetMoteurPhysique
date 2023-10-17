@@ -144,6 +144,7 @@
     <ClCompile Include="libs\imgui\imgui_tables.cpp" />
     <ClCompile Include="libs\imgui\imgui_widgets.cpp" />
     <ClCompile Include="libs\LearnOpenGL\camera_class.cpp" />
+    <ClCompile Include="libs\stb_image.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGlGLFW.cpp" />
     <ClCompile Include="OpenglImGui.cpp" />

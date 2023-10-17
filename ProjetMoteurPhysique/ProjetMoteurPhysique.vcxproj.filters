@@ -93,6 +93,9 @@
     <ClCompile Include="libs\glad\src\glad.c">
       <Filter>Fichiers sources\libs\glad</Filter>
     </ClCompile>
+    <ClCompile Include="libs\stb_image.cpp">
+      <Filter>Fichiers sources\libs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vecteur3D.h">
