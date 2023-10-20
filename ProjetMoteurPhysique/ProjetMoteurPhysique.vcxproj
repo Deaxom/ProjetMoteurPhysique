@@ -149,6 +149,13 @@
     <ClCompile Include="OpenGlGLFW.cpp" />
     <ClCompile Include="OpenglImGui.cpp" />
     <ClCompile Include="Particule.cpp" />
+    <ClCompile Include="ParticuleFlotabilite.cpp" />
+    <ClCompile Include="ParticuleForceRegistre.cpp" />
+    <ClCompile Include="ParticuleGenerateurForce.cpp" />
+    <ClCompile Include="ParticuleGravite.cpp" />
+    <ClCompile Include="ParticuleRessort.cpp" />
+    <ClCompile Include="ParticuleRessortFixe.cpp" />
+    <ClCompile Include="ParticuleTrainee.cpp" />
     <ClCompile Include="Vecteur3D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +184,13 @@
     <ClInclude Include="OpenGlGLFW.h" />
     <ClInclude Include="OpenglImGui.h" />
     <ClInclude Include="Particule.h" />
+    <ClInclude Include="ParticuleFlotabilite.h" />
+    <ClInclude Include="ParticuleForceRegistre.h" />
+    <ClInclude Include="ParticuleGenerateurForce.h" />
+    <ClInclude Include="ParticuleGravite.h" />
+    <ClInclude Include="ParticuleRessort.h" />
+    <ClInclude Include="ParticuleRessortFixe.h" />
+    <ClInclude Include="ParticuleTrainee.h" />
     <ClInclude Include="Vecteur3D.h" />
   </ItemGroup>
   <ItemGroup>

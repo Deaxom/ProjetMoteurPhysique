@@ -3,6 +3,7 @@
 #include "Integrateur.h"
 #include "OpenglImGui.h"
 #include <vector>
+#include "ParticuleForceRegistre.h"
 
 class Jeu
 {
@@ -14,6 +15,7 @@ private:
     Integrateur integrateur;
     Particule particule;
     std::vector<Particule*> listeParticule;
+    ParticuleForceRegistre forceRegistre;
 
 public:
     Jeu();
