@@ -119,15 +119,15 @@ void Jeu::update() {
 
         std::cout << std::endl;
 
-        for (int i = 0; i < 1; i++) { //TODO remettre a 3
+        for (int i = 0; i < 3; i++) {
 
             std::cout << std::endl;
 
-            listeParticule[i]->setPosition(&integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime));
+            listeParticule[i]->setPosition(integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime));
             std::cout << "Particule " << i << " position: (" << listeParticule[i]->getPosition()->getX() << "," << listeParticule[i]->getPosition()->getY() << "," << listeParticule[i]->getPosition()->getZ() << ")" << std::endl;
 
 
-            listeParticule[i]->setVitesse(&integrateur.MiseAJourVelociteParticule(listeParticule[i], &deltaTime));
+            listeParticule[i]->setVitesse(integrateur.MiseAJourVelociteParticule(listeParticule[i], &deltaTime));
             std::cout << "Particule " << i << " velocite: (" << listeParticule[i]->getVitesse()->getX() << ", " << listeParticule[i]->getVitesse()->getY() << ", " << listeParticule[i]->getVitesse()->getZ() << ")" << std::endl;
 
             

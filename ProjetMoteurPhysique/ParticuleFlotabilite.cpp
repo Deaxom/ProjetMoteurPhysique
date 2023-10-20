@@ -3,7 +3,7 @@
 void ParticuleFlotabilite::MiseAJourForce(Particule* particule, double deltaTime) {
 
 	//Calcule de d
-	double d = (particule->getPosition().getY() - m_hauteurEau - m_profondeurMax) / (2 * m_profondeurMax);
+	double d = (particule->getPosition()->getY() - m_hauteurEau - m_profondeurMax) / (2 * m_profondeurMax);
 
 	//On calcule la force en fonction du resultat de d
 	double force;
@@ -19,6 +19,6 @@ void ParticuleFlotabilite::MiseAJourForce(Particule* particule, double deltaTime
 	}
 
 	//On applique la force
-	particule->getAcceleration().setY(particule->getAcceleration().getY() * force / particule->getMasse() * deltaTime);
+	particule->getAcceleration()->setY(particule->getAcceleration()->getY() * force / particule->getMasse() * deltaTime);
 
 }

@@ -2,6 +2,6 @@
 #include "Constantes.h"
 
 void ParticuleGravite::MiseAJourForce(Particule* particule, double deltaTime) {
-	Vecteur3D nouvelleAccelerationParticule(particule->getAcceleration().getX(), -1 * particule->getMasse() * GRAVITATIONAL_CONSTANT * deltaTime, particule->getAcceleration().getZ());
+	Vecteur3D* nouvelleAccelerationParticule = new Vecteur3D(particule->getAcceleration()->getX(), -1 * particule->getMasse() * GRAVITATIONAL_CONSTANT * deltaTime, particule->getAcceleration()->getZ());
 	particule->setAcceleration(nouvelleAccelerationParticule);
 }

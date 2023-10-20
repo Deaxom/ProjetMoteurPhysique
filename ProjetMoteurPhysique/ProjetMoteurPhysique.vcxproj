@@ -159,6 +159,7 @@
     <ClCompile Include="Vecteur3D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CameraControlleur.h" />
     <ClInclude Include="Constantes.h" />
     <ClInclude Include="Integrateur.h" />
     <ClInclude Include="Jeu.h" />

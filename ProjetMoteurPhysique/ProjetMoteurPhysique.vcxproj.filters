@@ -218,6 +218,9 @@
     <ClInclude Include="ParticuleFlotabilite.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="CameraControlleur.h">
+      <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="libs\LearnOpenGL\7.4.camera.fs">
