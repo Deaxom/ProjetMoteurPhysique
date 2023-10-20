@@ -30,6 +30,7 @@ Jeu::Jeu(OpenGlImGui* window) {
     this->setParticule(newParticule);
 }
 
+//GETTERS
 bool Jeu::getEtat() {
     return this->etat;
 }
@@ -50,6 +51,7 @@ Particule Jeu::getParticule() {
     return this->particule;
 }
 
+//SETTERS
 void Jeu::setEtat(bool newEtat) {
     this->etat = newEtat;
 }
@@ -70,6 +72,7 @@ void Jeu::setParticule(Particule newParticule) {
     this->particule = newParticule;
 }
 
+//Fonction qui démarre le jeu
 void Jeu::start() {
     /*glfwMakeContextCurrent(this->getWindow());
     const char* glsl_version = "#version 130";
@@ -105,6 +108,7 @@ void Jeu::start() {
 
 }
 
+//Fonction qui update le jeu à chaque unité de temps
 void Jeu::update() {
     if (etat) {
         double currentFrame = glfwGetTime();
@@ -143,6 +147,7 @@ void Jeu::update() {
     }
 }
 
+//Fonction qui arrête le jeu
 void Jeu::stop() {
     //...
     this->setEtat(false);
