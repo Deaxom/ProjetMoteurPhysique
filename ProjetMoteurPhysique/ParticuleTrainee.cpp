@@ -21,5 +21,5 @@ void ParticuleTrainee::MiseAJourForce(Particule* particule, double deltaTime) {
 
 
     // On l'applique à la vitesse de la particule
-    particule->setVitesse(particule->getVitesse() * fdrag / particule->getMasse() * deltaTime);
+    particule->setVitesse(particule->getVitesse().produitVectoriel(fdrag) * (1/particule->getMasse()) * deltaTime);
 }

@@ -17,8 +17,6 @@ public:
 	double calculNorme();
 	Vecteur3D calculVecteurUnitaire();
 	Vecteur3D operator*(double scalaire);
-	Vecteur3D operator/(double scalaire);
-	Vecteur3D operator*(Vecteur3D vecteur);
 	Vecteur3D operator+(Vecteur3D vecteur);
 	Vecteur3D operator-(Vecteur3D vecteur);
 	double produitScalaire(Vecteur3D vecteur);
