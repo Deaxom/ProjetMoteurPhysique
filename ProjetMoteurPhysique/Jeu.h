@@ -13,24 +13,24 @@ private:
     double deltaTime;
     double lastFrameTime;
     Integrateur integrateur;
-    Particule particule;
+    Particule* particule;
     std::vector<Particule*> listeParticule;
     ParticuleForceRegistre forceRegistre;
 
 public:
     Jeu();
-    Jeu(OpenGlImGui* window, Particule particule);
+    Jeu(OpenGlImGui* window, Particule* particule);
     Jeu(OpenGlImGui* window);
     bool getEtat();
     OpenGlImGui* getWindow();
     double getDeltaTime();
     double getLastFrameTime();
-    Particule getParticule();
+    Particule* getParticule();
     void setEtat(bool newEtat);
     void setWindow(OpenGlImGui* newWindow);
     void setDeltaTime(double newDeltaTime);
     void setLastFrameTime(double newLastFrameTime);
-    void setParticule(Particule newParticule);
+    void setParticule(Particule* newParticule);
     void start();
     void update();
     void stop();
