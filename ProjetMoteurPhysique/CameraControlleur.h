@@ -17,8 +17,8 @@ private:
     Shader* ourShader = nullptr;
 
     // Test Particule qui bouge
-    Particule* pa;
-    glm::vec3 po;
+    Particule* particuleTest;
+    glm::vec3 positionGraphiqueParticule;
     //Fin Test Particule qui bouge
 
     // world space positions of our cubes
