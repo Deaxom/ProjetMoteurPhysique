@@ -115,19 +115,20 @@ void Jeu::update() {
         this->setDeltaTime(currentFrame - this->getLastFrameTime());
         this->setLastFrameTime(currentFrame);
 
-        forceRegistre.MiseAJourForce(deltaTime);
+        //forceRegistre.MiseAJourForce(deltaTime);
 
         std::cout << std::endl;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) { //remettre à 3
 
             std::cout << std::endl;
 
-            listeParticule[i]->setPosition(integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime));
+            //listeParticule[i]->setPosition(integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime));
+            integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime);
             std::cout << "Particule " << i << " position: (" << listeParticule[i]->getPosition()->getX() << "," << listeParticule[i]->getPosition()->getY() << "," << listeParticule[i]->getPosition()->getZ() << ")" << std::endl;
 
 
-            listeParticule[i]->setVitesse(integrateur.MiseAJourVelociteParticule(listeParticule[i], &deltaTime));
+            integrateur.MiseAJourVelociteParticule(listeParticule[i], &deltaTime);
             std::cout << "Particule " << i << " velocite: (" << listeParticule[i]->getVitesse()->getX() << ", " << listeParticule[i]->getVitesse()->getY() << ", " << listeParticule[i]->getVitesse()->getZ() << ")" << std::endl;
 
             

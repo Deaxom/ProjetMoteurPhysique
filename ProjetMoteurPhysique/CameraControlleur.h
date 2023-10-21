@@ -3,6 +3,7 @@
 #include "glm.hpp"
 #include "gtc/matrix_transform.hpp"
 #include "gtc/type_ptr.hpp"
+#include "../Particule.h"
 
 class Shader;
 struct GLFWwindow;
@@ -14,6 +15,11 @@ private:
     unsigned int texture1, texture2;
     unsigned int VBO, VAO;
     Shader* ourShader = nullptr;
+
+    // Test Particule qui bouge
+    Particule* pa;
+    glm::vec3 po;
+    //Fin Test Particule qui bouge
 
     // world space positions of our cubes
     glm::vec3 cubePositions[10] = {
