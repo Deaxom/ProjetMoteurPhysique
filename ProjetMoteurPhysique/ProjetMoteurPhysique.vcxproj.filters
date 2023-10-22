@@ -114,7 +114,7 @@
     <ClCompile Include="ParticuleRessortFixe.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="ParticuleFlotabilite.cpp">
+    <ClCompile Include="ParticuleFlottabilite.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -215,7 +215,7 @@
     <ClInclude Include="ParticuleRessortFixe.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="ParticuleFlotabilite.h">
+    <ClInclude Include="ParticuleFlottabilite.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="CameraControlleur.h">
