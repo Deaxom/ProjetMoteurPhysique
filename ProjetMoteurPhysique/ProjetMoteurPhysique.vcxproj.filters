@@ -43,6 +43,18 @@
     <Filter Include="Fichiers sources\libs\imgui">
       <UniqueIdentifier>{54aa0a0f-1fc8-43f8-b9e7-d18b238bfcb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Forces">
+      <UniqueIdentifier>{01a66cd8-3e25-4235-b2c6-166f97e0b753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Collisions">
+      <UniqueIdentifier>{da5fe9df-4407-4d78-8cd9-86a7f65174b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Forces">
+      <UniqueIdentifier>{f8af8cf3-b2d8-4e85-b888-b75563154657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Collisions">
+      <UniqueIdentifier>{7c902efc-0bb1-4dd8-a3ea-0fc4409d00bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,26 +108,38 @@
     <ClCompile Include="libs\stb_image.cpp">
       <Filter>Fichiers sources\libs</Filter>
     </ClCompile>
-    <ClCompile Include="ParticuleGenerateurForce.cpp">
+    <ClCompile Include="ParticuleSystem.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="ParticuleForceRegistre.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="ParticuleContact.cpp">
+      <Filter>Fichiers sources\Collisions</Filter>
     </ClCompile>
-    <ClCompile Include="ParticuleGravite.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="ParticuleContactGenerator.cpp">
+      <Filter>Fichiers sources\Collisions</Filter>
     </ClCompile>
-    <ClCompile Include="ParticuleTrainee.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleRessort.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleRessortFixe.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="ParticuleContactResolver.cpp">
+      <Filter>Fichiers sources\Collisions</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleFlottabilite.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleForceRegistre.cpp">
+      <Filter>Fichiers sources\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleGenerateurForce.cpp">
+      <Filter>Fichiers sources\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleGravite.cpp">
+      <Filter>Fichiers sources\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleRessort.cpp">
+      <Filter>Fichiers sources\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleRessortFixe.cpp">
+      <Filter>Fichiers sources\Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleTrainee.cpp">
+      <Filter>Fichiers sources\Forces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -197,29 +221,41 @@
     <ClInclude Include="libs\LearnOpenGL\root_directory.h">
       <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="ParticuleGenerateurForce.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleForceRegistre.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleGravite.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleTrainee.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleRessort.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleRessortFixe.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleFlottabilite.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="CameraControlleur.h">
       <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleSystem.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleContact.h">
+      <Filter>Fichiers d%27en-tête\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleContactGenerator.h">
+      <Filter>Fichiers d%27en-tête\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleContactResolver.h">
+      <Filter>Fichiers d%27en-tête\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleFlottabilite.h">
+      <Filter>Fichiers d%27en-tête\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleForceRegistre.h">
+      <Filter>Fichiers d%27en-tête\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleGenerateurForce.h">
+      <Filter>Fichiers d%27en-tête\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleGravite.h">
+      <Filter>Fichiers d%27en-tête\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleRessort.h">
+      <Filter>Fichiers d%27en-tête\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleRessortFixe.h">
+      <Filter>Fichiers d%27en-tête\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleTrainee.h">
+      <Filter>Fichiers d%27en-tête\Forces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
