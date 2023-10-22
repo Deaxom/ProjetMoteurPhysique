@@ -7,7 +7,7 @@
 
 float ParticuleLink::currentLength() const 
 {
-	Vecteur3D relativePos = *particules[0]->getPosition() - *particules[1]->getPosition();
+	Vecteur3D relativePos = particules[0]->getPosition() - particules[1]->getPosition();
 	return relativePos.calculNorme();
 }
 
@@ -23,7 +23,7 @@ unsigned ParticuleCable::addContact(ParticuleContact* contact, unsigned int limi
 	contact->particules[0] = particules[0];
 	contact->particules[1] = particules[1];
 
-	Vecteur3D normal = *particules[1]->getPosition() - *particules[0]->getPosition();
+	Vecteur3D normal = particules[1]->getPosition() - particules[0]->getPosition();
 	normal.calculVecteurUnitaire();
 	contact->contactNormal = normal;
 
@@ -47,7 +47,7 @@ unsigned ParticuleRod::addContact(ParticuleContact* contact, unsigned int limit)
 	contact->particules[0] = particules[0];
 	contact->particules[1] = particules[1];
 
-	Vecteur3D normal = *particules[1]->getPosition() - *particules[0]->getPosition();
+	Vecteur3D normal = particules[1]->getPosition() - particules[0]->getPosition();
 	normal.calculVecteurUnitaire();
 
 	if (currentLeng > length)

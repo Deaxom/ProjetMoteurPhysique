@@ -7,7 +7,7 @@ ParticuleRessort::ParticuleRessort(Particule* autreParticule) {
 void ParticuleRessort::MiseAJourForce(Particule* particule, double deltaTime) {
 
 	//calcule de la direction entre les deux particules
-	Vecteur3D direction = *autreParticule->getPosition() - *particule->getPosition();
+	Vecteur3D direction = autreParticule->getPosition() - particule->getPosition();
 
 
 	//On calcule la norme pour avoir la distance
@@ -19,9 +19,9 @@ void ParticuleRessort::MiseAJourForce(Particule* particule, double deltaTime) {
 	Vecteur3D vecteurForce = direction.calculVecteurUnitaire() * force;
 
 	//On applique la force aux deux particules
-	Vecteur3D* newAccelerationAutreParticule = new Vecteur3D(vecteurForce * (1 / autreParticule->getMasse()));// *deltaTime;
+	Vecteur3D newAccelerationAutreParticule(vecteurForce * (1 / autreParticule->getMasse()));
 	autreParticule->setAcceleration(newAccelerationAutreParticule);
 
-	Vecteur3D* newAccelerationParticule = new Vecteur3D(vecteurForce * (1 / particule->getMasse()));// *deltaTime;
+	Vecteur3D newAccelerationParticule(vecteurForce * (1 / particule->getMasse()));
 	particule->setAcceleration(newAccelerationParticule);
 }

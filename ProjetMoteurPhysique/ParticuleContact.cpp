@@ -9,9 +9,9 @@ void ParticuleContact::Resolve(float duration)
 
 float ParticuleContact::CalculateSeparatingVelocity()
 {
-	Vecteur3D relativeVelocity = *particules[0]->getVitesse();
+	Vecteur3D relativeVelocity = particules[0]->getVitesse();
 	if (particules[1])
-		relativeVelocity = relativeVelocity - *particules[1]->getVitesse();
+		relativeVelocity = relativeVelocity - particules[1]->getVitesse();
 
 	return relativeVelocity.produitScalaire(contactNormal);
 }
@@ -28,9 +28,9 @@ void ParticuleContact::ResolveVelocity(float duration)
 	float restituedSepVel = -separatingVelocity * restitution;
 
 	// Verification de l'acceleration qui genererai encore de la vitesse
-	Vecteur3D accVel = *particules[0]->getAcceleration();
+	Vecteur3D accVel = particules[0]->getAcceleration();
 	if (particules[1])
-		accVel = accVel - *particules[1]->getAcceleration();
+		accVel = accVel - particules[1]->getAcceleration();
 
 	float accSepVel = accVel.produitScalaire(contactNormal) * duration;
 
@@ -51,11 +51,11 @@ void ParticuleContact::ResolveVelocity(float duration)
 	float impulse = difVel / inverseMass;
 
 	Vecteur3D implusePerIMass = contactNormal * impulse;
-	Vecteur3D* newVitesse = new Vecteur3D(*particules[0]->getVitesse() + implusePerIMass * (1.0f / particules[0]->getMasse()));
+	Vecteur3D newVitesse(particules[0]->getVitesse() + implusePerIMass * (1.0f / particules[0]->getMasse()));
 	particules[0]->setVitesse(newVitesse);
 
 	if (particules[1]) {
-		Vecteur3D* newVitesse = new Vecteur3D(*particules[1]->getVitesse() + implusePerIMass * -(1.0f / particules[1]->getMasse()));
+		Vecteur3D newVitesse(particules[1]->getVitesse() + implusePerIMass * -(1.0f / particules[1]->getMasse()));
 		particules[1]->setVitesse(newVitesse);
 	}
 }
@@ -80,11 +80,11 @@ void ParticuleContact::ResolveInterpenetration()
 		moveLenght[1] = new Vecteur3D(ResolvPerIMass * (1.0f / particules[1]->getMasse()));
 
 	// Mise � la position de non penetration
-	Vecteur3D* newPos = new Vecteur3D(*particules[0]->getVitesse() + *moveLenght[0]);
+	Vecteur3D newPos(particules[0]->getVitesse() + *moveLenght[0]);
 	particules[0]->setVitesse(newPos);
 	if (particules[1]) {
-		newPos = new Vecteur3D(*particules[1]->getVitesse() + *moveLenght[1]);
+		newPos = particules[1]->getVitesse() + *moveLenght[1];
 		particules[1]->setVitesse(newPos);
 	}
-
+	delete[] moveLenght;
 }
