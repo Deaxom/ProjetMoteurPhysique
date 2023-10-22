@@ -87,31 +87,31 @@ void Jeu::start() {
     this->setLastFrameTime(glfwGetTime());
 
     //particule0 La particule reference au centre du monde
-    Vecteur3D* positionParticuleReference = new Vecteur3D(0, 0, 0);
-    Vecteur3D* vitesseParticuleReference = new Vecteur3D(0, 0, 0);
-    Vecteur3D* accelerationReference = new Vecteur3D(0, 0, 0);
+    Vecteur3D positionParticuleReference(0, 0, 0);
+    Vecteur3D vitesseParticuleReference(0, 0, 0);
+    Vecteur3D accelerationReference(0, 0, 0);
 
     Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10);
 
     //particule1 Particule soumise à la force de gravite
-    Vecteur3D* positionParticuleGravite = new Vecteur3D(0, 0, 0);
-    Vecteur3D* vitesseParticuleGravite = new Vecteur3D(0, 0, 0);
-    Vecteur3D* accelerationGravite = new Vecteur3D(0, 0, 0);
+    Vecteur3D positionParticuleGravite(0, 0, 0);
+    Vecteur3D vitesseParticuleGravite(0, 0, 0);
+    Vecteur3D accelerationGravite(0, 0, 0);
 
     Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10);
 
 
     //particule2 sur lequel on applique la force de traine
-    Vecteur3D* positionParticuleTraine = new Vecteur3D(1.5, 0, 0);
-    Vecteur3D* vitesseParticuleTraine = new Vecteur3D(0.3, 0, 0);
-    Vecteur3D* accelerationTraine = new Vecteur3D(0, 0, 0);
+    Vecteur3D positionParticuleTraine(1.5, 0, 0);
+    Vecteur3D vitesseParticuleTraine(0.3, 0, 0);
+    Vecteur3D accelerationTraine(0, 0, 0);
 
     Particule* particuleTraine = new Particule(positionParticuleTraine, vitesseParticuleTraine, accelerationTraine, 10);
 
     //particule3 sur lequel on applique la force de ressort fixe
-    Vecteur3D* positionParticuleRessortFixe = new Vecteur3D(1, 3, 0);
-    Vecteur3D* vitesseParticuleRessortFixe = new Vecteur3D(0, 0, 0);
-    Vecteur3D* accelerationRessortFixe = new Vecteur3D(0.2, 0, 0);
+    Vecteur3D positionParticuleRessortFixe(1, 3, 0);
+    Vecteur3D vitesseParticuleRessortFixe(0, 0, 0);
+    Vecteur3D accelerationRessortFixe(0.2, 0, 0);
 
     Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10);
 
@@ -154,14 +154,14 @@ void Jeu::update() {
             std::cout << std::endl;
 
             integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime);
-            std::cout << "Particule " << i << " position: (" << listeParticule[i]->getPosition()->getX() << "," << listeParticule[i]->getPosition()->getY() << "," << listeParticule[i]->getPosition()->getZ() << ")" << std::endl;
+            std::cout << "Particule " << i << " position: (" << listeParticule[i]->getPosition().getX() << "," << listeParticule[i]->getPosition().getY() << "," << listeParticule[i]->getPosition().getZ() << ")" << std::endl;
 
 
             integrateur.MiseAJourVelociteParticule(listeParticule[i], &deltaTime);
-            std::cout << "Particule " << i << " velocite: (" << listeParticule[i]->getVitesse()->getX() << ", " << listeParticule[i]->getVitesse()->getY() << ", " << listeParticule[i]->getVitesse()->getZ() << ")" << std::endl;
+            std::cout << "Particule " << i << " velocite: (" << listeParticule[i]->getVitesse().getX() << ", " << listeParticule[i]->getVitesse().getY() << ", " << listeParticule[i]->getVitesse().getZ() << ")" << std::endl;
 
             
-            std::cout << "Particule " << i << " acceleration: (" << listeParticule[i]->getAcceleration()->getX() << ", " << listeParticule[i]->getAcceleration()->getY() << ", " << listeParticule[i]->getAcceleration()->getZ() << ")" << std::endl;
+            std::cout << "Particule " << i << " acceleration: (" << listeParticule[i]->getAcceleration().getX() << ", " << listeParticule[i]->getAcceleration().getY() << ", " << listeParticule[i]->getAcceleration().getZ() << ")" << std::endl;
 
             std::cout << std::endl;
         }

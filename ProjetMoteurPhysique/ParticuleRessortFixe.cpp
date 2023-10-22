@@ -9,7 +9,7 @@ ParticuleRessortFixe::ParticuleRessortFixe(Vecteur3D positionFixe, float k, floa
 void ParticuleRessortFixe::MiseAJourForce(Particule* particule, double deltaTime) {
 
 	//calcule de la direction entre les deux particules
-	Vecteur3D direction = m_positionFixe - *particule->getPosition();
+	Vecteur3D direction = m_positionFixe - particule->getPosition();
 
 	//On calcule la norme pour avoir la distance
 	double distance = direction.calculNorme();
@@ -20,6 +20,6 @@ void ParticuleRessortFixe::MiseAJourForce(Particule* particule, double deltaTime
 	Vecteur3D vecteurForce = direction.calculVecteurUnitaire() * force;
 
 	//On applique la force
-	Vecteur3D* newAccelerationParticule = new Vecteur3D(vecteurForce * (1 / particule->getMasse())); // *deltaTime;
+	Vecteur3D newAccelerationParticule(vecteurForce * (1 / particule->getMasse()));
 	particule->setAcceleration(newAccelerationParticule);
 }

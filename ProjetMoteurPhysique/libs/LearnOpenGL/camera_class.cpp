@@ -239,7 +239,7 @@ void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule) {
         for (unsigned int i = 0; i < listeParticule.size(); i++)
         {
             // On creer les positions graphiques de la particule
-           glm::vec3 posParticuleGraphique(listeParticule[i]->getPosition()->getX(), listeParticule[i]->getPosition()->getY(), listeParticule[i]->getPosition()->getZ());
+           glm::vec3 posParticuleGraphique(listeParticule[i]->getPosition().getX(), listeParticule[i]->getPosition().getY(), listeParticule[i]->getPosition().getZ());
 
             //on creer notre particul graphique
             glm::mat4 model = glm::mat4(1.0f);
