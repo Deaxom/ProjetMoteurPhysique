@@ -27,6 +27,7 @@ void ParticleSytem::Intergrate(float duration)
 		double* d = new double(duration);
 		integrateur.MiseAJourPositionParticule(*i, d);
 		integrateur.MiseAJourVelociteParticule(*i, d);
+		delete d;
 	}
 }
 
@@ -40,9 +41,10 @@ void ParticleSytem::LaunchFrame(float duration)
 
 	if (usedContacts)
 	{
-		if (calcul)
+		if (true) // si nb iteration non defini
 		{
-
+			resolver.setIterationsNb(usedContacts * 2);
 		}
+		resolver.resolveContacts(contacts, usedContacts, duration);
 	}
 }
