@@ -9,11 +9,11 @@ void ParticuleRessortFixe::MiseAJourForce(Particule* particule, double deltaTime
 	double distance = direction.calculNorme();
 
 	//calcul de la force via la loi de hooke	
-	double force = m_k * (distance - m_restLenght);
+	double force = -1 * m_k * (distance - m_restLenght);
 
 	Vecteur3D vecteurForce = direction.calculVecteurUnitaire() * force;
 
 	//On applique la force
-	Vecteur3D resParticule = particule->getAcceleration()->produitVectoriel(vecteurForce) * (1 / particule->getMasse()) * deltaTime;
-	particule->setAcceleration(&resParticule);
+	Vecteur3D* newAccelerationParticule = new Vecteur3D(vecteurForce * (1 / particule->getMasse())); // *deltaTime;
+	particule->setAcceleration(newAccelerationParticule);
 }
