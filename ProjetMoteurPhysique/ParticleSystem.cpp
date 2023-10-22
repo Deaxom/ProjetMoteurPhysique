@@ -2,7 +2,7 @@
 #include "ParticleContact.h"
 #include "Particule.h"
 
-unsigned ParticleSytem::GenerateContact()
+unsigned ParticleSystem::GenerateContact()
 {
 	unsigned int max = maxContacts;
 	ParticleContact* nextContact = contacts;
@@ -20,7 +20,7 @@ unsigned ParticleSytem::GenerateContact()
 	return maxContacts - max;
 }
 
-void ParticleSytem::Intergrate(float duration)
+void ParticleSystem::Intergrate(float duration)
 {
 	for (Particules::iterator i = particules.begin(); i != particules.end(); ++i)
 	{
@@ -30,7 +30,7 @@ void ParticleSytem::Intergrate(float duration)
 	}
 }
 
-void ParticleSytem::LaunchFrame(float duration)
+void ParticleSystem::LaunchFrame(float duration)
 {
 	registre.MiseAJourForce((double)duration);
 
