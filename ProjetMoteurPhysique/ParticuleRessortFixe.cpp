@@ -1,7 +1,9 @@
 #include "ParticuleRessortFixe.h"
 
-ParticuleRessortFixe::ParticuleRessortFixe(Vecteur3D positionFixe) {
+ParticuleRessortFixe::ParticuleRessortFixe(Vecteur3D positionFixe, float k, float restLenght) {
 	this->m_positionFixe = positionFixe;
+	this->m_k = k;
+	this->m_restLenght = restLenght;
 }
 
 void ParticuleRessortFixe::MiseAJourForce(Particule* particule, double deltaTime) {

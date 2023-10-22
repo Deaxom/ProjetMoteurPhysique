@@ -109,9 +109,9 @@ void Jeu::start() {
     Particule* particuleTraine = new Particule(positionParticuleTraine, vitesseParticuleTraine, accelerationTraine, 10);
 
     //particule3 sur lequel on applique la force de ressort fixe
-    Vecteur3D* positionParticuleRessortFixe = new Vecteur3D(0, 0, 0);
-    Vecteur3D* vitesseParticuleRessortFixe = new Vecteur3D(0.2, 0, 0);
-    Vecteur3D* accelerationRessortFixe = new Vecteur3D(0, 0, 0);
+    Vecteur3D* positionParticuleRessortFixe = new Vecteur3D(-1, -1, 0);
+    Vecteur3D* vitesseParticuleRessortFixe = new Vecteur3D(0, 0, 0);
+    Vecteur3D* accelerationRessortFixe = new Vecteur3D(0.2, 0, 0);
 
     Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10);
 
@@ -130,7 +130,10 @@ void Jeu::start() {
     this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);
 
     //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie à la particule ressort fixe
-    ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(Vecteur3D(0,0,0));
+    Vecteur3D positionFixe(0, 0, 0);
+    float k = 1;
+    float restLenght = 2;
+    ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(positionFixe, k, restLenght);
     this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);
 }
 

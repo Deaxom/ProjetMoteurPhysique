@@ -19,8 +19,8 @@ void ParticuleRessort::MiseAJourForce(Particule* particule, double deltaTime) {
 	Vecteur3D vecteurForce = direction.calculVecteurUnitaire() * force;
 
 	//On applique la force aux deux particules
-	//Vecteur3D* newAccelerationAutreParticule = new Vecteur3D(vecteurForce * (1 / autreParticule->getMasse()));// *deltaTime;
-	//autreParticule->setAcceleration(newAccelerationAutreParticule);
+	Vecteur3D* newAccelerationAutreParticule = new Vecteur3D(vecteurForce * (1 / autreParticule->getMasse()));// *deltaTime;
+	autreParticule->setAcceleration(newAccelerationAutreParticule);
 
 	Vecteur3D* newAccelerationParticule = new Vecteur3D(vecteurForce * (1 / particule->getMasse()));// *deltaTime;
 	particule->setAcceleration(newAccelerationParticule);
