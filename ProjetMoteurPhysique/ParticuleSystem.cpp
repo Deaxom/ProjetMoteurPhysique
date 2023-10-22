@@ -2,6 +2,13 @@
 #include "ParticuleContact.h"
 #include "Particule.h"
 
+ParticuleSystem::ParticuleSystem(int nbmaxContacts, unsigned iterations)
+{
+	this->maxContacts = nbmaxContacts;
+	this->resolver = new ParticuleContactResolver(iterations);
+	this->contacts = new ParticuleContact();
+}
+
 unsigned ParticuleSystem::GenerateContact()
 {
 	unsigned int max = maxContacts;
@@ -43,8 +50,8 @@ void ParticuleSystem::LaunchFrame(float duration)
 	{
 		if (true) // si nb iteration non defini
 		{
-			resolver.setIterationsNb(usedContacts * 2);
+			resolver->setIterationsNb(usedContacts * 2);
 		}
-		resolver.resolveContacts(contacts, usedContacts, duration);
+		resolver->resolveContacts(contacts, usedContacts, duration);
 	}
 }

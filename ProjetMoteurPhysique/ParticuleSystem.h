@@ -28,7 +28,7 @@ public:
 
 	ParticuleForceRegistre registre;
 
-	ParticuleContactResolver resolver;
+	ParticuleContactResolver* resolver;
 
 	ContactGenerator contactGenerators;
 
