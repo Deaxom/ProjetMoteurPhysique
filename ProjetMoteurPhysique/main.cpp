@@ -43,7 +43,7 @@ int main(int, char**)
         glVertex2f(0.5f, -0.5f);
         glEnd();
 
-        cameraContolleur.MiseAJour();
+        cameraContolleur.MiseAJour(jeu.getListeParticule());
 
         imgui.Render();
 

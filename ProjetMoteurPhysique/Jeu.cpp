@@ -51,6 +51,10 @@ Particule* Jeu::getParticule() {
     return this->particule;
 }
 
+std::vector<Particule*> Jeu::getListeParticule() {
+    return this->listeParticule;
+}
+
 //SETTERS
 void Jeu::setEtat(bool newEtat) {
     this->etat = newEtat;
@@ -100,7 +104,14 @@ void Jeu::start() {
 
     Particule* particule2 = new Particule(vecteurpositionParticule2, vecteurvitesseParticule2, vecteuraccelerationParticule2, 10);
 
-    this->listeParticule = { particule0, particule1, particule2 };
+    //Particule 4
+    Vecteur3D* vecteurpositionParticule3 = new Vecteur3D(0, 0, 0);
+    Vecteur3D* vecteurvitesseParticule3 = new Vecteur3D(0, 0, 0);
+    Vecteur3D* vecteuraccelerationParticule3 = new Vecteur3D(0, 0, 0);
+
+    Particule* particule3 = new Particule(vecteurpositionParticule3, vecteurvitesseParticule3, vecteuraccelerationParticule3, 10);
+
+    this->listeParticule = { particule0, particule1, particule2, particule3 };
 
     ParticuleGravite *forceGravite = new ParticuleGravite();
 
@@ -119,7 +130,7 @@ void Jeu::update() {
 
         std::cout << std::endl;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < this->listeParticule.size(); i++) {
 
             std::cout << std::endl;
 

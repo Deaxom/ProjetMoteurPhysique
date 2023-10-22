@@ -26,6 +26,7 @@ public:
     double getDeltaTime();
     double getLastFrameTime();
     Particule* getParticule();
+    std::vector<Particule*> getListeParticule();
     void setEtat(bool newEtat);
     void setWindow(OpenGlImGui* newWindow);
     void setDeltaTime(double newDeltaTime);

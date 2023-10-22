@@ -46,20 +46,6 @@ void CameraControlleur::Init(GLFWwindow* _window)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    //#ifdef __APPLE__
-    //    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    //#endif
-
-        // glfw window creation
-        // --------------------
-        //GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
-        //if (window == NULL)
-        //{
-        //    std::cout << "Failed to create GLFW window" << std::endl;
-        //    glfwTerminate();
-        //    return;
-        //}
-
     window = _window;
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -85,8 +71,6 @@ void CameraControlleur::Init(GLFWwindow* _window)
     // ------------------------------------
     //Shader ourShader("7.4.camera.vs", "7.4.camera.fs");
     ourShader = new Shader("libs/LearnOpenGL/7.4.camera.vs", "libs/LearnOpenGL/7.4.camera.fs");
-    particuleTest = new Particule(new Vecteur3D(0, 0, 0), new Vecteur3D(1, 1, 0), new Vecteur3D(0, 0, 0), 6.67429e+11);
-    positionGraphiqueParticule = glm::vec3(0.0f, 0.0f, 0.0f);
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -133,19 +117,7 @@ void CameraControlleur::Init(GLFWwindow* _window)
         -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
     };
-    //// world space positions of our cubes
-    //glm::vec3 cubePositions[] = {
-    //    glm::vec3(0.0f,  0.0f,  0.0f),
-    //    glm::vec3(2.0f,  5.0f, -15.0f),
-    //    glm::vec3(-1.5f, -2.2f, -2.5f),
-    //    glm::vec3(-3.8f, -2.0f, -12.3f),
-    //    glm::vec3(2.4f, -0.4f, -3.5f),
-    //    glm::vec3(-1.7f,  3.0f, -7.5f),
-    //    glm::vec3(1.3f, -2.0f, -2.5f),
-    //    glm::vec3(1.5f,  2.0f, -2.5f),
-    //    glm::vec3(1.5f,  0.2f, -1.5f),
-    //    glm::vec3(-1.3f,  1.0f, -1.5f)
-    //};
+
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
 
@@ -222,13 +194,11 @@ void CameraControlleur::Init(GLFWwindow* _window)
 
 }
 
-void CameraControlleur::MiseAJour() {
+void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule) {
     // render loop
-    // -----------
-    //while (!glfwWindowShouldClose(window))
-    //{
-        // per-frame time logic
-        // --------------------
+
+    // per-frame time logic
+    // --------------------
     float currentFrame = static_cast<float>(glfwGetTime());
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
@@ -261,38 +231,22 @@ void CameraControlleur::MiseAJour() {
 
     // render boxes
     glBindVertexArray(VAO);
-    for (unsigned int i = 0; i < 10; i++)
-    {
-        // calculate the model matrix for each object and pass it to shader before drawing
-        glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-        model = glm::translate(model, cubePositions[i]);
-        float angle = 20.0f * i;
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-        ourShader->setMat4("model", model);
 
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+    if (listeParticule.size() >= 1) {
+
+        for (unsigned int i = 0; i < listeParticule.size(); i++)
+        {
+            // Ajout des positions des particules dans une listes des postions graphiques
+           glm::vec3 posParticuleGraphique(listeParticule[i]->getPosition()->getX(), listeParticule[i]->getPosition()->getY(), listeParticule[i]->getPosition()->getZ());
+
+            //on creer notre particul graphique
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, posParticuleGraphique);
+            ourShader->setMat4("model", model);
+
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
     }
-
-    // Test Particule qui bouge
-    double delta = deltaTime;
-    positionGraphiqueParticule.x = particuleTest->getPosition()->getX();
-    positionGraphiqueParticule.y = particuleTest->getPosition()->getY();
-    positionGraphiqueParticule.z = particuleTest->getPosition()->getZ();
-
-    
-    glm::mat4 model = glm::mat4(1.0f); 
-    model = glm::translate(model, positionGraphiqueParticule);
-    ourShader->setMat4("model", model);
-
-    glDrawArrays(GL_TRIANGLES, 0, 36);
-
-    ParticuleGravite* gravite = new ParticuleGravite();
-    gravite->MiseAJourForce(particuleTest, delta);
-
-    Integrateur in;
-    in.MiseAJourVelociteParticule(particuleTest, &delta);
-    in.MiseAJourPositionParticule(particuleTest, &delta);
-    //Fin Test Particule qui bouge
 }
 
 void CameraControlleur::Arret() {
@@ -305,11 +259,6 @@ void CameraControlleur::Arret() {
     glDeleteBuffers(1, &VBO);
 
     return;
-
-    // glfw: terminate, clearing all previously allocated GLFW resources.
-    // ------------------------------------------------------------------
-//    glfwTerminate();
-//    return 0;
 }
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
