@@ -1,10 +1,10 @@
 #pragma once
 #include "ParticuleGenerateurForce.h"
-class ParticuleFlotabilite : public ParticuleGenerateurForce
+class ParticuleFlottabilite : public ParticuleGenerateurForce
 {
 private:
 
-	//Constante de la flotabilite
+	//Constante de la flottabilite
 	float m_profondeurMax;
 	float m_volume;
 

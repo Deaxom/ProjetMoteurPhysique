@@ -1,6 +1,6 @@
-#include "ParticuleFlotabilite.h"
+#include "ParticuleFlottabilite.h"
 
-void ParticuleFlotabilite::MiseAJourForce(Particule* particule, double deltaTime) {
+void ParticuleFlottabilite::MiseAJourForce(Particule* particule, double deltaTime) {
 
 	//Calcule de d
 	double d = (particule->getPosition()->getY() - m_hauteurEau - m_profondeurMax) / (2 * m_profondeurMax);
@@ -19,6 +19,6 @@ void ParticuleFlotabilite::MiseAJourForce(Particule* particule, double deltaTime
 	}
 
 	//On applique la force
-	particule->getAcceleration()->setY(particule->getAcceleration()->getY() * force / particule->getMasse() * deltaTime);
+	particule->getAcceleration()->setY(particule->getAcceleration()->getY() * (force / particule->getMasse()) * deltaTime);
 
 }
