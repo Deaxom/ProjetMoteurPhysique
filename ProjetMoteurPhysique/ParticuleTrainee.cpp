@@ -19,8 +19,10 @@ void ParticuleTrainee::MiseAJourForce(Particule* particule, double deltaTime) {
     // On applique la formule de la trainee
     Vecteur3D fdrag = vitesseNormalisee * -1 * (norme * k1 + (norme * norme) * k2);
 
+    // On calcule l'accélération à partir de la 2eme loi de Newton F=m*a donc a=F/m
+    Vecteur3D acceleration = fdrag * (1 / particule->getMasse());
 
     // On l'applique à la vitesse de la particule
-    Vecteur3D resParticule = vitesse->produitVectoriel(fdrag) * (1 / particule->getMasse()) * deltaTime;
-    particule->setVitesse(&resParticule);
+    Vecteur3D* newVitesse = new Vecteur3D(*vitesse + acceleration * deltaTime);
+    particule->setVitesse(newVitesse);
 }
