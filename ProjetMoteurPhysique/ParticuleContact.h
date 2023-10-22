@@ -3,7 +3,7 @@
 
 class Particule;
 
-class ParticleContact
+class ParticuleContact
 {
 public:
 	Particule* particules[2];

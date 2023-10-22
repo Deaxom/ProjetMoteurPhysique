@@ -1,11 +1,11 @@
-#include "ParticleSystem.h"
-#include "ParticleContact.h"
+#include "ParticuleSystem.h"
+#include "ParticuleContact.h"
 #include "Particule.h"
 
-unsigned ParticleSystem::GenerateContact()
+unsigned ParticuleSystem::GenerateContact()
 {
 	unsigned int max = maxContacts;
-	ParticleContact* nextContact = contacts;
+	ParticuleContact* nextContact = contacts;
 
 	for (ContactGenerator::iterator i = contactGenerators.begin(); i != contactGenerators.end(); ++i)
 	{
@@ -20,7 +20,7 @@ unsigned ParticleSystem::GenerateContact()
 	return maxContacts - max;
 }
 
-void ParticleSystem::Intergrate(float duration)
+void ParticuleSystem::Intergrate(float duration)
 {
 	for (Particules::iterator i = particules.begin(); i != particules.end(); ++i)
 	{
@@ -31,7 +31,7 @@ void ParticleSystem::Intergrate(float duration)
 	}
 }
 
-void ParticleSystem::LaunchFrame(float duration)
+void ParticuleSystem::LaunchFrame(float duration)
 {
 	registre.MiseAJourForce((double)duration);
 

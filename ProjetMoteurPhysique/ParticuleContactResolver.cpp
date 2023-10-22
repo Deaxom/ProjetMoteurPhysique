@@ -1,18 +1,18 @@
-#include "ParticleContactResolver.h"
-#include "ParticleContact.h"
+#include "ParticuleContactResolver.h"
+#include "ParticuleContact.h"
 
-ParticleContactResolver::ParticleContactResolver(unsigned iterations)
+ParticuleContactResolver::ParticuleContactResolver(unsigned iterations)
 {
 	this->iterations = iterations;
 	this->iterationDone = 0;
 }
 
-void ParticleContactResolver::setIterationsNb(unsigned iterations)
+void ParticuleContactResolver::setIterationsNb(unsigned iterations)
 {
 	this->iterations = iterations;
 }
 
-void ParticleContactResolver::resolveContacts(ParticleContact* contactArray, unsigned nbComtact, float duration)
+void ParticuleContactResolver::resolveContacts(ParticuleContact* contactArray, unsigned nbComtact, float duration)
 {
 	unsigned i;
 

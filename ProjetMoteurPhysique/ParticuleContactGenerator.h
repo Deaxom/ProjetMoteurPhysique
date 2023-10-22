@@ -1,16 +1,16 @@
 ﻿#pragma once
 
-class ParticleContact;
+class ParticuleContact;
 class Particule;
 
-class ParticleContactGenerator
+class ParticuleContactGenerator
 {
 public:
 	// recuperer un array de contact et le nombre de contact restant à generer
-	virtual unsigned int addContact(ParticleContact* contact, unsigned int limit) const = 0;
+	virtual unsigned int addContact(ParticuleContact* contact, unsigned int limit) const = 0;
 };
 
-class ParticleLink : public ParticleContactGenerator
+class ParticuleLink : public ParticuleContactGenerator
 {
 public:
 	Particule* particules[2];
@@ -18,10 +18,10 @@ public:
 	// link list length
 	float currentLength() const;
 
-	unsigned int addContact(ParticleContact* contact, unsigned int limit) const = 0;
+	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const = 0;
 };
 
-class ParticleCable : public ParticleLink
+class ParticuleCable : public ParticuleLink
 {
 public:
 	// longeur max du cable entre deux particules
@@ -34,13 +34,13 @@ public:
 	float restitution;
 
 	// pour eviter de trop etendre le cable
-	virtual unsigned addContact(ParticleContact* contact, unsigned int limit) const;
+	virtual unsigned addContact(ParticuleContact* contact, unsigned int limit) const;
 };
 
-class ParticleRod : public ParticleLink
+class ParticuleRod : public ParticuleLink
 {
 public:
 	float length;
 
-	virtual unsigned addContact(ParticleContact* contact, unsigned int limit) const;
+	virtual unsigned addContact(ParticuleContact* contact, unsigned int limit) const;
 };

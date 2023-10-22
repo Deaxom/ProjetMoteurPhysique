@@ -1,38 +1,38 @@
 #pragma once
 #include <vector>
 #include "ParticuleForceRegistre.h"
-#include "ParticleContactResolver.h"
-#include "ParticleContactGenerator.h"
+#include "ParticuleContactResolver.h"
+#include "ParticuleContactGenerator.h"
 #include "Integrateur.h"
 
 class Particule;
-class ParticleContact;
-class ParticleContactResolver;
-class ParticleContactGenerator;
+class ParticuleContact;
+class ParticuleContactResolver;
+class ParticuleContactGenerator;
 class ParticuleForceRegistre;
 class Integrateur;
 
-class ParticleSystem
+class ParticuleSystem
 {
 public:
 	typedef std::vector<Particule*> Particules;
-	typedef std::vector<ParticleContactGenerator*> ContactGenerator;
+	typedef std::vector<ParticuleContactGenerator*> ContactGenerator;
 
 protected:
 	Particules particules;
 
 public:
-	ParticleSystem(int nbmaxContacts, unsigned iterations = 0);
+	ParticuleSystem(int nbmaxContacts, unsigned iterations = 0);
 
 	void NewFrame();
 
 	ParticuleForceRegistre registre;
 
-	ParticleContactResolver resolver;
+	ParticuleContactResolver resolver;
 
 	ContactGenerator contactGenerators;
 
-	ParticleContact* contacts;
+	ParticuleContact* contacts;
 
 	Integrateur integrateur;
 

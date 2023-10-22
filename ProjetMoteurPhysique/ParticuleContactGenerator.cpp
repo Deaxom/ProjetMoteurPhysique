@@ -1,11 +1,11 @@
-#include "ParticleContactGenerator.h"
+#include "ParticuleContactGenerator.h"
 #include "Particule.h"
-#include "ParticleContact.h"
+#include "ParticuleContact.h"
 #include "Vecteur3D.h"
 
-#pragma region Particle Link
+#pragma region Particule Link
 
-float ParticleLink::currentLength() const 
+float ParticuleLink::currentLength() const 
 {
 	Vecteur3D relativePos = *particules[0]->getPosition() - *particules[1]->getPosition();
 	return relativePos.calculNorme();
@@ -13,9 +13,9 @@ float ParticleLink::currentLength() const
 
 #pragma endregion
 
-#pragma region Particle Cable
+#pragma region Particule Cable
 
-unsigned ParticleCable::addContact(ParticleContact* contact, unsigned int limit) const 
+unsigned ParticuleCable::addContact(ParticuleContact* contact, unsigned int limit) const 
 {
 	float length = currentLength();
 	if (length < maxLength) return 0;
@@ -36,9 +36,9 @@ unsigned ParticleCable::addContact(ParticleContact* contact, unsigned int limit)
 #pragma endregion
 
 
-#pragma region Particle Rod
+#pragma region Particule Rod
 
-unsigned ParticleRod::addContact(ParticleContact* contact, unsigned int limit) const
+unsigned ParticuleRod::addContact(ParticuleContact* contact, unsigned int limit) const
 {
 	float currentLeng = currentLength();
 

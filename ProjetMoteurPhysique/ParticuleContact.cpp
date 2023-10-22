@@ -1,13 +1,13 @@
-﻿#include "ParticleContact.h"
+﻿#include "ParticuleContact.h"
 #include "Particule.h"
 
-void ParticleContact::Resolve(float duration)
+void ParticuleContact::Resolve(float duration)
 {
 	ResolveVelocity(duration);
 	ResolveInterpenetration();
 }
 
-float ParticleContact::CalculateSeparatingVelocity()
+float ParticuleContact::CalculateSeparatingVelocity()
 {
 	Vecteur3D relativeVelocity = *particules[0]->getVitesse();
 	if (particules[1])
@@ -16,7 +16,7 @@ float ParticleContact::CalculateSeparatingVelocity()
 	return relativeVelocity.produitScalaire(contactNormal);
 }
 
-void ParticleContact::ResolveVelocity(float duration)
+void ParticuleContact::ResolveVelocity(float duration)
 {
 	// vitesse d'approche ou separation de deux objets
 	float separatingVelocity = CalculateSeparatingVelocity();
@@ -60,7 +60,7 @@ void ParticleContact::ResolveVelocity(float duration)
 	}
 }
 
-void ParticleContact::ResolveInterpenetration()
+void ParticuleContact::ResolveInterpenetration()
 {
 	if (penetration <= 0) // pas de penetration
 		return;
