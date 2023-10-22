@@ -15,9 +15,10 @@ Thomas: classe Vecteur3D, classe OpenGlFLFW, classe OpenGlImGui, documentation s
 
 Phase 2:
 Pour cette deuxième partie, nous avons intégré LearnOpenGL qui nous manquait la dernière fois.
+Nous avons ensuite implémenté toutes les forces demandées.
 ...
 
 Contribution:
-Alain:
-Charles:
-Thomas:
+Alain: Intégration de LearnOpenGL, correction des forces de gravité, de trainée, des 2 ressorts et de la flottabilité.
+Charles: Implémentation des forces de gravité, de trainée, des 2 ressorts, de flottabilité et du registre des forces et du générateur.
+Thomas: 
