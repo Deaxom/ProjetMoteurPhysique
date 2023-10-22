@@ -12,7 +12,7 @@ class ParticleContactGenerator;
 class ParticuleForceRegistre;
 class Integrateur;
 
-class ParticleSytem
+class ParticleSystem
 {
 public:
 	typedef std::vector<Particule*> Particules;
@@ -22,7 +22,7 @@ protected:
 	Particules particules;
 
 public:
-	ParticleSytem(int nbmaxContacts, unsigned iterations = 0);
+	ParticleSystem(int nbmaxContacts, unsigned iterations = 0);
 
 	void NewFrame();
 
