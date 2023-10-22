@@ -6,6 +6,7 @@ Particule::Particule() {
 	Vecteur3D newVitesse;
 	Vecteur3D newAcceleration;
 	double masse = 0;
+	forceAccum = Vecteur3D();
 	this->setPosition(newPosition);
 	this->setVitesse(newVitesse);
 	this->setAcceleration(newAcceleration);
@@ -36,6 +37,11 @@ double Particule::getMasse(){
 	return this->masse;
 }
 
+Vecteur3D Particule::getForceAccum() const
+{
+	return this->forceAccum;
+}
+
 //SETTERS
 void Particule::setPosition(Vecteur3D newPosition){
 	this->position = newPosition;
@@ -51,3 +57,14 @@ void Particule::setAcceleration(Vecteur3D newAcceleration){
 }void Particule::setMasse(double newMasse) {
 	this->masse = newMasse;
 }
+
+void Particule::clearAccumulator()
+{
+	forceAccum = Vecteur3D();
+}
+
+void Particule::addForce(const Vecteur3D& force)
+{
+	forceAccum = forceAccum + force;
+}
+

@@ -94,7 +94,7 @@ void Jeu::start() {
     Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10);
 
     //particule1 Particule soumise à la force de gravite
-    Vecteur3D positionParticuleGravite(0, 0, 0);
+    Vecteur3D positionParticuleGravite(0, 100, 0);
     Vecteur3D vitesseParticuleGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
 
@@ -118,23 +118,23 @@ void Jeu::start() {
 
     //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeParticule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe };
+    this->listeParticule = { particuleGravite };
 
     //On cree la force de gravite et on la lie à la particule gravite
-    ParticuleGravite *forceGravite = new ParticuleGravite();
+    ParticuleGravite *forceGravite = new ParticuleGravite(Vecteur3D(0.0, -9.81, 0.0));
     this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceGravite);
 
 
     //On cree la force de traine et on la lie à la particule traine
-    ParticuleTrainee* forceTrainee = new ParticuleTrainee();
-    this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);
+   /* ParticuleTrainee* forceTrainee = new ParticuleTrainee();
+    this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);*/
 
     //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie à la particule ressort fixe
     Vecteur3D positionFixe(0, 2, 0);
     float k = 1;
     float restLenght = 2;
     ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(positionFixe, k, restLenght);
-    this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);
+    /*this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);*/
 }
 
 //Fonction qui update le jeu à chaque unité de temps
