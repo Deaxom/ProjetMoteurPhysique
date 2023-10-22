@@ -2,6 +2,8 @@
 #include "OpenglImGui.h"
 #include <iostream>
 #include "ParticuleGravite.h"
+#include "ParticuleRessortFixe.h"
+#include "ParticuleTrainee.h"
 
 //Constructeurs
 Jeu::Jeu() {
@@ -84,39 +86,52 @@ void Jeu::start() {
     this->setEtat(true);
     this->setLastFrameTime(glfwGetTime());
 
-    //Particule 1
-    Vecteur3D* vecteurpositionParticule0 = new Vecteur3D(0, 0, 0);
-    Vecteur3D* vecteurvitesseParticule0 = new Vecteur3D(2, 2, 2);
-    Vecteur3D* vecteuraccelerationParticule0 = new Vecteur3D(1, 1, 1);
+    //particule0 La particule reference au centre du monde
+    Vecteur3D* positionParticuleReference = new Vecteur3D(0, 0, 0);
+    Vecteur3D* vitesseParticuleReference = new Vecteur3D(0, 0, 0);
+    Vecteur3D* accelerationReference = new Vecteur3D(0, 0, 0);
 
-    Particule* particule0 = new Particule(vecteurpositionParticule0, vecteurvitesseParticule0, vecteuraccelerationParticule0, 10);
-    //Particule 2
-    Vecteur3D* vecteurpositionParticule1 = new Vecteur3D(0, 0, 0);
-    Vecteur3D* vecteurvitesseParticule1 = new Vecteur3D(-1, -2, -1);
-    Vecteur3D* vecteuraccelerationParticule1 = new Vecteur3D(-1, -2, 0);
+    Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10);
 
-    Particule* particule1 = new Particule(vecteurpositionParticule1, vecteurvitesseParticule1, vecteuraccelerationParticule1, 10);
+    //particule1 Particule soumise à la force de gravite
+    Vecteur3D* positionParticuleGravite = new Vecteur3D(0, 0, 0);
+    Vecteur3D* vitesseParticuleGravite = new Vecteur3D(0, 0, 0);
+    Vecteur3D* accelerationGravite = new Vecteur3D(0, 0, 0);
 
-    //Particule 3
-    Vecteur3D* vecteurpositionParticule2 = new Vecteur3D(0, 0, 0);
-    Vecteur3D* vecteurvitesseParticule2 = new Vecteur3D(1, 2, 3);
-    Vecteur3D* vecteuraccelerationParticule2 = new Vecteur3D(1, 2, 3);
+    Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10);
 
-    Particule* particule2 = new Particule(vecteurpositionParticule2, vecteurvitesseParticule2, vecteuraccelerationParticule2, 10);
 
-    //Particule 4
-    Vecteur3D* vecteurpositionParticule3 = new Vecteur3D(0, 0, 0);
-    Vecteur3D* vecteurvitesseParticule3 = new Vecteur3D(0, 0, 0);
-    Vecteur3D* vecteuraccelerationParticule3 = new Vecteur3D(0, 0, 0);
+    //particule2 sur lequel on applique la force de traine
+    Vecteur3D* positionParticuleTraine = new Vecteur3D(0, 0, 0);
+    Vecteur3D* vitesseParticuleTraine = new Vecteur3D(0.2, 0, 0);
+    Vecteur3D* accelerationTraine = new Vecteur3D(0, 0, 0);
 
-    Particule* particule3 = new Particule(vecteurpositionParticule3, vecteurvitesseParticule3, vecteuraccelerationParticule3, 10);
+    Particule* particuleTraine = new Particule(positionParticuleTraine, vitesseParticuleTraine, accelerationTraine, 10);
 
-    this->listeParticule = { particule0, particule1, particule2, particule3 };
+    //particule3 sur lequel on applique la force de ressort fixe
+    Vecteur3D* positionParticuleRessortFixe = new Vecteur3D(0, 0, 0);
+    Vecteur3D* vitesseParticuleRessortFixe = new Vecteur3D(0.2, 0, 0);
+    Vecteur3D* accelerationRessortFixe = new Vecteur3D(0, 0, 0);
 
+    Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10);
+
+
+    //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
+    //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
+    this->listeParticule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe };
+
+    //On cree la force de gravite et on la lie à la particule gravite
     ParticuleGravite *forceGravite = new ParticuleGravite();
+    this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceGravite);
 
-    this->forceRegistre.addParticuleForceRegistre(particule0 , forceGravite);
 
+    //On cree la force de traine et on la lie à la particule traine
+    ParticuleTrainee* forceTrainee = new ParticuleTrainee();
+    this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);
+
+    //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie à la particule ressort fixe
+    ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(Vecteur3D(0,0,0));
+    this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);
 }
 
 //Fonction qui update le jeu à chaque unité de temps
@@ -126,6 +141,7 @@ void Jeu::update() {
         this->setDeltaTime(currentFrame - this->getLastFrameTime());
         this->setLastFrameTime(currentFrame);
 
+        //Le registre applique les forces sur les particules
         forceRegistre.MiseAJourForce(deltaTime);
 
         std::cout << std::endl;

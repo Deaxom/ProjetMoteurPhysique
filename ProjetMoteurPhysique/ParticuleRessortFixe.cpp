@@ -1,5 +1,9 @@
 #include "ParticuleRessortFixe.h"
 
+ParticuleRessortFixe::ParticuleRessortFixe(Vecteur3D positionFixe) {
+	this->m_positionFixe = positionFixe;
+}
+
 void ParticuleRessortFixe::MiseAJourForce(Particule* particule, double deltaTime) {
 
 	//calcule de la direction entre les deux particules

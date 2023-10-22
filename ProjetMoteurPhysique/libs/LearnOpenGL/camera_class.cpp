@@ -232,11 +232,13 @@ void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule) {
     // render boxes
     glBindVertexArray(VAO);
 
+
+    // On verifie que la liste des particules a afficher n'est pas nul
     if (listeParticule.size() >= 1) {
 
         for (unsigned int i = 0; i < listeParticule.size(); i++)
         {
-            // Ajout des positions des particules dans une listes des postions graphiques
+            // On creer les positions graphiques de la particule
            glm::vec3 posParticuleGraphique(listeParticule[i]->getPosition()->getX(), listeParticule[i]->getPosition()->getY(), listeParticule[i]->getPosition()->getZ());
 
             //on creer notre particul graphique

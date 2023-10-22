@@ -9,6 +9,7 @@ private:
 	float m_k;
 	float m_restLenght;
 public:
+	ParticuleRessortFixe(Vecteur3D positionFixe);
 	void MiseAJourForce(Particule* particule, double deltaTime);
 };
 
