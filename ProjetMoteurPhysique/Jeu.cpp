@@ -4,6 +4,8 @@
 #include "ParticuleGravite.h"
 #include "ParticuleRessortFixe.h"
 #include "ParticuleTrainee.h"
+#include "ParticuleRessort.h"
+#include "ParticuleFlottabilite.h"
 
 //Constructeurs
 Jeu::Jeu() {
@@ -94,8 +96,8 @@ void Jeu::start() {
     Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10);
 
     //particule1 Particule soumise à la force de gravite
-    Vecteur3D positionParticuleGravite(0, 100, 0);
-    Vecteur3D vitesseParticuleGravite(0, 0, 0);
+    Vecteur3D positionParticuleGravite(0, 20, 0);
+    Vecteur3D vitesseParticuleGravite(0, -2, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
 
     Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10);
@@ -110,31 +112,57 @@ void Jeu::start() {
 
     //particule3 sur lequel on applique la force de ressort fixe
     Vecteur3D positionParticuleRessortFixe(1, 3, 0);
-    Vecteur3D vitesseParticuleRessortFixe(0, 0, 0);
-    Vecteur3D accelerationRessortFixe(0.2, 0, 0);
+    Vecteur3D vitesseParticuleRessortFixe(0, -0.5, 0);
+    Vecteur3D accelerationRessortFixe(0, 0, 0);
 
     Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10);
+
+    //particule4 sur lequel on applique la force de ressort
+    Vecteur3D positionParticuleRessort(1, 0, 0);
+    Vecteur3D vitesseParticuleRessort(0, 0, 0);
+    Vecteur3D accelerationRessort(0.4, 0, 0);
+
+    Particule* particuleRessort = new Particule(positionParticuleRessort, vitesseParticuleRessort, accelerationRessort, 10);
+    
+    //particule5 sur lequel on applique la force de ressort
+    Vecteur3D positionParticuleRessortBis(-2, 0, 0);
+    Vecteur3D vitesseParticuleRessortBis(0, 0, 0);
+    Vecteur3D accelerationRessortBis(-0.2, 0, 0);
+
+    Particule* particuleRessortBis = new Particule(positionParticuleRessortBis, vitesseParticuleRessortBis, accelerationRessortBis, 10);
 
 
     //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeParticule = { particuleGravite };
+    this->listeParticule = { particuleReference, particuleGravite };
 
     //On cree la force de gravite et on la lie à la particule gravite
     ParticuleGravite *forceGravite = new ParticuleGravite(Vecteur3D(0.0, -9.81, 0.0));
-    this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceGravite);
+    //this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceGravite);
 
 
     //On cree la force de traine et on la lie à la particule traine
-   /* ParticuleTrainee* forceTrainee = new ParticuleTrainee();
-    this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);*/
+    ParticuleTrainee* forceTrainee = new ParticuleTrainee(1.15f, 0.001f);
+    //this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);
 
     //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie à la particule ressort fixe
     Vecteur3D positionFixe(0, 2, 0);
-    float k = 1;
+    float k = -1;
     float restLenght = 2;
     ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(positionFixe, k, restLenght);
-    /*this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);*/
+    //this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);
+
+    //On cree la force de ressort avec une position sur Particule04 et on la lie à la particule ressort 05
+    float k_bis = 1;
+    float restLenght_bis = 2;
+    ParticuleRessort* forceRessort = new ParticuleRessort(particuleRessortBis, k_bis, restLenght_bis);
+    //this->forceRegistre.addParticuleForceRegistre(particuleRessort, forceRessort);
+    ParticuleRessort* forceRessortBis = new ParticuleRessort(particuleRessort, k_bis, restLenght_bis);
+    //this->forceRegistre.addParticuleForceRegistre(particuleRessortBis, forceRessortBis);
+
+    //On cree la flottabilite dans l'eau
+    ParticuleFlottabilite* forceEau = new ParticuleFlottabilite(-20.f, 1000.f, 0.f, 2000.f);
+    this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceEau);
 }
 
 //Fonction qui update le jeu à chaque unité de temps

@@ -141,6 +141,9 @@
     <ClCompile Include="ParticuleTrainee.cpp">
       <Filter>Fichiers sources\Forces</Filter>
     </ClCompile>
+    <ClCompile Include="ParticuleBungee.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vecteur3D.h">
@@ -256,6 +259,9 @@
     </ClInclude>
     <ClInclude Include="ParticuleTrainee.h">
       <Filter>Fichiers d%27en-tête\Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleBungee.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

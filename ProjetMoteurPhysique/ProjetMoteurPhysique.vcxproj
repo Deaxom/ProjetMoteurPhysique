@@ -148,6 +148,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGlGLFW.cpp" />
     <ClCompile Include="OpenglImGui.cpp" />
+    <ClCompile Include="ParticuleBungee.cpp" />
     <ClCompile Include="ParticuleContact.cpp" />
     <ClCompile Include="ParticuleContactGenerator.cpp" />
     <ClCompile Include="ParticuleContactResolver.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="libs\stb_image.h" />
     <ClInclude Include="OpenGlGLFW.h" />
     <ClInclude Include="OpenglImGui.h" />
+    <ClInclude Include="ParticuleBungee.h" />
     <ClInclude Include="ParticuleContact.h" />
     <ClInclude Include="ParticuleContactGenerator.h" />
     <ClInclude Include="ParticuleContactResolver.h" />

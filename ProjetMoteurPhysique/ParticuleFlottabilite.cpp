@@ -1,14 +1,30 @@
 #include "ParticuleFlottabilite.h"
 
+
+
+ParticuleFlottabilite::ParticuleFlottabilite(float profondeur, float volume, float heuteurEau, float densiteLiquide):
+	m_profondeurMax(profondeur),
+	m_volume(volume),
+	m_hauteurEau(heuteurEau),
+	m_densiteLiquide(densiteLiquide)
+{
+}
+
 void ParticuleFlottabilite::MiseAJourForce(Particule* particule, double deltaTime) {
 
 	//Calcule de d
-	double d = (particule->getPosition().getY() - m_hauteurEau - m_profondeurMax) / (2 * (double)m_profondeurMax);
+	//double d = (particule->getPosition().getY() - m_hauteurEau - m_profondeurMax) / (2 * (double)m_profondeurMax);
+	
+	// Check hauteur de la particule
+	float d = particule->getPosition().getY();
+	// Check si il n'est pas dans l'eau
+	if (d >= m_hauteurEau + m_profondeurMax) return;
 
 	//On calcule la force en fonction du resultat de d
-	double force;
+	//double force;
+	Vecteur3D force(0, 0, 0);
 
-	if (d <= 0) {
+	/*if (d <= 0) {
 		force = 0;
 	}
 	else if (d >= 1) {
@@ -16,10 +32,23 @@ void ParticuleFlottabilite::MiseAJourForce(Particule* particule, double deltaTim
 	}
 	else {
 		force = d * m_volume * m_densiteLiquide;
+	}*/
+
+	if (d <= m_hauteurEau - m_profondeurMax) {
+		force = Vecteur3D(0, m_volume * m_densiteLiquide, 0);
+		particule->addForce(force);
+		return;
+	}
+	else if (d >= m_hauteurEau + m_profondeurMax) {
+		return;
 	}
 
+	force = Vecteur3D(0, ((d - m_profondeurMax - m_hauteurEau) * m_volume * m_densiteLiquide) / (2 * m_profondeurMax), 0);
+	particule->addForce(force);
+
+
 	//On applique la force
-	Vecteur3D nouvelleAccelerationParticule(particule->getAcceleration().getX(), particule->getAcceleration().getY() * (force / particule->getMasse()) * deltaTime, particule->getAcceleration().getZ());
-	particule->setAcceleration(nouvelleAccelerationParticule);
+	/*Vecteur3D nouvelleAccelerationParticule(particule->getAcceleration().getX(), particule->getAcceleration().getY() * (force / particule->getMasse()) * deltaTime, particule->getAcceleration().getZ());
+	particule->setAcceleration(nouvelleAccelerationParticule);*/
 
 }

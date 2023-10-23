@@ -11,5 +11,8 @@ public:
 	ParticuleGravite(const Vecteur3D& _gravity);
 
 	void MiseAJourForce(Particule* particule, double deltaTime);
+
+	// calcul du vecteur gravite en temps réel à implementer
+	// pour l'instant seulement par entrer manuel de vecteur gravite (ici terre)
 };
 

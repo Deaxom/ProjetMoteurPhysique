@@ -1,9 +1,10 @@
 #include "ParticuleRessortFixe.h"
 
-ParticuleRessortFixe::ParticuleRessortFixe(Vecteur3D positionFixe, float k, float restLenght) {
-	this->m_positionFixe = positionFixe;
-	this->m_k = k;
-	this->m_restLenght = restLenght;
+ParticuleRessortFixe::ParticuleRessortFixe(Vecteur3D positionFixe, float k, float restLenght) :
+	m_positionFixe(positionFixe),
+	m_k(k),
+	m_restLenght(restLenght)
+{
 }
 
 void ParticuleRessortFixe::MiseAJourForce(Particule* particule, double deltaTime) {
@@ -15,11 +16,12 @@ void ParticuleRessortFixe::MiseAJourForce(Particule* particule, double deltaTime
 	double distance = direction.calculNorme();
 
 	//calcul de la force via la loi de hooke	
-	double force = -1 * m_k * (distance - m_restLenght);
+	double force = m_k * (m_restLenght - distance);
 
 	Vecteur3D vecteurForce = direction.calculVecteurUnitaire() * force;
 
 	//On applique la force
-	Vecteur3D newAccelerationParticule(vecteurForce * (1 / particule->getMasse()));
-	particule->setAcceleration(newAccelerationParticule);
+	/*Vecteur3D newAccelerationParticule(vecteurForce * (1 / particule->getMasse()));
+	particule->setAcceleration(newAccelerationParticule);*/
+	particule->addForce(vecteurForce);
 }

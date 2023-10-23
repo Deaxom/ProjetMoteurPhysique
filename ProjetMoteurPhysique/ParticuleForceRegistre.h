@@ -18,6 +18,8 @@ public:
 	Registre getRegistre();
 	void setRegiste(Registre nouveauRegistre);
 	void addParticuleForceRegistre(Particule* particule, ParticuleGenerateurForce* generateurForce);
+	void removeParticuleForceRegistre(Particule* particule, ParticuleGenerateurForce* generateurForce);
+	void clear();
 
 	void MiseAJourForce(double deltaTime);
 };
