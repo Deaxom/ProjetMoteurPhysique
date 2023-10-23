@@ -1,6 +1,12 @@
 #include "ParticuleContactResolver.h"
 #include "ParticuleContact.h"
 
+ParticuleContactResolver::ParticuleContactResolver()
+{
+	this->iterations = 0;
+	this->iterationDone = 0;
+}
+
 ParticuleContactResolver::ParticuleContactResolver(unsigned iterations)
 {
 	this->iterations = iterations;

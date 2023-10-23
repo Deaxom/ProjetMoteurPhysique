@@ -5,7 +5,13 @@
 
 #pragma region Particule Link
 
-float ParticuleLink::currentLength() const 
+ParticuleLink::ParticuleLink(Particule* particule1, Particule* particule2)
+{
+	particules[0] = particule1;
+	particules[1] = particule2;
+}
+
+float ParticuleLink::currentLength() const
 {
 	Vecteur3D relativePos = particules[0]->getPosition() - particules[1]->getPosition();
 	return relativePos.calculNorme();
@@ -15,7 +21,12 @@ float ParticuleLink::currentLength() const
 
 #pragma region Particule Cable
 
-unsigned ParticuleCable::addContact(ParticuleContact* contact, unsigned int limit) const 
+ParticuleCable::ParticuleCable(Particule* particule1, Particule* particule2, float maxLen, float rest): 
+	ParticuleLink(particule1, particule2), maxLength(maxLen), restitution(rest)
+{
+}
+
+unsigned ParticuleCable::addContact(ParticuleContact* contact, unsigned int limit) const
 {
 	float length = currentLength();
 	if (length < maxLength) return 0;

@@ -4,6 +4,16 @@
 #include "OpenglImGui.h"
 #include <vector>
 #include "ParticuleForceRegistre.h"
+#include "ParticuleContactResolver.h"
+#include "ParticuleContactGenerator.h"
+#include "Integrateur.h"
+#include "ParticuleContact.h"
+
+class Particule;
+class ParticuleContact;
+class ParticuleContactGenerator;
+class ParticuleForceRegistre;
+class Integrateur;
 
 class Jeu
 {
@@ -15,7 +25,8 @@ private:
     Integrateur integrateur;
     Particule* particule;
     std::vector<Particule*> listeParticule;
-    ParticuleForceRegistre forceRegistre;
+
+    ParticuleContactResolver resolver;
 
 public:
     Jeu();
@@ -35,5 +46,15 @@ public:
     void start();
     void update();
     void stop();
+
+    typedef std::vector<ParticuleContactGenerator*> ContactGenerator;
+    ParticuleForceRegistre forceRegistre;
+    ContactGenerator contactGenerators;
+    ParticuleContact* contacts;
+    int maxContacts;
+    int generateContacts();
+    void setResolver(unsigned iterations);
+
+    void Intergrate(float duration);
 };
 

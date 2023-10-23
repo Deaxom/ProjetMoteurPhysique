@@ -31,10 +31,10 @@ void ParticuleSystem::Intergrate(float duration)
 {
 	for (Particules::iterator i = particules.begin(); i != particules.end(); ++i)
 	{
-		double* d = new double(duration);
+		/*double* d = new double(duration);
 		integrateur.MiseAJourPositionParticule(*i, d);
 		integrateur.MiseAJourVelociteParticule(*i, d);
-		delete d;
+		delete d;*/
 	}
 }
 

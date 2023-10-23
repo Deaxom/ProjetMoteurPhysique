@@ -15,6 +15,7 @@ Jeu::Jeu() {
     this->setLastFrameTime(0.0f);
     Particule* newParticule = new Particule;
     this->setParticule(newParticule);
+    this->setResolver(20);
 }
 
 Jeu::Jeu(OpenGlImGui* window, Particule* particule) {
@@ -23,6 +24,7 @@ Jeu::Jeu(OpenGlImGui* window, Particule* particule) {
     this->setDeltaTime(0.0f);
     this->setLastFrameTime(0.0f);
     this->setParticule(particule);
+    this->setResolver(20);
 }
 
 Jeu::Jeu(OpenGlImGui* window) {
@@ -32,6 +34,7 @@ Jeu::Jeu(OpenGlImGui* window) {
     this->setLastFrameTime(0.0f);
     Particule* newParticule = new Particule;
     this->setParticule(newParticule);
+    this->setResolver(20);
 }
 
 //GETTERS
@@ -88,6 +91,8 @@ void Jeu::start() {
     this->setEtat(true);
     this->setLastFrameTime(glfwGetTime());
 
+#pragma region force et ressorts
+
     //particule0 La particule reference au centre du monde
     Vecteur3D positionParticuleReference(0, 0, 0);
     Vecteur3D vitesseParticuleReference(0, 0, 0);
@@ -96,8 +101,8 @@ void Jeu::start() {
     Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10);
 
     //particule1 Particule soumise à la force de gravite
-    Vecteur3D positionParticuleGravite(0, 20, 0);
-    Vecteur3D vitesseParticuleGravite(0, -2, 0);
+    Vecteur3D positionParticuleGravite(0, 1, 0);
+    Vecteur3D vitesseParticuleGravite(0, -0.5, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
 
     Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10);
@@ -134,7 +139,7 @@ void Jeu::start() {
 
     //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeParticule = { particuleReference, particuleGravite };
+    //this->listeParticule = { particuleReference, particuleGravite };
 
     //On cree la force de gravite et on la lie à la particule gravite
     ParticuleGravite *forceGravite = new ParticuleGravite(Vecteur3D(0.0, -9.81, 0.0));
@@ -161,8 +166,42 @@ void Jeu::start() {
     //this->forceRegistre.addParticuleForceRegistre(particuleRessortBis, forceRessortBis);
 
     //On cree la flottabilite dans l'eau
-    ParticuleFlottabilite* forceEau = new ParticuleFlottabilite(-20.f, 1000.f, 0.f, 2000.f);
-    this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceEau);
+    ParticuleFlottabilite* forceEau = new ParticuleFlottabilite(1.f, 1.f, 0.f, 1000.f);
+    //this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceEau);
+
+#pragma endregion
+
+#pragma region Collision
+
+    Vecteur3D positionParticuleDown(0, 5, 0);
+    Vecteur3D vitesseParticuleDown(0, 0, 0);
+    Vecteur3D accelerationDown(0, 0, 0);
+
+    Particule* particuleDown = new Particule(positionParticuleDown, vitesseParticuleDown, accelerationDown, 10);
+
+    Vecteur3D positionParticuleDownBis(0, 0, 0);
+    Vecteur3D vitesseParticuleDownBis(0, 0, 0);
+    Vecteur3D accelerationDownBis(0, 0, 0);
+
+    Particule* particuleDowBis = new Particule(positionParticuleDownBis, vitesseParticuleDownBis, accelerationDownBis, 10);
+
+    ParticuleGravite* gravi = new ParticuleGravite(Vecteur3D(0.0, -9.81, 0.0));
+    this->forceRegistre.addParticuleForceRegistre(particuleDown, gravi);
+    this->forceRegistre.addParticuleForceRegistre(particuleDowBis, gravi);
+
+    this->listeParticule = { &particuleDown, &particuleDowBis };
+    
+   /* ParticuleContact contact01;
+    contact01.particules[0] = listeParticule[0];
+    contact01.particules[1] = listeParticule[1];
+    contact01.restitution = 0.5f;
+    ParticuleContactGenerator* contactGen01 = new ParticuleCable(contact01.particules[0], contact01.particules[1], 1.f, 1.f);
+    contactGen01->addContact(&contact01, 1.f);
+
+    contactGenerators.push_back(contactGen01);*/
+
+#pragma endregion
+
 }
 
 //Fonction qui update le jeu à chaque unité de temps
@@ -174,6 +213,16 @@ void Jeu::update() {
 
         //Le registre applique les forces sur les particules
         forceRegistre.MiseAJourForce(deltaTime);
+        Intergrate(deltaTime);
+        unsigned usedContacts = generateContacts();
+        if (usedContacts)
+        {
+            if (true) // si nb iteration non defini
+            {
+                resolver.setIterationsNb(usedContacts * 2);
+            }
+            resolver.resolveContacts(contacts, usedContacts, deltaTime);
+        }
 
         std::cout << std::endl;
 
@@ -181,11 +230,11 @@ void Jeu::update() {
 
             std::cout << std::endl;
 
-            integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime);
+            //integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime);
             std::cout << "Particule " << i << " position: (" << listeParticule[i]->getPosition().getX() << "," << listeParticule[i]->getPosition().getY() << "," << listeParticule[i]->getPosition().getZ() << ")" << std::endl;
 
 
-            integrateur.MiseAJourVelociteParticule(listeParticule[i], &deltaTime);
+            //integrateur.MiseAJourVelociteParticule(listeParticule[i], &deltaTime);
             std::cout << "Particule " << i << " velocite: (" << listeParticule[i]->getVitesse().getX() << ", " << listeParticule[i]->getVitesse().getY() << ", " << listeParticule[i]->getVitesse().getZ() << ")" << std::endl;
 
             
@@ -201,4 +250,36 @@ void Jeu::update() {
 void Jeu::stop() {
     //...
     this->setEtat(false);
+}
+
+int Jeu::generateContacts()
+{
+    unsigned int max = maxContacts;
+    ParticuleContact* nextContact = contacts;
+
+    for (ContactGenerator::iterator i = contactGenerators.begin(); i != contactGenerators.end(); ++i)
+    {
+        unsigned used = (*i)->addContact(nextContact, max);
+        max -= used;
+        nextContact += used;
+
+        if (max <= 0) break;
+    }
+
+    // nb of used contacts
+    return maxContacts - max;
+}
+
+void Jeu::setResolver(unsigned iterations)
+{
+    this->resolver = ParticuleContactResolver(iterations);
+}
+
+void Jeu::Intergrate(float duration)
+{
+    for (std::vector<Particule*>::iterator i = listeParticule.begin(); i != listeParticule.end(); ++i)
+    {
+        integrateur.MiseAJourPositionParticule(*i, duration);
+        integrateur.MiseAJourVelociteParticule(*i, duration);
+    }
 }
