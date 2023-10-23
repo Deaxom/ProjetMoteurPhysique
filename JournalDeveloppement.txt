@@ -1,4 +1,4 @@
-Bonjour, voici le journal de développement!
+rBonjour, voici le journal de développement!
 
 Phase 1:
 Pour cette première partie de projet la plus grosse difficulté à été la mise en place de l'affichage graphique de nos particules via l'utilisation d'OpenGL et d'ImGui pour créer notre petit jeu.
@@ -16,8 +16,8 @@ Thomas: classe Vecteur3D, classe OpenGlFLFW, classe OpenGlImGui, documentation s
 
 Phase 2:
 Pour cette deuxième partie, nous avons intégré LearnOpenGL qui nous manquait la dernière fois.
-Nous avons ensuite implémenté toutes les forces demandées grâce aux formules du cours.
-Nous avons ensuite améliorer notre jeu pour que les particules subissent les forces implémentées et qu'elles soient affichées graphiquement.
+Nous avons ensuite implémenté toutes les forces et ressorts demandés grâce aux formules du cours.
+Nous avons ensuite améliorer notre jeu pour que les particules subissent les forces et ressorts implémentés et qu'elles soient affichées graphiquement.
 
 Contribution:
 Alain: Intégration de LearnOpenGL, correction des forces de gravité, de trainée, des 2 ressorts et de la flottabilité. Modification des classes Particules et Vecteur3D précédentes pour l'implémentation de cette partie. (33%)
