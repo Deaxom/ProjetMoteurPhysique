@@ -96,7 +96,7 @@ void Jeu::start() {
     Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10);
 
     //particule1 Particule soumise à la force de gravite
-    Vecteur3D positionParticuleGravite(0, 0, 0);
+    Vecteur3D positionParticuleGravite(1, 10, 0);
     Vecteur3D vitesseParticuleGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
 
@@ -134,7 +134,7 @@ void Jeu::start() {
     //particule6 sur lequel va s'appliquer la force de flotabilite
     Vecteur3D positionParticuleFlotabilite(4, -2, 0);
     Vecteur3D vitesseParticuleFlotabilite(0, 0, 0);
-    Vecteur3D accelerationFlotabilite(0, -0.2, 0);
+    Vecteur3D accelerationFlotabilite(0, 0, 0);
 
     Particule* ParticuleFlotabilite = new Particule(positionParticuleFlotabilite, vitesseParticuleFlotabilite, accelerationFlotabilite, 10);
 
@@ -160,7 +160,7 @@ void Jeu::start() {
 
 
     //On cree la force de flotabilite et on la lie à la particule de flotabilite
-    ParticuleFlottabilite* forceFlotabilite = new ParticuleFlottabilite(-2, 5, 2, 250);
+    ParticuleFlottabilite* forceFlotabilite = new ParticuleFlottabilite(-2, 1, 1, 1);
     this->forceRegistre.addParticuleForceRegistre(ParticuleFlotabilite, forceFlotabilite);
 
 
