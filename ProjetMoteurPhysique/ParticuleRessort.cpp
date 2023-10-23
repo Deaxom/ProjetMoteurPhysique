@@ -1,7 +1,9 @@
 #include "ParticuleRessort.h"
 
-ParticuleRessort::ParticuleRessort(Particule* autreParticule) {
+ParticuleRessort::ParticuleRessort(Particule* autreParticule, float k, float restLenght) {
 	this->autreParticule = autreParticule;
+	this->m_k = k;
+	this->m_restLenght = restLenght;
 }
 
 void ParticuleRessort::MiseAJourForce(Particule* particule, double deltaTime) {
@@ -19,7 +21,7 @@ void ParticuleRessort::MiseAJourForce(Particule* particule, double deltaTime) {
 	Vecteur3D vecteurForce = direction.calculVecteurUnitaire() * force;
 
 	//On applique la force aux deux particules
-	Vecteur3D newAccelerationAutreParticule(vecteurForce * (1 / autreParticule->getMasse()));
+	Vecteur3D newAccelerationAutreParticule(vecteurForce * (1 / autreParticule->getMasse()) *-1);
 	autreParticule->setAcceleration(newAccelerationAutreParticule);
 
 	Vecteur3D newAccelerationParticule(vecteurForce * (1 / particule->getMasse()));

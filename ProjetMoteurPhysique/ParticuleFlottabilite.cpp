@@ -1,5 +1,13 @@
 #include "ParticuleFlottabilite.h"
 
+
+ParticuleFlottabilite::ParticuleFlottabilite(float profondeurMax, float volume, float hauteurEau, float densiteLiquide) {
+	this->m_profondeurMax = profondeurMax;
+	this->m_volume = volume;
+	this->m_hauteurEau = hauteurEau;
+	this->m_densiteLiquide = densiteLiquide;
+}
+
 void ParticuleFlottabilite::MiseAJourForce(Particule* particule, double deltaTime) {
 
 	//Calcule de d

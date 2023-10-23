@@ -11,6 +11,7 @@ private:
 	float m_hauteurEau;
 	float m_densiteLiquide;
 public:
+	ParticuleFlottabilite(float profondeurMax, float volume, float hauteurEau, float densiteLiquide);
 	void MiseAJourForce(Particule* particule, double deltaTime);
 };
 

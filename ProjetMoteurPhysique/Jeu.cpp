@@ -3,7 +3,9 @@
 #include <iostream>
 #include "ParticuleGravite.h"
 #include "ParticuleRessortFixe.h"
+#include "ParticuleRessort.h"
 #include "ParticuleTrainee.h"
+#include "ParticuleFlottabilite.h"
 
 //Constructeurs
 Jeu::Jeu() {
@@ -115,10 +117,26 @@ void Jeu::start() {
 
     Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10);
 
+    //particule4 particule sur lequel on applique la force ressort
+    Vecteur3D positionParticuleRessort(-2, -2, 0);
+    Vecteur3D vitesseParticuleRessort(0, 0, 0);
+    Vecteur3D accelerationRessort(0, -1, 0);
 
-    //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
-    //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeParticule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe };
+    Particule* particuleRessort = new Particule(positionParticuleRessort, vitesseParticuleRessort, accelerationRessort, 10);
+
+    //particule5 autre particule pour la force ressort
+    Vecteur3D positionAutreParticuleRessort(-2, 0, 0);
+    Vecteur3D vitesseAutreParticuleRessort(0, 0, 0);
+    Vecteur3D accelerationAutreRessort(0, 0, 0);
+
+    Particule* autreParticuleRessort = new Particule(positionAutreParticuleRessort, vitesseAutreParticuleRessort, accelerationAutreRessort, 10);
+
+    //particule6 sur lequel va s'appliquer la force de flotabilite
+    Vecteur3D positionParticuleFlotabilite(4, -2, 0);
+    Vecteur3D vitesseParticuleFlotabilite(0, 0, 0);
+    Vecteur3D accelerationFlotabilite(0, -0.2, 0);
+
+    Particule* ParticuleFlotabilite = new Particule(positionParticuleFlotabilite, vitesseParticuleFlotabilite, accelerationFlotabilite, 10);
 
     //On cree la force de gravite et on la lie à la particule gravite
     ParticuleGravite *forceGravite = new ParticuleGravite();
@@ -132,9 +150,23 @@ void Jeu::start() {
     //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie à la particule ressort fixe
     Vecteur3D positionFixe(0, 2, 0);
     float k = 1;
-    float restLenght = 2;
+    float restLenght = 3;
     ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(positionFixe, k, restLenght);
     this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);
+
+    //On cree la force de ressort et on la lie à la particule de ressort ainsi que l'autre particule
+    ParticuleRessort* forceRessort = new ParticuleRessort(autreParticuleRessort, k, restLenght);
+    this->forceRegistre.addParticuleForceRegistre(particuleRessort, forceRessort);
+
+
+    //On cree la force de flotabilite et on la lie à la particule de flotabilite
+    ParticuleFlottabilite* forceFlotabilite = new ParticuleFlottabilite(-2, 5, 2, 250);
+    this->forceRegistre.addParticuleForceRegistre(ParticuleFlotabilite, forceFlotabilite);
+
+
+    //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
+    //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
+    this->listeParticule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite };
 }
 
 //Fonction qui update le jeu à chaque unité de temps
