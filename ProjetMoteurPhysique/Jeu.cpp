@@ -97,7 +97,7 @@ void Jeu::start() {
     Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000000, false);
 
     //particule1 Particule soumise à la force de gravite
-    Vecteur3D positionParticuleGravite(0, 5, 0);
+    Vecteur3D positionParticuleGravite(2.3f, 5, 0);
     Vecteur3D vitesseParticuleGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
 
@@ -165,15 +165,27 @@ void Jeu::start() {
     ParticuleFlottabilite* forceFlotabilite = new ParticuleFlottabilite(-2, 1, 1, 1);
     this->forceRegistre.addParticuleForceRegistre(ParticuleFlotabilite, forceFlotabilite);
 
+    //On initialise un lien de contact entre deux particules
     contact = new ParticuleContact;
 
     contact->particules[0] = particuleGravite;
     contact->particules[1] = particuleReference;
-    contact->restitution = 0.5f;
+
+    //On ajoute ce lien dans un type de detection de collision
+    //ParticuleRod rod(contact, 2.f);
+    ParticuleCable* cable = new ParticuleCable(contact, 2.f, 0.5f);
+
+    contactGenerators.push_back(cable);
+
 
     //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
     this->listeParticule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite };
+   
+    
+    NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
+
+    contactGenerators.push_back(naive);
 }
 
 //Fonction qui update le jeu à chaque unité de temps
@@ -194,24 +206,17 @@ void Jeu::update() {
         {
             integrateur.MiseAJourPositionParticule(*i, &deltaTime);
             integrateur.MiseAJourVelociteParticule(*i, &deltaTime);
-
-            // on remet l'accéleration à 0 en ajoutant son négatif
-            //(*i)->setAcceleration((*i)->getAcceleration() * -1);
         }
 
+        //Iteration sur tout les link
+        for (ContactGenerator::iterator i = contactGenerators.begin(); i != contactGenerators.end(); ++i)
+        {
+            if ((*i)->addContact(contact, 1))
+            {
+                resolver.resolveContacts(contact, 1, deltaTime);
+            }
+        }
 
-        // Check Temporaire de contact entre deux Particule definis
-        float deltaX = contact->particules[0]->getPosition().getX() - contact->particules[1]->getPosition().getX();
-        float deltaY = contact->particules[0]->getPosition().getY() - contact->particules[1]->getPosition().getY();
-        float deltaZ = contact->particules[0]->getPosition().getZ() - contact->particules[1]->getPosition().getZ();
-
-        float temp = std::sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
-
-        contact->contactNormal = Vecteur3D(deltaX / temp, deltaY / temp, deltaZ / temp);
-        contact->penetration = 1.f - temp;
-        if (contact->penetration < 0.f) contact->penetration = 0.f;
-
-        resolver.resolveContacts(contact, 1, deltaTime);
 
         if (contact->particules[0]->getVitesse().getY() < 0.f) {
             std::cout << "Down" << std::endl;
@@ -219,28 +224,6 @@ void Jeu::update() {
         else {
             std::cout << "Up" << std::endl;
         }
-
-        //forceRegistre.clear();
-
-        /*std::cout << std::endl;
-
-        for (int i = 0; i < this->listeParticule.size(); i++) {
-
-            std::cout << std::endl;
-
-            integrateur.MiseAJourPositionParticule(listeParticule[i], &deltaTime);
-            std::cout << "Particule " << i << " position: (" << listeParticule[i]->getPosition().getX() << "," << listeParticule[i]->getPosition().getY() << "," << listeParticule[i]->getPosition().getZ() << ")" << std::endl;
-
-
-            integrateur.MiseAJourVelociteParticule(listeParticule[i], &deltaTime);
-            std::cout << "Particule " << i << " velocite: (" << listeParticule[i]->getVitesse().getX() << ", " << listeParticule[i]->getVitesse().getY() << ", " << listeParticule[i]->getVitesse().getZ() << ")" << std::endl;
-
-            
-            std::cout << "Particule " << i << " acceleration: (" << listeParticule[i]->getAcceleration().getX() << ", " << listeParticule[i]->getAcceleration().getY() << ", " << listeParticule[i]->getAcceleration().getZ() << ")" << std::endl;
-
-            std::cout << std::endl;
-        }
-        std::cout << std::endl;*/
     }
 }
 

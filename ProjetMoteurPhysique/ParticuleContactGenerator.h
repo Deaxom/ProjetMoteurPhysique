@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <vector>
 
 class ParticuleContact;
 class Particule;
@@ -14,7 +15,7 @@ class ParticuleLink : public ParticuleContactGenerator
 {
 public:
 	Particule* particules[2];
-
+	
 	// link list length
 	float currentLength() const;
 
@@ -33,8 +34,10 @@ public:
 	//0 = coolision non elastique, energie cin�tique perdue
 	float restitution;
 
+	ParticuleCable(ParticuleContact* contact, float maxLength, float restitution);
+
 	// pour eviter de trop etendre le cable
-	virtual unsigned addContact(ParticuleContact* contact, unsigned int limit) const;
+	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
 };
 
 class ParticuleRod : public ParticuleLink
@@ -42,5 +45,22 @@ class ParticuleRod : public ParticuleLink
 public:
 	float length;
 
-	virtual unsigned addContact(ParticuleContact* contact, unsigned int limit) const;
+	ParticuleRod(ParticuleContact* contact, float Length);
+
+	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
+};
+
+class NaiveParticuleContactGenerator : public ParticuleContactGenerator
+{
+public:
+	float radius;
+
+	std::vector<Particule*> particules;
+
+	NaiveParticuleContactGenerator(float _radius, std::vector<Particule*> _particules);
+
+	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
+
+private:
+
 };

@@ -43,5 +43,6 @@ public:
 
     ParticuleContact* contact;
     ParticuleContactResolver resolver;
+    ParticuleLink* link;
 };
 

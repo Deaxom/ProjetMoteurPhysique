@@ -35,9 +35,9 @@ void ParticuleContact::ResolveVelocity(float duration)
 	if (separatingVelocity < 0.f)
 		return;
 
+	// Code raccourci pour invercer les vitesses des Particule
 	/*particules[0]->setVitesse(particules[0]->getVitesse() * -1 * restitution);
 	particules[1]->setVitesse(particules[1]->getVitesse() * -1 * restitution);
-
 	return;*/
 
 
