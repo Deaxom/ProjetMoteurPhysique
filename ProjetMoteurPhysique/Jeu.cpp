@@ -169,23 +169,27 @@ void Jeu::start() {
     contact = new ParticuleContact;
 
     contact->particules[0] = particuleGravite;
-    contact->particules[1] = particuleReference;
+    //contact->particules[1] = particuleReference;
 
     //On ajoute ce lien dans un type de detection de collision
     //ParticuleRod rod(contact, 2.f);
     ParticuleCable* cable = new ParticuleCable(contact, 2.f, 0.5f);
 
-    contactGenerators.push_back(cable);
+    //contactGenerators.push_back(cable);
 
 
     //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeParticule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite };
+    this->listeParticule = { particuleReference, particuleGravite/*, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite*/ };
    
     
     NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
 
-    contactGenerators.push_back(naive);
+    //contactGenerators.push_back(naive);
+
+    WallContactGenerator* ground = new WallContactGenerator(0.f, 5.f, 0.f, listeParticule);
+
+    contactGenerators.push_back(ground);
 }
 
 //Fonction qui update le jeu à chaque unité de temps

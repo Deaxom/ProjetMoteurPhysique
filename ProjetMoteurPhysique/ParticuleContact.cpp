@@ -92,7 +92,7 @@ void ParticuleContact::ResolveInterpenetration()
 		return;
 
 	float inverseMass = 1.0f / particules[0]->getMasse();
-	if (particules[1])
+	if (particules[1] && particules[1]->getIsDynamic())
 		inverseMass += 1.0f / particules[1]->getMasse();
 
 	if (inverseMass <= 0.f) return;
@@ -103,20 +103,21 @@ void ParticuleContact::ResolveInterpenetration()
 	Vecteur3D moveLenght[2];
 		moveLenght[0] = ResolvPerIMass * /* 0.5f;*/ (1.0f / particules[0]->getMasse());
 
-	if (particules[1])
+	if (particules[1] && particules[1]->getIsDynamic())
 		moveLenght[1] = ResolvPerIMass * /*-0.5f;*/ -(1.0f / particules[1]->getMasse());
 
 	// Mise � la position de non penetration
 	Vecteur3D newPos(particules[0]->getPosition()+ moveLenght[0]);
 	particules[0]->setPosition(newPos);
-	if (particules[1]) {
+	if (particules[1] && particules[1]->getIsDynamic()) {
 		newPos = particules[1]->getPosition() + moveLenght[1];
 		particules[1]->setPosition(newPos);
 	}
 
 	if (!particules[1]) return;
 
-	float deltaX = particules[0]->getPosition().getX() - particules[1]->getPosition().getX();
+	// gap after resolve Checker
+	/*float deltaX = particules[0]->getPosition().getX() - particules[1]->getPosition().getX();
 	float deltaY = particules[0]->getPosition().getY() - particules[1]->getPosition().getY();
 	float deltaZ = particules[0]->getPosition().getZ() - particules[1]->getPosition().getZ();
 
@@ -124,7 +125,7 @@ void ParticuleContact::ResolveInterpenetration()
 
 	if (temp < 1.f && temp > -1.f) {
 		std::cout << "still gap";
-	}
+	}*/
 }
 
 void ParticuleContact::CheckResting(int i)

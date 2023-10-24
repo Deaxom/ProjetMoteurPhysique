@@ -124,3 +124,59 @@ unsigned int NaiveParticuleContactGenerator::addContact(ParticuleContact* contac
 
 	return 1;
 }
+
+WallContactGenerator::WallContactGenerator(float _groundHeight, float wallMinX, float wallMinZ, std::vector<Particule*> _particules)
+{
+	this->groundHeight = _groundHeight;
+	this->wallMinX = wallMinX;
+	this->wallMinY = wallMinZ;
+	this->particules = _particules;
+}
+
+unsigned int WallContactGenerator::addContact(ParticuleContact* contact, unsigned int limit) const
+{
+	unsigned int utilisations = 0;
+
+	// Détection de la collision avec le sol
+	if (contact->particules[0]->getPosition().getY() < groundHeight) {
+		contact->contactNormal = Vecteur3D(0.0f, 1.0f, 0.0f); // Normale vers le haut (sol)
+		contact->penetration = groundHeight - contact->particules[0]->getPosition().getY();
+		if (contact->penetration < 0.0f) contact->penetration = 0.0f;
+		contact->restitution = 0.5f;
+		utilisations++;
+	}
+
+	// Détection de la collision avec les murs
+	float minX = -wallMinX;
+	float maxX = wallMinX;
+	float minZ = -wallMinY;
+	float maxZ = wallMinY;
+
+	float particuleX = contact->particules[0]->getPosition().getX();
+	float particuleY = contact->particules[0]->getPosition().getY();
+
+	if (particuleX < minX) {
+		contact->contactNormal = Vecteur3D(1.0f, 0.0f, 0.0f); // Normale vers la droite (mur)
+		contact->penetration = minX - particuleX;
+		if (contact->penetration < 0.0f) contact->penetration = 0.0f;
+		utilisations++;
+		contact->restitution = 0.5f;
+	}
+	else if (particuleX > maxX) {
+		contact->contactNormal = Vecteur3D(-1.0f, 0.0f, 0.0f); // Normale vers la gauche (mur)
+		contact->penetration = particuleX - maxX;
+		if (contact->penetration < 0.0f) contact->penetration = 0.0f;
+		utilisations++;
+		contact->restitution = 0.5f;
+	}
+
+	if (particuleY < minZ) {
+		contact->contactNormal = Vecteur3D(0.0f, 1.0f, .0f); // Normale vers l'avant (mur)
+		contact->penetration = minZ - particuleY;
+		if (contact->penetration < 0.0f) contact->penetration = 0.0f;
+		utilisations++;
+		contact->restitution = 0.5f;
+	}
+
+	return utilisations;
+}

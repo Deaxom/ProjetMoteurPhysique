@@ -10,7 +10,7 @@ Particule::Particule() {
 	this->setVitesse(newVitesse);
 	this->setAcceleration(newAcceleration);
 	this->setMasse(masse);
-	this->setIsDynamic(true);
+	this->setIsDynamic(false);
 	this->setLastVitesse(getVitesse());
 }
 

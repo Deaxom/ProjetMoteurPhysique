@@ -60,7 +60,18 @@ public:
 	NaiveParticuleContactGenerator(float _radius, std::vector<Particule*> _particules);
 
 	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
+};
 
-private:
+class WallContactGenerator : public ParticuleContactGenerator
+{
+public:
+	float groundHeight;
+	float wallMinX;
+	float wallMinY;
 
+	std::vector<Particule*> particules;
+
+	WallContactGenerator(float _groundHeight, float wallMinX, float wallMinZ, std::vector<Particule*> _particules);
+
+	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
 };
