@@ -7,6 +7,7 @@ class ParticuleContact
 {
 public:
 	ParticuleContact();
+	~ParticuleContact();
 
 	Particule* particules[2];
 

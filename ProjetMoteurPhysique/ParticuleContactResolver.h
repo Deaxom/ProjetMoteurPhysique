@@ -11,6 +11,7 @@ public:
 
 	ParticuleContactResolver();
 	ParticuleContactResolver(unsigned iterations);
+	~ParticuleContactResolver();
 
 	void setIterationsNb(unsigned iterations);
 

@@ -14,6 +14,10 @@ ParticuleContactResolver::ParticuleContactResolver(unsigned iterations)
 	this->iterationDone = 0;
 }
 
+ParticuleContactResolver::~ParticuleContactResolver()
+{
+}
+
 void ParticuleContactResolver::setIterationsNb(unsigned iterations)
 {
 	this->iterations = iterations;
@@ -43,7 +47,7 @@ void ParticuleContactResolver::resolveContacts(ParticuleContact* contactArray, u
 
 		if (maxIndex == nbComtact) break;
 
-		std::cout << "Contact!" << std::endl;
+		//std::cout << "Contact!" << std::endl;
 		contactArray[maxIndex].Resolve(duration);
 		++iterationDone;
 	}

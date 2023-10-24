@@ -11,6 +11,10 @@ ParticuleContact::ParticuleContact()
 	this->restitution = 0.f;
 }
 
+ParticuleContact::~ParticuleContact()
+{
+}
+
 void ParticuleContact::Resolve(float duration)
 {
 	ResolveVelocity(duration);
@@ -91,7 +95,9 @@ void ParticuleContact::ResolveInterpenetration()
 	if (penetration <= 0.01f) // pas de penetration
 		return;
 
-	float inverseMass = 1.0f / particules[0]->getMasse();
+	float inverseMass = 0.f;
+	if (particules[0]->getIsDynamic())
+		inverseMass = 1.0f / particules[0]->getMasse();
 	if (particules[1] && particules[1]->getIsDynamic())
 		inverseMass += 1.0f / particules[1]->getMasse();
 
@@ -101,6 +107,7 @@ void ParticuleContact::ResolveInterpenetration()
 
 	// taux de d�placement de chaque particules dans la penetration
 	Vecteur3D moveLenght[2];
+	if (particules[0]->getIsDynamic())
 		moveLenght[0] = ResolvPerIMass * /* 0.5f;*/ (1.0f / particules[0]->getMasse());
 
 	if (particules[1] && particules[1]->getIsDynamic())
@@ -130,6 +137,8 @@ void ParticuleContact::ResolveInterpenetration()
 
 void ParticuleContact::CheckResting(int i)
 {
+	if (!particules[i]) return;
+
 	float x = particules[i]->getVitesse().getX();
 	float y = particules[i]->getVitesse().getY();
 	float z = particules[i]->getVitesse().getZ();
@@ -147,5 +156,5 @@ void ParticuleContact::CheckResting(int i)
 		z = 0.f;
 	}
 
-	particules[1]->setPosition(Vecteur3D(x, y, z));
+	particules[i]->setVitesse(Vecteur3D(x, y, z));
 }
