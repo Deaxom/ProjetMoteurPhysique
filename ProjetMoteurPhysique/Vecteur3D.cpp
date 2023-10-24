@@ -51,6 +51,7 @@ double Vecteur3D::calculNorme() {
 //Calcul du vecteur unitaire, renvoie un autre Vecteur3D
 Vecteur3D Vecteur3D::calculVecteurUnitaire() {
 	double norme = this->calculNorme();
+	if (norme == 0.0) return Vecteur3D(0.0, 0.0, 0.0);
 	double newX = this->x / norme;
 	double newY = this->y / norme;
 	double newZ = this->z / norme;
@@ -63,6 +64,11 @@ Vecteur3D Vecteur3D::operator*(double scalaire) {
 	double newY = this->y * scalaire;
 	double newZ = this->z * scalaire;
 	return Vecteur3D(newX, newY, newZ);
+}
+
+Vecteur3D Vecteur3D::operator*(const Vecteur3D vec)
+{
+	return Vecteur3D(x * vec.x, y * vec.y, z * vec.z);
 }
 
 //Calcul de l'addition entre 2 Vecteur3D, renvoie un autre Vecteur3D

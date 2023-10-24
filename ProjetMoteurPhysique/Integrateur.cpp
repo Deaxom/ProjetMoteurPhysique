@@ -14,5 +14,8 @@ void Integrateur::MiseAJourVelociteParticule(Particule *particule, double *delta
 	Vecteur3D newVelocity = (particule->getVitesse()) * DAMPING_VALUE + ((particule->getAcceleration()) * (*deltaTime));
     Vecteur3D newVelocityPtr(newVelocity);
 
+
+    particule->setAcceleration(particule->getAcceleration() * -1);
+    particule->setLastVitesse(particule->getVitesse());
     particule->setVitesse(newVelocityPtr);
 }

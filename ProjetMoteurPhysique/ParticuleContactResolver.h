@@ -9,6 +9,7 @@ public:
 	unsigned iterations;
 	unsigned iterationDone;
 
+	ParticuleContactResolver();
 	ParticuleContactResolver(unsigned iterations);
 
 	void setIterationsNb(unsigned iterations);

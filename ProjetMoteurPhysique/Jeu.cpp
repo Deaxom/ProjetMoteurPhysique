@@ -15,6 +15,7 @@ Jeu::Jeu() {
     this->setLastFrameTime(0.0f);
     Particule* newParticule = new Particule;
     this->setParticule(newParticule);
+    this->contact = new ParticuleContact();
 }
 
 Jeu::Jeu(OpenGlImGui* window, Particule* particule) {
@@ -93,59 +94,60 @@ void Jeu::start() {
     Vecteur3D vitesseParticuleReference(0, 0, 0);
     Vecteur3D accelerationReference(0, 0, 0);
 
-    Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10);
+    Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000000, false);
 
     //particule1 Particule soumise à la force de gravite
-    Vecteur3D positionParticuleGravite(1, 10, 0);
+    Vecteur3D positionParticuleGravite(0, 5, 0);
     Vecteur3D vitesseParticuleGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
 
-    Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10);
+    Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, true);
 
 
     //particule2 sur lequel on applique la force de traine
-    Vecteur3D positionParticuleTraine(1.5, 0, 0);
-    Vecteur3D vitesseParticuleTraine(0.3, 0, 0);
+    Vecteur3D positionParticuleTraine(1, -5, 0);
+    Vecteur3D vitesseParticuleTraine(0, 0, 0);
     Vecteur3D accelerationTraine(0, 0, 0);
 
-    Particule* particuleTraine = new Particule(positionParticuleTraine, vitesseParticuleTraine, accelerationTraine, 10);
+    Particule* particuleTraine = new Particule(positionParticuleTraine, vitesseParticuleTraine, accelerationTraine, 10, true);
 
     //particule3 sur lequel on applique la force de ressort fixe
     Vecteur3D positionParticuleRessortFixe(1, 3, 0);
     Vecteur3D vitesseParticuleRessortFixe(0, 0, 0);
     Vecteur3D accelerationRessortFixe(0.2, 0, 0);
 
-    Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10);
+    Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10, true);
 
     //particule4 particule sur lequel on applique la force ressort
     Vecteur3D positionParticuleRessort(-2, -2, 0);
     Vecteur3D vitesseParticuleRessort(0, 0, 0);
     Vecteur3D accelerationRessort(0, -1, 0);
 
-    Particule* particuleRessort = new Particule(positionParticuleRessort, vitesseParticuleRessort, accelerationRessort, 10);
+    Particule* particuleRessort = new Particule(positionParticuleRessort, vitesseParticuleRessort, accelerationRessort, 10, true);
 
     //particule5 autre particule pour la force ressort
     Vecteur3D positionAutreParticuleRessort(-2, 0, 0);
     Vecteur3D vitesseAutreParticuleRessort(0, 0, 0);
     Vecteur3D accelerationAutreRessort(0, 0, 0);
 
-    Particule* autreParticuleRessort = new Particule(positionAutreParticuleRessort, vitesseAutreParticuleRessort, accelerationAutreRessort, 10);
+    Particule* autreParticuleRessort = new Particule(positionAutreParticuleRessort, vitesseAutreParticuleRessort, accelerationAutreRessort, 10, true);
 
     //particule6 sur lequel va s'appliquer la force de flotabilite
     Vecteur3D positionParticuleFlotabilite(4, -2, 0);
     Vecteur3D vitesseParticuleFlotabilite(0, 0, 0);
     Vecteur3D accelerationFlotabilite(0, 0, 0);
 
-    Particule* ParticuleFlotabilite = new Particule(positionParticuleFlotabilite, vitesseParticuleFlotabilite, accelerationFlotabilite, 10);
+    Particule* ParticuleFlotabilite = new Particule(positionParticuleFlotabilite, vitesseParticuleFlotabilite, accelerationFlotabilite, 10, true);
 
-    //On cree la force de gravite et on la lie à la particule gravite
-    ParticuleGravite *forceGravite = new ParticuleGravite();
+    //On cree la force de gravite et on la lie à la particule gravite | -98.1 pour la terre
+    ParticuleGravite *forceGravite = new ParticuleGravite(0.0, -98.1, 0.0);
+    ParticuleGravite *forceGraviteBis = new ParticuleGravite(0.0, 98.1, 0.0);
     this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceGravite);
 
 
     //On cree la force de traine et on la lie à la particule traine
-    ParticuleTrainee* forceTrainee = new ParticuleTrainee();
-    this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);
+    ParticuleTrainee* forceTrainee = new ParticuleTrainee(1.5f, 13.6f);
+    this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceGraviteBis);
 
     //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie à la particule ressort fixe
     Vecteur3D positionFixe(0, 2, 0);
@@ -163,6 +165,11 @@ void Jeu::start() {
     ParticuleFlottabilite* forceFlotabilite = new ParticuleFlottabilite(-2, 1, 1, 1);
     this->forceRegistre.addParticuleForceRegistre(ParticuleFlotabilite, forceFlotabilite);
 
+    contact = new ParticuleContact;
+
+    contact->particules[0] = particuleGravite;
+    contact->particules[1] = particuleReference;
+    contact->restitution = 0.5f;
 
     //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
@@ -173,13 +180,49 @@ void Jeu::start() {
 void Jeu::update() {
     if (etat) {
         double currentFrame = glfwGetTime();
-        this->setDeltaTime(currentFrame - this->getLastFrameTime());
+        //this->setDeltaTime(currentFrame - this->getLastFrameTime());
+        this->setDeltaTime(0.008);
         this->setLastFrameTime(currentFrame);
 
         //Le registre applique les forces sur les particules
         forceRegistre.MiseAJourForce(deltaTime);
 
-        std::cout << std::endl;
+        std::cout << contact->particules[0]->getAcceleration().getY() << std::endl;
+        std::cout << contact->particules[0]->getVitesse().getY() << std::endl;
+
+        for (std::vector<Particule*>::iterator i = listeParticule.begin(); i != listeParticule.end(); ++i)
+        {
+            integrateur.MiseAJourPositionParticule(*i, &deltaTime);
+            integrateur.MiseAJourVelociteParticule(*i, &deltaTime);
+
+            // on remet l'accéleration à 0 en ajoutant son négatif
+            //(*i)->setAcceleration((*i)->getAcceleration() * -1);
+        }
+
+
+        // Check Temporaire de contact entre deux Particule definis
+        float deltaX = contact->particules[0]->getPosition().getX() - contact->particules[1]->getPosition().getX();
+        float deltaY = contact->particules[0]->getPosition().getY() - contact->particules[1]->getPosition().getY();
+        float deltaZ = contact->particules[0]->getPosition().getZ() - contact->particules[1]->getPosition().getZ();
+
+        float temp = std::sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+
+        contact->contactNormal = Vecteur3D(deltaX / temp, deltaY / temp, deltaZ / temp);
+        contact->penetration = 1.f - temp;
+        if (contact->penetration < 0.f) contact->penetration = 0.f;
+
+        resolver.resolveContacts(contact, 1, deltaTime);
+
+        if (contact->particules[0]->getVitesse().getY() < 0.f) {
+            std::cout << "Down" << std::endl;
+        }
+        else {
+            std::cout << "Up" << std::endl;
+        }
+
+        //forceRegistre.clear();
+
+        /*std::cout << std::endl;
 
         for (int i = 0; i < this->listeParticule.size(); i++) {
 
@@ -197,7 +240,7 @@ void Jeu::update() {
 
             std::cout << std::endl;
         }
-        std::cout << std::endl;
+        std::cout << std::endl;*/
     }
 }
 
