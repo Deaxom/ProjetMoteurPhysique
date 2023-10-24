@@ -4,6 +4,9 @@
 #include "OpenglImGui.h"
 #include <vector>
 #include "ParticuleForceRegistre.h"
+#include "ParticuleContactGenerator.h"
+#include "ParticuleContactResolver.h"
+#include "ParticuleContact.h"
 
 class Jeu
 {
@@ -16,6 +19,8 @@ private:
     Particule* particule;
     std::vector<Particule*> listeParticule;
     ParticuleForceRegistre forceRegistre;
+    typedef std::vector<ParticuleContactGenerator*> ContactGenerator;
+    ContactGenerator contactGenerators;
 
 public:
     Jeu();
@@ -35,5 +40,9 @@ public:
     void start();
     void update();
     void stop();
+
+    ParticuleContact* contact;
+    ParticuleContactResolver resolver;
+    ParticuleLink* link;
 };
 

@@ -6,6 +6,9 @@ class Particule;
 class ParticuleContact
 {
 public:
+	ParticuleContact();
+	~ParticuleContact();
+
 	Particule* particules[2];
 
 	// value 0-1 elasticit� pour la "rebondassibilit�"
@@ -30,5 +33,7 @@ private:
 
 	// Resolution de l'interpenetration
 	void ResolveInterpenetration();
+
+	void CheckResting(int i);
 
 };

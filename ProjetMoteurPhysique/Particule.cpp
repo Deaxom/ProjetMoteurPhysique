@@ -10,13 +10,17 @@ Particule::Particule() {
 	this->setVitesse(newVitesse);
 	this->setAcceleration(newAcceleration);
 	this->setMasse(masse);
+	this->setIsDynamic(false);
+	this->setLastVitesse(getVitesse());
 }
 
-Particule::Particule(const Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse) {
+Particule::Particule(const Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, bool isDynamic) {
 	this->setPosition(position);
 	this->setVitesse(vitesse);
 	this->setAcceleration(acceleration);
 	this->setMasse(masse);
+	this->setIsDynamic(isDynamic);
+	this->setLastVitesse(getVitesse());
 }
 
 //GETTERS
@@ -36,6 +40,16 @@ double Particule::getMasse(){
 	return this->masse;
 }
 
+bool Particule::getIsDynamic()
+{
+	return this->isDynamic;
+}
+
+Vecteur3D Particule::getLastVitesse() const
+{
+	return lastVitesse;
+}
+
 //SETTERS
 void Particule::setPosition(Vecteur3D newPosition){
 	this->position = newPosition;
@@ -46,8 +60,18 @@ void Particule::setVitesse(Vecteur3D newVitesse){
 }
 
 void Particule::setAcceleration(Vecteur3D newAcceleration){
-	this->acceleration = newAcceleration;
+	this->acceleration = acceleration + newAcceleration;
 
 }void Particule::setMasse(double newMasse) {
 	this->masse = newMasse;
+}
+
+void Particule::setIsDynamic(bool _isDynamic)
+{
+	this->isDynamic = _isDynamic;
+}
+
+void Particule::setLastVitesse(Vecteur3D _lastVitesse)
+{
+	this->lastVitesse = _lastVitesse;
 }

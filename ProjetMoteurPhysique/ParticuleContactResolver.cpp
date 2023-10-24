@@ -1,10 +1,21 @@
 #include "ParticuleContactResolver.h"
 #include "ParticuleContact.h"
+#include <iostream>
+
+ParticuleContactResolver::ParticuleContactResolver()
+{
+	this->iterations = 1;
+	this->iterationDone = 0;
+}
 
 ParticuleContactResolver::ParticuleContactResolver(unsigned iterations)
 {
 	this->iterations = iterations;
 	this->iterationDone = 0;
+}
+
+ParticuleContactResolver::~ParticuleContactResolver()
+{
 }
 
 void ParticuleContactResolver::setIterationsNb(unsigned iterations)
@@ -36,6 +47,7 @@ void ParticuleContactResolver::resolveContacts(ParticuleContact* contactArray, u
 
 		if (maxIndex == nbComtact) break;
 
+		//std::cout << "Contact!" << std::endl;
 		contactArray[maxIndex].Resolve(duration);
 		++iterationDone;
 	}
