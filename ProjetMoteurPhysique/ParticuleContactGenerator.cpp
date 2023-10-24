@@ -18,20 +18,12 @@ ParticuleLink::ParticuleLink()
 	particules[1] = new Particule();
 }
 
-ParticuleLink::~ParticuleLink()
-{
-}
-
 ParticuleCable::ParticuleCable(ParticuleContact* contact, float _maxLength, float _restitution)
 {
 	particules[0] = contact->particules[0];
 	particules[1] = contact->particules[1];
 	this->maxLength = _maxLength;
 	this->restitution = _restitution;
-}
-
-ParticuleCable::~ParticuleCable()
-{
 }
 
 #pragma endregion
@@ -75,10 +67,6 @@ ParticuleRod::ParticuleRod(ParticuleContact* contact, float Length)
 	particules[0] = contact->particules[0];
 	particules[1] = contact->particules[1];
 	this->length = Length;
-}
-
-ParticuleRod::~ParticuleRod()
-{
 }
 
 unsigned ParticuleRod::addContact(ParticuleContact* contact, unsigned int limit) const
@@ -126,10 +114,6 @@ NaiveParticuleContactGenerator::NaiveParticuleContactGenerator(float _radius, st
 	this->particules = _particules;
 }
 
-NaiveParticuleContactGenerator::~NaiveParticuleContactGenerator()
-{
-}
-
 unsigned int NaiveParticuleContactGenerator::addContact(ParticuleContact* contact, unsigned int limit) const
 {
 	unsigned int utilisations = 0;
@@ -170,8 +154,6 @@ unsigned int NaiveParticuleContactGenerator::addContact(ParticuleContact* contac
 			/*contact->contactNormal = Vecteur3D(deltaX / temp, deltaY / temp, deltaZ / temp);
 			contact->penetration = radius - temp;
 			if (contact->penetration < 0.f) contact->penetration = 0.f;*/
-
-
 		}
 	}
 			return utilisations;
@@ -183,10 +165,6 @@ WallContactGenerator::WallContactGenerator(float _groundHeight, float wallMinX, 
 	this->wallMinX = wallMinX;
 	this->wallMinY = wallMinZ;
 	this->particules = _particules;
-}
-
-WallContactGenerator::~WallContactGenerator()
-{
 }
 
 unsigned int WallContactGenerator::addContact(ParticuleContact* contact, unsigned int limit) const

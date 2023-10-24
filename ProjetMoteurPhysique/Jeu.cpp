@@ -166,27 +166,26 @@ void Jeu::start() {
     this->forceRegistre.addParticuleForceRegistre(ParticuleFlotabilite, forceFlotabilite);
 
     //On initialise un lien de contact entre deux particules
+    ParticuleContact *_contact = new ParticuleContact;
     contact = new ParticuleContact;
 
-    contact->particules[0] = particuleGravite;
-    contact->particules[1] = particuleReference;
+    _contact->particules[0] = particuleGravite;
+    _contact->particules[1] = particuleReference;
 
     //On ajoute ce lien dans un type de detection de collision
     //ParticuleRod rod(contact, 2.f);
-    ParticuleCable* cable = new ParticuleCable(contact, 2.5f, 0.5f);
-    ParticuleRod* rod = new ParticuleRod(contact, 2.f);
+    ParticuleCable* cable = new ParticuleCable(_contact, 2.5f, 0.5f);
+    ParticuleRod* rod = new ParticuleRod(_contact, 2.f);
 
     contactGenerators.push_back(cable);
-
 
     //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
     this->listeParticule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite };
-   
     
     NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
 
-    //contactGenerators.push_back(naive);
+    contactGenerators.push_back(naive);
 
     WallContactGenerator* ground = new WallContactGenerator(-3.f, 10.f, 0.f, listeParticule);
 

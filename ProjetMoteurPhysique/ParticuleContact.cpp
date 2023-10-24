@@ -11,10 +11,6 @@ ParticuleContact::ParticuleContact()
 	this->restitution = 0.f;
 }
 
-ParticuleContact::~ParticuleContact()
-{
-}
-
 void ParticuleContact::Resolve(float duration)
 {
 	ResolveVelocity(duration);

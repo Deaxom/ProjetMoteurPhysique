@@ -15,7 +15,6 @@ class ParticuleLink : public ParticuleContactGenerator
 {
 public:
 	ParticuleLink();
-	~ParticuleLink();
 
 	Particule* particules[2];
 	
@@ -38,7 +37,6 @@ public:
 	float restitution;
 
 	ParticuleCable(ParticuleContact* contact, float maxLength, float restitution);
-	~ParticuleCable();
 
 	// pour eviter de trop etendre le cable
 	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
@@ -50,7 +48,6 @@ public:
 	float length;
 
 	ParticuleRod(ParticuleContact* contact, float Length);
-	~ParticuleRod();
 
 	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
 };
@@ -63,7 +60,6 @@ public:
 	std::vector<Particule*> particules;
 
 	NaiveParticuleContactGenerator(float _radius, std::vector<Particule*> _particules);
-	~NaiveParticuleContactGenerator();
 
 	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
 };
@@ -78,7 +74,6 @@ public:
 	std::vector<Particule*> particules;
 
 	WallContactGenerator(float _groundHeight, float wallMinX, float wallMinZ, std::vector<Particule*> _particules);
-	~WallContactGenerator();
 
 	unsigned int addContact(ParticuleContact* contact, unsigned int limit) const;
 };

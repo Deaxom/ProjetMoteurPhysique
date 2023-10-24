@@ -18,6 +18,7 @@ Phase 2:
 Pour cette deuxième partie, nous avons intégré LearnOpenGL qui nous manquait la dernière fois.
 Nous avons ensuite implémenté toutes les forces et ressorts demandés grâce aux formules du cours.
 Nous avons ensuite améliorer notre jeu pour que les particules subissent les forces et ressorts implémentés et qu'elles soient affichées graphiquement.
+Nous avons ensuite implémenté le systéme de collision avec le cable, la tiges, le sols, et l'Interpenetration.
 
 Contribution:
 Alain: Intégration de LearnOpenGL, correction des forces de gravité, de trainée, des 2 ressorts et de la flottabilité. Modification des classes Particules et Vecteur3D précédentes pour l'implémentation de cette partie. (33%)
