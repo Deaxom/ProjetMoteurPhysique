@@ -146,6 +146,8 @@
     <ClCompile Include="libs\LearnOpenGL\camera_class.cpp" />
     <ClCompile Include="libs\stb_image.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix3x3.cpp" />
+    <ClCompile Include="Matrix3x4.cpp" />
     <ClCompile Include="OpenGlGLFW.cpp" />
     <ClCompile Include="OpenglImGui.cpp" />
     <ClCompile Include="ParticuleContact.cpp" />
@@ -160,6 +162,7 @@
     <ClCompile Include="ParticuleRessort.cpp" />
     <ClCompile Include="ParticuleRessortFixe.cpp" />
     <ClCompile Include="ParticuleTrainee.cpp" />
+    <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Vecteur3D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +189,8 @@
     <ClInclude Include="libs\LearnOpenGL\root_directory.h" />
     <ClInclude Include="libs\LearnOpenGL\shader_m.h" />
     <ClInclude Include="libs\stb_image.h" />
+    <ClInclude Include="Matrix3x3.h" />
+    <ClInclude Include="Matrix3x4.h" />
     <ClInclude Include="OpenGlGLFW.h" />
     <ClInclude Include="OpenglImGui.h" />
     <ClInclude Include="ParticuleContact.h" />
@@ -200,6 +205,7 @@
     <ClInclude Include="ParticuleRessort.h" />
     <ClInclude Include="ParticuleRessortFixe.h" />
     <ClInclude Include="ParticuleTrainee.h" />
+    <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Vecteur3D.h" />
   </ItemGroup>
   <ItemGroup>
