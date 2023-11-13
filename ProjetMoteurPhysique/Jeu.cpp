@@ -6,6 +6,7 @@
 #include "ParticuleRessort.h"
 #include "ParticuleTrainee.h"
 #include "ParticuleFlottabilite.h"
+#include "CoprsRigide.h"
 
 //Constructeurs
 Jeu::Jeu() {
@@ -60,6 +61,11 @@ std::vector<Particule*> Jeu::getListeParticule() {
     return this->listeParticule;
 }
 
+std::vector<CoprsRigide*> Jeu::getListeCorpsRigide()
+{
+    return this->listeCorpsRigide;
+}
+
 //SETTERS
 void Jeu::setEtat(bool newEtat) {
     this->etat = newEtat;
@@ -93,17 +99,19 @@ void Jeu::start() {
     Vecteur3D positionParticuleReference(0, 2, 0);
     Vecteur3D vitesseParticuleReference(0, 0, 0);
     Vecteur3D accelerationReference(0, 0, 0);
+    Quaternion orientationReference(0,0,0,0);
 
-    Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000, false);
+    CoprsRigide* particuleReference = new CoprsRigide(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000, orientationReference, Vecteur3D(0,0,0));
 
     //particule1 Particule soumise � la force de gravite
     Vecteur3D positionParticuleGravite(2.3f, 2, 0);
     Vecteur3D vitesseParticuleGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
+    Quaternion orientationGravite(10.f,20.f,30.f,40.f);
 
-    Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, true);
+    CoprsRigide* particuleGravite = new CoprsRigide(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, orientationGravite, Vecteur3D(50,10,10));
 
-
+#pragma region Particule
     /*//particule2 sur lequel on applique la force de traine
     Vecteur3D positionParticuleTraine(-2, 0, 0);
     Vecteur3D vitesseParticuleTraine(0, 0, 0);
@@ -178,10 +186,11 @@ void Jeu::start() {
     ParticuleRod* rod = new ParticuleRod(_contact, 2.f);
 
     contactGenerators.push_back(cable);*/
+#pragma endregion
 
     //On ajoute tout les particules � une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeParticule = { particuleReference, particuleGravite/*, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite*/ };
+    this->listeCorpsRigide = { particuleReference, particuleGravite/*, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite*/ };
     
     /*NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
 
@@ -206,11 +215,19 @@ void Jeu::update() {
         /*std::cout << contact->particules[0]->getAcceleration().getY() << std::endl;
         std::cout << contact->particules[0]->getVitesse().getY() << std::endl;*/
 
-        for (std::vector<Particule*>::iterator i = listeParticule.begin(); i != listeParticule.end(); ++i)
+        // Methode pour Particules
+        /*for (std::vector<Particule*>::iterator i = listeParticule.begin(); i != listeParticule.end(); ++i)
         {
             integrateur.MiseAJourPositionParticule(*i, &deltaTime);
             integrateur.MiseAJourVelociteParticule(*i, &deltaTime);
-        }
+        }*/
+
+        // Methode pour CorpsRigides
+        /*for (std::vector<CoprsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
+        {
+            (*i)->MiseAJourCorps(deltaTime);
+        }*/
+        listeCorpsRigide[1]->MiseAJourCorps(deltaTime);
 
         //Iteration sur tout les link
         for (ContactGenerator::iterator i = contactGenerators.begin(); i != contactGenerators.end(); ++i)

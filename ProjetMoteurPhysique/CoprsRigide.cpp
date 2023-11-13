@@ -7,25 +7,36 @@ CoprsRigide::CoprsRigide() {
 	Vecteur3D newVitesse;
 	Vecteur3D newAcceleration;
 	double masse = 0;
+	Quaternion newOrientation;
+	Vecteur3D newVelociteAngulaire;
 	this->setPosition(newPosition);
 	this->setVitesse(newVitesse);
 	this->setAcceleration(newAcceleration);
 	this->setMasse(masse);
-	this->setIsDynamic(false);
 	this->setLastVitesse(getVitesse());
+	this->setOrientation(newOrientation);
+	this->SetVelociteAngulaire(newVelociteAngulaire);
+	Matrix3x4 newMatrice;
+	newMatrice.SetOrientationAndPos(newOrientation, newPosition);
+	this->SetTransformationMatrice(newMatrice);
+	
 }
 
-CoprsRigide::CoprsRigide(const Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, bool isDynamic) {
+CoprsRigide::CoprsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire) {
 	this->setPosition(position);
 	this->setVitesse(vitesse);
 	this->setAcceleration(acceleration);
 	this->setMasse(masse);
-	this->setIsDynamic(isDynamic);
 	this->setLastVitesse(getVitesse());
+	this->setOrientation(orientation);
+	this->SetVelociteAngulaire(velociteAngulaire);
+	Matrix3x4 newMatrice;
+	newMatrice.SetOrientationAndPos(orientation, position);
+	this->SetTransformationMatrice(newMatrice);
 }
 
 //GETTERS
-Vecteur3D CoprsRigide::getPosition() const {
+Vecteur3D CoprsRigide::getPosition() {
 	return this->position;
 }
 
@@ -41,14 +52,24 @@ double CoprsRigide::getMasse() {
 	return this->masse;
 }
 
-bool CoprsRigide::getIsDynamic()
-{
-	return this->isDynamic;
-}
-
 Vecteur3D CoprsRigide::getLastVitesse() const
 {
 	return lastVitesse;
+}
+
+Quaternion CoprsRigide::getOrientation() const
+{
+	return orientation;
+}
+
+Vecteur3D CoprsRigide::getVelociteAngulaire() const
+{
+	return velociteAngulaire;
+}
+
+Matrix3x4 CoprsRigide::getTransmationMatrice() const
+{
+	return tranformationMatrice;
 }
 
 //SETTERS
@@ -67,17 +88,27 @@ void CoprsRigide::setAcceleration(Vecteur3D newAcceleration) {
 	this->masse = newMasse;
 }
 
-void CoprsRigide::setIsDynamic(bool _isDynamic)
-{
-	this->isDynamic = _isDynamic;
-}
-
 void CoprsRigide::setLastVitesse(Vecteur3D _lastVitesse)
 {
 	this->lastVitesse = _lastVitesse;
 }
 
-void CoprsRigide::MiseAJourCorps(double deltaTime)
+void CoprsRigide::setOrientation(Quaternion& orientation)
+{
+	this->orientation = orientation;
+}
+
+void CoprsRigide::SetVelociteAngulaire(Vecteur3D& velociteAngulaire)
+{
+	this->velociteAngulaire = velociteAngulaire;
+}
+
+void CoprsRigide::SetTransformationMatrice(Matrix3x4 transformationMatrice)
+{
+	this->tranformationMatrice = transformationMatrice;
+}
+
+void CoprsRigide::MiseAJourCorps(double &deltaTime)
 {
 	// mise a jour position
 	position = position + vitesse * deltaTime;

@@ -7,6 +7,7 @@
 
 class Shader;
 struct GLFWwindow;
+class CoprsRigide;
 
 class CameraControlleur
 {
@@ -20,6 +21,7 @@ public:
     void Init(GLFWwindow* _window);
 
     void MiseAJour(std::vector<Particule*> listeParticule);
+    void MiseAJour(std::vector<CoprsRigide*> listeCorpsRigide);
 
     void Arret();
 

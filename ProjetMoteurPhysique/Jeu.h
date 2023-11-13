@@ -3,6 +3,8 @@
 #include "Integrateur.h"
 #include "OpenglImGui.h"
 #include <vector>
+
+#include "CoprsRigide.h"
 #include "ParticuleForceRegistre.h"
 #include "ParticuleContactGenerator.h"
 #include "ParticuleContactResolver.h"
@@ -18,6 +20,7 @@ private:
     Integrateur integrateur;
     Particule* particule;
     std::vector<Particule*> listeParticule;
+    std::vector<CoprsRigide*> listeCorpsRigide;
     ParticuleForceRegistre forceRegistre;
     typedef std::vector<ParticuleContactGenerator*> ContactGenerator;
     ContactGenerator contactGenerators;
@@ -32,6 +35,7 @@ public:
     double getLastFrameTime();
     Particule* getParticule();
     std::vector<Particule*> getListeParticule();
+    std::vector<CoprsRigide*> getListeCorpsRigide();
     void setEtat(bool newEtat);
     void setWindow(OpenGlImGui* newWindow);
     void setDeltaTime(double newDeltaTime);

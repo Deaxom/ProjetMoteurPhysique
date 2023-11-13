@@ -15,6 +15,7 @@
 #include "../CameraControlleur.h"
 #include "../Integrateur.h"
 #include "../ParticuleGravite.h"
+#include "../CoprsRigide.h"
 
 
 
@@ -240,6 +241,63 @@ void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule) {
         {
             // On creer les positions graphiques de la particule
            glm::vec3 posParticuleGraphique(listeParticule[i]->getPosition().getX(), listeParticule[i]->getPosition().getY(), listeParticule[i]->getPosition().getZ());
+
+            //on creer notre particul graphique
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, posParticuleGraphique);
+            ourShader->setMat4("model", model);
+
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+    }
+}
+
+void CameraControlleur::MiseAJour(std::vector<CoprsRigide*> listeCorpsRigide) {
+    // render loop
+
+    // per-frame time logic
+    // --------------------
+    float currentFrame = static_cast<float>(glfwGetTime());
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+
+    // input
+    // -----
+    processInput(window);
+
+    // render
+    // ------
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // bind textures on corresponding texture units
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+
+    // activate shader
+    ourShader->use();
+
+    // pass projection matrix to shader (note that in this case it could change every frame)
+    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    ourShader->setMat4("projection", projection);
+
+    // camera/view transformation
+    glm::mat4 view = camera.GetViewMatrix();
+    ourShader->setMat4("view", view);
+
+    // render boxes
+    glBindVertexArray(VAO);
+
+
+    // On verifie que la liste des particules a afficher n'est pas nul
+    if (listeCorpsRigide.size() >= 1) {
+
+        for (unsigned int i = 0; i < listeCorpsRigide.size(); i++)
+        {
+            // On creer les positions graphiques de la particule
+            glm::vec3 posParticuleGraphique(listeCorpsRigide[i]->getPosition().getX(), listeCorpsRigide[i]->getPosition().getY(), listeCorpsRigide[i]->getPosition().getZ());
 
             //on creer notre particul graphique
             glm::mat4 model = glm::mat4(1.0f);
