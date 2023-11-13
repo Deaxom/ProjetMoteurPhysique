@@ -1,6 +1,14 @@
 ﻿#include "Quaternion.h"
 #include <cmath>
 
+Quaternion::Quaternion(float w, float i, float j, float k) :
+w(w),
+i(i),
+j(j),
+k(k)
+{
+}
+
 void Quaternion::Normalized()
 {
     float d = w*w+i*i+j*j+k*k;

@@ -81,7 +81,7 @@ void Jeu::setParticule(Particule* newParticule) {
     this->particule = newParticule;
 }
 
-//Fonction qui démarre le jeu
+//Fonction qui dï¿½marre le jeu
 void Jeu::start() {
     /*glfwMakeContextCurrent(this->getWindow());
     const char* glsl_version = "#version 130";
@@ -96,7 +96,7 @@ void Jeu::start() {
 
     Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000, false);
 
-    //particule1 Particule soumise à la force de gravite
+    //particule1 Particule soumise ï¿½ la force de gravite
     Vecteur3D positionParticuleGravite(2.3f, 2, 0);
     Vecteur3D vitesseParticuleGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
@@ -104,7 +104,7 @@ void Jeu::start() {
     Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, true);
 
 
-    //particule2 sur lequel on applique la force de traine
+    /*//particule2 sur lequel on applique la force de traine
     Vecteur3D positionParticuleTraine(-2, 0, 0);
     Vecteur3D vitesseParticuleTraine(0, 0, 0);
     Vecteur3D accelerationTraine(5, 0, 0);
@@ -139,29 +139,29 @@ void Jeu::start() {
 
     Particule* ParticuleFlotabilite = new Particule(positionParticuleFlotabilite, vitesseParticuleFlotabilite, accelerationFlotabilite, 10, true);
 
-    //On cree la force de gravite et on la lie à la particule gravite | -98.1 pour la terre
+    //On cree la force de gravite et on la lie ï¿½ la particule gravite | -98.1 pour la terre
     ParticuleGravite *forceGravite = new ParticuleGravite(0.0, -98.1, 0.0);
     ParticuleGravite *forceGraviteBis = new ParticuleGravite(0.0, 98.1, 0.0);
     this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceGravite);
 
 
-    //On cree la force de traine et on la lie à la particule traine
+    //On cree la force de traine et on la lie ï¿½ la particule traine
     ParticuleTrainee* forceTrainee = new ParticuleTrainee(1.5f, 13.6f);
     this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);
 
-    //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie à la particule ressort fixe
+    //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie ï¿½ la particule ressort fixe
     Vecteur3D positionFixe(0, 2, 0);
     float k = 1;
     float restLenght = 3;
     ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(positionFixe, k, restLenght);
     this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);
 
-    //On cree la force de ressort et on la lie à la particule de ressort ainsi que l'autre particule
+    //On cree la force de ressort et on la lie ï¿½ la particule de ressort ainsi que l'autre particule
     ParticuleRessort* forceRessort = new ParticuleRessort(autreParticuleRessort, k, restLenght);
     this->forceRegistre.addParticuleForceRegistre(particuleRessort, forceRessort);
 
 
-    //On cree la force de flotabilite et on la lie à la particule de flotabilite
+    //On cree la force de flotabilite et on la lie ï¿½ la particule de flotabilite
     ParticuleFlottabilite* forceFlotabilite = new ParticuleFlottabilite(-2, 1, 1, 1);
     this->forceRegistre.addParticuleForceRegistre(ParticuleFlotabilite, forceFlotabilite);
 
@@ -177,22 +177,22 @@ void Jeu::start() {
     ParticuleCable* cable = new ParticuleCable(_contact, 2.5f, 0.5f);
     ParticuleRod* rod = new ParticuleRod(_contact, 2.f);
 
-    contactGenerators.push_back(cable);
+    contactGenerators.push_back(cable);*/
 
-    //On ajoute tout les particules à une liste pour ensuite les afficher graphiquement
+    //On ajoute tout les particules ï¿½ une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeParticule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite };
+    this->listeParticule = { particuleReference, particuleGravite/*, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite*/ };
     
-    NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
+    /*NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
 
     contactGenerators.push_back(naive);
 
     WallContactGenerator* ground = new WallContactGenerator(-3.f, 10.f, 0.f, listeParticule);
 
-    contactGenerators.push_back(ground);
+    contactGenerators.push_back(ground);*/
 }
 
-//Fonction qui update le jeu à chaque unité de temps
+//Fonction qui update le jeu ï¿½ chaque unitï¿½ de temps
 void Jeu::update() {
     if (etat) {
         double currentFrame = glfwGetTime();
@@ -223,7 +223,7 @@ void Jeu::update() {
     }
 }
 
-//Fonction qui arrête le jeu
+//Fonction qui arrï¿½te le jeu
 void Jeu::stop() {
     //...
     this->setEtat(false);

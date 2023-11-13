@@ -15,6 +15,11 @@ class Matrix3x3
 {
 public:
     Matrix3x3() = default;
+
+    /// structure =
+    /// 1|2|3
+    /// 4|5|6
+    /// 7|8|9
     Matrix3x3(std::array<float, 3 * 3> value);
 
     // Determine si la Matrice possede un Inverse ou non
