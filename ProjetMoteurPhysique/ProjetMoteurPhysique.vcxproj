@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CoprsRigide.cpp" />
     <ClCompile Include="Integrateur.cpp" />
     <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="libs\glad\src\glad.c" />
@@ -168,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="CameraControlleur.h" />
     <ClInclude Include="Constantes.h" />
+    <ClInclude Include="CoprsRigide.h" />
     <ClInclude Include="Integrateur.h" />
     <ClInclude Include="Jeu.h" />
     <ClInclude Include="libs\glad\include\glad\glad.h" />

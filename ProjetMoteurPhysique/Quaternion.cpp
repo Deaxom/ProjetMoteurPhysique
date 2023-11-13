@@ -38,6 +38,28 @@ Quaternion& Quaternion::operator*(const Quaternion& q)
     return v;
 }
 
+Quaternion& Quaternion::operator+(const Quaternion& vec)
+{
+    Quaternion& v = (*this);
+    v.w = v.w + vec.w;
+    v.i = v.i + vec.i;
+    v.j = v.j + vec.j;
+    v.k = v.k + vec.k;
+
+    return v;
+}
+
+Quaternion& Quaternion::operator*(const double& scalaire)
+{
+    Quaternion& v = (*this);
+    v.w = v.w * scalaire;
+    v.i = v.i * scalaire;
+    v.j = v.j * scalaire;
+    v.k = v.k * scalaire;
+
+    return v;
+}
+
 void Quaternion::RotateByVector(Vecteur3D& vecteur)
 {
     Quaternion q(0, vecteur.getX(), vecteur.getY(), vecteur.getZ());

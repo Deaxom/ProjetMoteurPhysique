@@ -11,6 +11,8 @@ public:
 
     void operator*=(const Quaternion& vec);
     Quaternion& operator*(const Quaternion& vec);
+    Quaternion& operator+(const Quaternion& vec);
+    Quaternion& operator*(const double& scalaire);
 
     void RotateByVector(Vecteur3D& vecteur);
     void UpdateByAngularVelocity(Vecteur3D& rotation, float duration);
