@@ -12,4 +12,3 @@ public:
 	ParticuleRessortFixe(Vecteur3D positionFixe, float k, float restLenght);
 	void MiseAJourForce(Particule* particule, double deltaTime);
 };
-

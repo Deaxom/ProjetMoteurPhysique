@@ -10,4 +10,3 @@ public:
 
 	void MiseAJourForce(Particule* particule, double deltaTime);
 };
-

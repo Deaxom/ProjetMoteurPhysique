@@ -134,6 +134,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CorpsRigide.cpp" />
+    <ClCompile Include="CorpsRigideFlottabilite.cpp" />
+    <ClCompile Include="CorpsRigideForceRegistre.cpp" />
+    <ClCompile Include="CorpsRigideGenerateurForce.cpp" />
+    <ClCompile Include="CorpsRigideGravite.cpp" />
+    <ClCompile Include="CorpsRigideRessort.cpp" />
+    <ClCompile Include="CorpsRigideRessortFixe.cpp" />
+    <ClCompile Include="CorpsRigideTrainee.cpp" />
     <ClCompile Include="Integrateur.cpp" />
     <ClCompile Include="Jeu.cpp" />
     <ClCompile Include="libs\glad\src\glad.c" />
@@ -170,6 +177,13 @@
     <ClInclude Include="CameraControlleur.h" />
     <ClInclude Include="Constantes.h" />
     <ClInclude Include="CorpsRigide.h" />
+    <ClInclude Include="CorpsRigideFlottabilite.h" />
+    <ClInclude Include="CorpsRigideForceRegistre.h" />
+    <ClInclude Include="CorpsRigideGenerateurForce.h" />
+    <ClInclude Include="CorpsRigideGravite.h" />
+    <ClInclude Include="CorpsRigideRessort.h" />
+    <ClInclude Include="CorpsRigideRessortFixe.h" />
+    <ClInclude Include="CorpsRigideTrainee.h" />
     <ClInclude Include="Integrateur.h" />
     <ClInclude Include="Jeu.h" />
     <ClInclude Include="libs\glad\include\glad\glad.h" />
