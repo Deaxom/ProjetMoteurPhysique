@@ -9,6 +9,7 @@ CoprsRigide::CoprsRigide() {
 	double masse = 0;
 	Quaternion newOrientation;
 	Vecteur3D newVelociteAngulaire;
+	Vecteur3D newAccelerationAngulaire;
 	this->setPosition(newPosition);
 	this->setVitesse(newVitesse);
 	this->setAcceleration(newAcceleration);
@@ -16,13 +17,14 @@ CoprsRigide::CoprsRigide() {
 	this->setLastVitesse(getVitesse());
 	this->setOrientation(newOrientation);
 	this->SetVelociteAngulaire(newVelociteAngulaire);
+	this->SetAccelerationAngulaire(newAccelerationAngulaire);
 	Matrix3x4 newMatrice;
 	newMatrice.SetOrientationAndPos(newOrientation, newPosition);
 	this->SetTransformationMatrice(newMatrice);
 	
 }
 
-CoprsRigide::CoprsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire) {
+CoprsRigide::CoprsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire, Vecteur3D accelerationAngulaire) {
 	this->setPosition(position);
 	this->setVitesse(vitesse);
 	this->setAcceleration(acceleration);
@@ -30,6 +32,7 @@ CoprsRigide::CoprsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Ve
 	this->setLastVitesse(getVitesse());
 	this->setOrientation(orientation);
 	this->SetVelociteAngulaire(velociteAngulaire);
+	this->SetAccelerationAngulaire(accelerationAngulaire);
 	Matrix3x4 newMatrice;
 	newMatrice.SetOrientationAndPos(orientation, position);
 	this->SetTransformationMatrice(newMatrice);
@@ -65,6 +68,11 @@ Quaternion CoprsRigide::getOrientation() const
 Vecteur3D CoprsRigide::getVelociteAngulaire() const
 {
 	return velociteAngulaire;
+}
+
+Vecteur3D CoprsRigide::getAccelerationAngulaire() const
+{
+	return accelerationAngulaire;
 }
 
 Matrix3x4 CoprsRigide::getTransmationMatrice() const
@@ -103,30 +111,37 @@ void CoprsRigide::SetVelociteAngulaire(Vecteur3D& velociteAngulaire)
 	this->velociteAngulaire = velociteAngulaire;
 }
 
+void CoprsRigide::SetAccelerationAngulaire(Vecteur3D& accelerationAngulaire)
+{
+	this->accelerationAngulaire = accelerationAngulaire;
+}
+
 void CoprsRigide::SetTransformationMatrice(Matrix3x4 transformationMatrice)
 {
 	this->tranformationMatrice = transformationMatrice;
 }
 
-void CoprsRigide::MiseAJourCorps(double &deltaTime)
-{
-	// mise a jour position
-	position = position + vitesse * deltaTime;
-	
-	//mise a jour velocite
-	vitesse = vitesse + acceleration * deltaTime;
-
-	//mise a jour de orientation
-	Quaternion w(0, velociteAngulaire.getX(), velociteAngulaire.getY(), velociteAngulaire.getZ());
-	orientation = orientation +  w * orientation * (deltaTime / 2);
-
-	//mise a jour velocite angulaire
-	orientation.UpdateByAngularVelocity(velociteAngulaire, deltaTime);
-}
+//void CoprsRigide::MiseAJourCorps(double &deltaTime)
+//{
+//	// mise a jour position
+//	position = position + vitesse * deltaTime;
+//	
+//	//mise a jour velocite
+//	vitesse = vitesse + acceleration * deltaTime;
+//
+//	//mise a jour de orientation
+//	Quaternion w(0, velociteAngulaire.getX(), velociteAngulaire.getY(), velociteAngulaire.getZ());
+//	orientation = orientation +  w * orientation * (deltaTime / 2);
+//
+//	//mise a jour velocite angulaire
+//	velociteAngulaire = velociteAngulaire + accelerationAngulaire * deltaTime;
+//	//orientation.UpdateByAngularVelocity(velociteAngulaire, deltaTime);
+//
+//	CalculerTranformationMatrice();
+//}
 
 void CoprsRigide::CalculerTranformationMatrice()
 {
-
 	orientation.Normalized();
 
 	tranformationMatrice.SetOrientationAndPos(orientation, position);

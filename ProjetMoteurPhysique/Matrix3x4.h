@@ -36,6 +36,7 @@ public:
 
     float& Value(std::size_t i, std::size_t j);
     const float& Value(std::size_t i, std::size_t j) const;
+    float* getMatrice();
 
     float& operator()(std::size_t i, std::size_t j);
     const float& operator()(std::size_t i, std::size_t j) const;

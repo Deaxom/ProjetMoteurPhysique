@@ -300,8 +300,19 @@ void CameraControlleur::MiseAJour(std::vector<CoprsRigide*> listeCorpsRigide) {
             glm::vec3 posParticuleGraphique(listeCorpsRigide[i]->getPosition().getX(), listeCorpsRigide[i]->getPosition().getY(), listeCorpsRigide[i]->getPosition().getZ());
 
             //on creer notre particul graphique
-            glm::mat4 model = glm::mat4(1.0f);
+            //glm::mat4 model = glm::mat4(1.0f);
+            glm::mat4 model = glm::mat4_cast(glm::quat(listeCorpsRigide[i]->getOrientation().w, listeCorpsRigide[i]->getOrientation().i, listeCorpsRigide[i]->getOrientation().j, listeCorpsRigide[i]->getOrientation().k));
+
+            //glm::mat4 model = glm::make_mat4(listeCorpsRigide[i]->getTransmationMatrice().getMatrice());
             model = glm::translate(model, posParticuleGraphique);
+
+            // Utilisez la matrice de transformation existante ici
+            //for (int row = 0; row < 3; row++) {
+            //    for (int col = 0; col < 4; col++) {
+            //        model[row][col] = listeCorpsRigide[i]->getTransmationMatrice().Value(row, col);
+            //    }
+            //}
+
             ourShader->setMat4("model", model);
 
             glDrawArrays(GL_TRIANGLES, 0, 36);
