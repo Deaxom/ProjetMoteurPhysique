@@ -19,3 +19,24 @@ void Integrateur::MiseAJourVelociteParticule(Particule *particule, double *delta
     particule->setLastVitesse(particule->getVitesse());
     particule->setVitesse(newVelocityPtr);
 }
+
+void Integrateur::MiseAJourCorpsRigide(CorpsRigide* corpsRigide, double* deltaTime)
+{
+
+	// mise a jour position
+	corpsRigide->setPosition(corpsRigide->getPosition() + corpsRigide->getVitesse() * (*deltaTime));
+
+	//mise a jour velocite
+	corpsRigide->setVitesse(corpsRigide->getVitesse() + corpsRigide->getAcceleration() * (*deltaTime));
+
+	//mise a jour de orientation
+	Quaternion w(0, corpsRigide->getVelociteAngulaire().getX(), corpsRigide->getVelociteAngulaire().getY(), corpsRigide->getVelociteAngulaire().getZ());
+	corpsRigide->setOrientation(corpsRigide->getOrientation() + w * corpsRigide->getOrientation() * (*(deltaTime) / 2));
+
+	//mise a jour velocite angulaire
+	Vecteur3D nouvelleVelociteAngulaire = corpsRigide->getVelociteAngulaire() + corpsRigide->getAccelerationAngulaire() * (*deltaTime);
+	corpsRigide->SetVelociteAngulaire(nouvelleVelociteAngulaire);
+	//orientation.UpdateByAngularVelocity(velociteAngulaire, deltaTime);
+
+	corpsRigide->CalculerTranformationMatrice();
+}

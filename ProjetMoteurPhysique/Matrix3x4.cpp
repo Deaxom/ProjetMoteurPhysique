@@ -62,7 +62,22 @@ void Matrix3x4::SetOrientationAndPos(const Quaternion& q, Vecteur3D& pos)
     result.Value(2,0) = 2*q.i*q.k + 2*q.j*q.w;
     result.Value(2,1) = 2*q.j*q.k - 2*q.i*q.w;
     result.Value(2,2) = 1 - (2*q.i*q.i + 2*q.j*q.j);
-    result.Value(2,3) = pos.getZ();
+    result.Value(2,3) = pos.getZ();   
+    
+    //result.Value(0, 0) = 1;
+    //result.Value(0, 1) = 0;
+    //result.Value(0, 2) = 0;
+    //result.Value(0, 3) = 0;
+    //    
+    //result.Value(1, 0) = 0;
+    //result.Value(1, 1) = 1;
+    //result.Value(1, 2) = 0;
+    //result.Value(1, 3) = 0;
+    //    
+    //result.Value(2, 0) = 0;
+    //result.Value(2, 1) = 0;
+    //result.Value(2, 2) = 1;
+    //result.Value(2, 3) = 0;
     
     (*this) = result;
 }
@@ -104,6 +119,11 @@ float& Matrix3x4::Value(std::size_t i, std::size_t j)
 const float& Matrix3x4::Value(std::size_t i, std::size_t j) const
 {
     return m_values[i * 4 + j];
+}
+
+float* Matrix3x4::getMatrice()
+{
+    return m_values.data();
 }
 
 float& Matrix3x4::operator()(std::size_t i, std::size_t j)

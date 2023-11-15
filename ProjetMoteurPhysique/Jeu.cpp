@@ -100,16 +100,20 @@ void Jeu::start() {
     Vecteur3D vitesseParticuleReference(0, 0, 0);
     Vecteur3D accelerationReference(0, 0, 0);
     Quaternion orientationReference(0,0,0,0);
+    Vecteur3D velociteAngulaireReference(0, 0, 0);
+    Vecteur3D accelerationAngulaireReference(0, 0, 0);
 
-    CorpsRigide* particuleReference = new CorpsRigide(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000, orientationReference, Vecteur3D(0,0,0));
+    CorpsRigide* particuleReference = new CorpsRigide(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
 
-    //particule1 Particule soumise � la force de gravite
-    Vecteur3D positionParticuleGravite(2.3f, 2, 0);
+    //particule1 Particule soumise la force de gravite
+    Vecteur3D positionParticuleGravite(2, 2, 0);
     Vecteur3D vitesseParticuleGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
-    Quaternion orientationGravite(10.f,20.f,30.f,40.f);
+    Quaternion orientationGravite(0,0,0,0);
+    Vecteur3D velociteAngulaireGravite(10, 0, 0);
+    Vecteur3D accelerationAngulaireGravite(0, 0, 0);
 
-    CorpsRigide* particuleGravite = new CorpsRigide(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, orientationGravite, Vecteur3D(50,10,10));
+    CorpsRigide* particuleGravite = new CorpsRigide(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
 
 #pragma region Particule
     /*//particule2 sur lequel on applique la force de traine
@@ -223,11 +227,11 @@ void Jeu::update() {
         }*/
 
         // Methode pour CorpsRigides
-        /*for (std::vector<CoprsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
+        for (std::vector<CorpsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
         {
-            (*i)->MiseAJourCorps(deltaTime);
-        }*/
-        listeCorpsRigide[1]->MiseAJourCorps(deltaTime);
+            integrateur.MiseAJourCorpsRigide(*i, &deltaTime);
+        }
+       
 
         //Iteration sur tout les link
         for (ContactGenerator::iterator i = contactGenerators.begin(); i != contactGenerators.end(); ++i)
