@@ -3,7 +3,7 @@
 #include "Quaternion.h"
 #include "Matrix3x4.h"
 
-class CoprsRigide
+class CorpsRigide
 {
 private:
 	// Reprise des attributs de particule
@@ -25,8 +25,8 @@ private:
 
 public:
 	// Reprise des methodes de particule
-	CoprsRigide();
-	CoprsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire);
+	CorpsRigide();
+	CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire);
 	Vecteur3D getPosition();
 	Vecteur3D getVitesse() const;
 	Vecteur3D getAcceleration() const;

@@ -15,7 +15,7 @@
 #include "../CameraControlleur.h"
 #include "../Integrateur.h"
 #include "../ParticuleGravite.h"
-#include "../CoprsRigide.h"
+#include "../CorpsRigide.h"
 
 
 
@@ -252,7 +252,7 @@ void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule) {
     }
 }
 
-void CameraControlleur::MiseAJour(std::vector<CoprsRigide*> listeCorpsRigide) {
+void CameraControlleur::MiseAJour(std::vector<CorpsRigide*> listeCorpsRigide) {
     // render loop
 
     // per-frame time logic

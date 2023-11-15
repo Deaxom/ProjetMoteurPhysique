@@ -1,8 +1,8 @@
-#include "CoprsRigide.h"
+#include "CorpsRigide.h"
 
 // Reprise des methodes de particule
 //Constructeurs
-CoprsRigide::CoprsRigide() {
+CorpsRigide::CorpsRigide() {
 	Vecteur3D newPosition;
 	Vecteur3D newVitesse;
 	Vecteur3D newAcceleration;
@@ -22,7 +22,7 @@ CoprsRigide::CoprsRigide() {
 	
 }
 
-CoprsRigide::CoprsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire) {
+CorpsRigide::CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire) {
 	this->setPosition(position);
 	this->setVitesse(vitesse);
 	this->setAcceleration(acceleration);
@@ -36,79 +36,79 @@ CoprsRigide::CoprsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Ve
 }
 
 //GETTERS
-Vecteur3D CoprsRigide::getPosition() {
+Vecteur3D CorpsRigide::getPosition() {
 	return this->position;
 }
 
-Vecteur3D CoprsRigide::getVitesse() const {
+Vecteur3D CorpsRigide::getVitesse() const {
 	return this->vitesse;
 }
 
-Vecteur3D CoprsRigide::getAcceleration() const {
+Vecteur3D CorpsRigide::getAcceleration() const {
 	return this->acceleration;
 }
 
-double CoprsRigide::getMasse() {
+double CorpsRigide::getMasse() {
 	return this->masse;
 }
 
-Vecteur3D CoprsRigide::getLastVitesse() const
+Vecteur3D CorpsRigide::getLastVitesse() const
 {
 	return lastVitesse;
 }
 
-Quaternion CoprsRigide::getOrientation() const
+Quaternion CorpsRigide::getOrientation() const
 {
 	return orientation;
 }
 
-Vecteur3D CoprsRigide::getVelociteAngulaire() const
+Vecteur3D CorpsRigide::getVelociteAngulaire() const
 {
 	return velociteAngulaire;
 }
 
-Matrix3x4 CoprsRigide::getTransmationMatrice() const
+Matrix3x4 CorpsRigide::getTransmationMatrice() const
 {
 	return tranformationMatrice;
 }
 
 //SETTERS
-void CoprsRigide::setPosition(Vecteur3D newPosition) {
+void CorpsRigide::setPosition(Vecteur3D newPosition) {
 	this->position = newPosition;
 }
 
-void CoprsRigide::setVitesse(Vecteur3D newVitesse) {
+void CorpsRigide::setVitesse(Vecteur3D newVitesse) {
 	this->vitesse = newVitesse;
 }
 
-void CoprsRigide::setAcceleration(Vecteur3D newAcceleration) {
+void CorpsRigide::setAcceleration(Vecteur3D newAcceleration) {
 	this->acceleration = acceleration + newAcceleration;
 
-}void CoprsRigide::setMasse(double newMasse) {
+}void CorpsRigide::setMasse(double newMasse) {
 	this->masse = newMasse;
 }
 
-void CoprsRigide::setLastVitesse(Vecteur3D _lastVitesse)
+void CorpsRigide::setLastVitesse(Vecteur3D _lastVitesse)
 {
 	this->lastVitesse = _lastVitesse;
 }
 
-void CoprsRigide::setOrientation(Quaternion& orientation)
+void CorpsRigide::setOrientation(Quaternion& orientation)
 {
 	this->orientation = orientation;
 }
 
-void CoprsRigide::SetVelociteAngulaire(Vecteur3D& velociteAngulaire)
+void CorpsRigide::SetVelociteAngulaire(Vecteur3D& velociteAngulaire)
 {
 	this->velociteAngulaire = velociteAngulaire;
 }
 
-void CoprsRigide::SetTransformationMatrice(Matrix3x4 transformationMatrice)
+void CorpsRigide::SetTransformationMatrice(Matrix3x4 transformationMatrice)
 {
 	this->tranformationMatrice = transformationMatrice;
 }
 
-void CoprsRigide::MiseAJourCorps(double &deltaTime)
+void CorpsRigide::MiseAJourCorps(double &deltaTime)
 {
 	// mise a jour position
 	position = position + vitesse * deltaTime;
@@ -124,7 +124,7 @@ void CoprsRigide::MiseAJourCorps(double &deltaTime)
 	orientation.UpdateByAngularVelocity(velociteAngulaire, deltaTime);
 }
 
-void CoprsRigide::CalculerTranformationMatrice()
+void CorpsRigide::CalculerTranformationMatrice()
 {
 
 	orientation.Normalized();

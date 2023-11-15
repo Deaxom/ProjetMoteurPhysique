@@ -6,7 +6,7 @@
 #include "ParticuleRessort.h"
 #include "ParticuleTrainee.h"
 #include "ParticuleFlottabilite.h"
-#include "CoprsRigide.h"
+#include "CorpsRigide.h"
 
 //Constructeurs
 Jeu::Jeu() {
@@ -61,7 +61,7 @@ std::vector<Particule*> Jeu::getListeParticule() {
     return this->listeParticule;
 }
 
-std::vector<CoprsRigide*> Jeu::getListeCorpsRigide()
+std::vector<CorpsRigide*> Jeu::getListeCorpsRigide()
 {
     return this->listeCorpsRigide;
 }
@@ -101,7 +101,7 @@ void Jeu::start() {
     Vecteur3D accelerationReference(0, 0, 0);
     Quaternion orientationReference(0,0,0,0);
 
-    CoprsRigide* particuleReference = new CoprsRigide(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000, orientationReference, Vecteur3D(0,0,0));
+    CorpsRigide* particuleReference = new CorpsRigide(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000, orientationReference, Vecteur3D(0,0,0));
 
     //particule1 Particule soumise � la force de gravite
     Vecteur3D positionParticuleGravite(2.3f, 2, 0);
@@ -109,7 +109,7 @@ void Jeu::start() {
     Vecteur3D accelerationGravite(0, 0, 0);
     Quaternion orientationGravite(10.f,20.f,30.f,40.f);
 
-    CoprsRigide* particuleGravite = new CoprsRigide(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, orientationGravite, Vecteur3D(50,10,10));
+    CorpsRigide* particuleGravite = new CorpsRigide(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, orientationGravite, Vecteur3D(50,10,10));
 
 #pragma region Particule
     /*//particule2 sur lequel on applique la force de traine
