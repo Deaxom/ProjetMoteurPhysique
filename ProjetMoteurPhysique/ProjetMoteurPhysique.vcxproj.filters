@@ -55,6 +55,18 @@
     <Filter Include="Fichiers sources\Collisions">
       <UniqueIdentifier>{7c902efc-0bb1-4dd8-a3ea-0fc4409d00bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Forces\Particule">
+      <UniqueIdentifier>{f280478e-ac98-4998-a8c4-0f5bc985bb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Forces\CorpsRigide">
+      <UniqueIdentifier>{ba62269f-a1de-47ad-89b1-e7eb3254febc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Forces\CorpsRigide">
+      <UniqueIdentifier>{1021bc24-5219-452b-a6fd-91d4a0f1d72a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Forces\Particule">
+      <UniqueIdentifier>{82f75110-e73e-41b0-888e-eb85b24fba4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -120,27 +132,6 @@
     <ClCompile Include="ParticuleContactResolver.cpp">
       <Filter>Fichiers sources\Collisions</Filter>
     </ClCompile>
-    <ClCompile Include="ParticuleFlottabilite.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleForceRegistre.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleGenerateurForce.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleGravite.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleRessort.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleRessortFixe.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleTrainee.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
-    </ClCompile>
     <ClCompile Include="Matrix3x3.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -150,7 +141,49 @@
     <ClCompile Include="Quaternion.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="CoprsRigide.cpp">
+    <ClCompile Include="ParticuleFlottabilite.cpp">
+      <Filter>Fichiers sources\Forces\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleForceRegistre.cpp">
+      <Filter>Fichiers sources\Forces\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleGenerateurForce.cpp">
+      <Filter>Fichiers sources\Forces\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleGravite.cpp">
+      <Filter>Fichiers sources\Forces\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleRessort.cpp">
+      <Filter>Fichiers sources\Forces\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleRessortFixe.cpp">
+      <Filter>Fichiers sources\Forces\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleTrainee.cpp">
+      <Filter>Fichiers sources\Forces\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideFlottabilite.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideForceRegistre.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideGenerateurForce.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideGravite.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideRessort.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideRessortFixe.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideTrainee.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigide.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -248,27 +281,6 @@
     <ClInclude Include="ParticuleContactResolver.h">
       <Filter>Fichiers d%27en-tête\Collisions</Filter>
     </ClInclude>
-    <ClInclude Include="ParticuleFlottabilite.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleForceRegistre.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleGenerateurForce.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleGravite.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleRessort.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleRessortFixe.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleTrainee.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix3x3.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -278,8 +290,50 @@
     <ClInclude Include="Quaternion.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="CoprsRigide.h">
+    <ClInclude Include="CorpsRigide.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleFlottabilite.h">
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleForceRegistre.h">
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleGenerateurForce.h">
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleGravite.h">
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleRessort.h">
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleRessortFixe.h">
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleTrainee.h">
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideFlottabilite.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideForceRegistre.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideGenerateurForce.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideGravite.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideRessort.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideRessortFixe.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideTrainee.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
