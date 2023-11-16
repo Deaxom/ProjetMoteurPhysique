@@ -31,5 +31,4 @@ void ParticuleFlottabilite::MiseAJourForce(Particule* particule, double deltaTim
 	Vecteur3D nouvelleAccelerationParticule(particule->getAcceleration().getX(), nouvelleAcceleration, particule->getAcceleration().getZ());
 	//Vecteur3D nouvelleAccelerationParticule(particule->getAcceleration().getX(), particule->getAcceleration().getY() * (force / particule->getMasse()) * deltaTime, particule->getAcceleration().getZ());
 	particule->setAcceleration(nouvelleAccelerationParticule);
-
 }
