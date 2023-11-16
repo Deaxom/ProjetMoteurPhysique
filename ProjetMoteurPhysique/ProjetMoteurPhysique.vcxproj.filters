@@ -55,27 +55,42 @@
     <Filter Include="Fichiers sources\Collisions">
       <UniqueIdentifier>{7c902efc-0bb1-4dd8-a3ea-0fc4409d00bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Forces\Particule">
+      <UniqueIdentifier>{f280478e-ac98-4998-a8c4-0f5bc985bb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Forces\CorpsRigide">
+      <UniqueIdentifier>{ba62269f-a1de-47ad-89b1-e7eb3254febc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Forces\CorpsRigide">
+      <UniqueIdentifier>{1021bc24-5219-452b-a6fd-91d4a0f1d72a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Forces\Particule">
+      <UniqueIdentifier>{82f75110-e73e-41b0-888e-eb85b24fba4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Objets">
+      <UniqueIdentifier>{df2d9a7e-6bfb-46d8-b651-7e60bdde6cfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Maths">
+      <UniqueIdentifier>{733fd3ee-68c5-4eb8-81d6-3a18fe791722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Affichage">
+      <UniqueIdentifier>{09a9db6b-2880-43a4-aaa6-ad052094fbf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Maths">
+      <UniqueIdentifier>{988bdf3e-941c-4530-b9a9-ef53b0010328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Objets">
+      <UniqueIdentifier>{ed92c688-fe60-4f69-a5a8-d89d92960734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Affichage">
+      <UniqueIdentifier>{2289a127-9dc7-4384-a795-4a4b139a85df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Vecteur3D.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Particule.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Integrateur.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Jeu.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenglImGui.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGlGLFW.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="libs\LearnOpenGL\camera_class.cpp">
@@ -108,9 +123,6 @@
     <ClCompile Include="libs\stb_image.cpp">
       <Filter>Fichiers sources\libs</Filter>
     </ClCompile>
-    <ClCompile Include="ParticuleSystem.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="ParticuleContact.cpp">
       <Filter>Fichiers sources\Collisions</Filter>
     </ClCompile>
@@ -121,59 +133,83 @@
       <Filter>Fichiers sources\Collisions</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleFlottabilite.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
+      <Filter>Fichiers sources\Forces\Particule</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleForceRegistre.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
+      <Filter>Fichiers sources\Forces\Particule</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleGenerateurForce.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
+      <Filter>Fichiers sources\Forces\Particule</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleGravite.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
+      <Filter>Fichiers sources\Forces\Particule</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleRessort.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
+      <Filter>Fichiers sources\Forces\Particule</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleRessortFixe.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
+      <Filter>Fichiers sources\Forces\Particule</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleTrainee.cpp">
-      <Filter>Fichiers sources\Forces</Filter>
+      <Filter>Fichiers sources\Forces\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideFlottabilite.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideForceRegistre.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideGenerateurForce.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideGravite.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideRessort.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideRessortFixe.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigideTrainee.cpp">
+      <Filter>Fichiers sources\Forces\CorpsRigide</Filter>
     </ClCompile>
     <ClCompile Include="Matrix3x3.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Maths</Filter>
     </ClCompile>
     <ClCompile Include="Matrix3x4.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Maths</Filter>
     </ClCompile>
     <ClCompile Include="Quaternion.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Maths</Filter>
     </ClCompile>
-    <ClCompile Include="CoprsRigide.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Vecteur3D.cpp">
+      <Filter>Fichiers sources\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="CorpsRigide.cpp">
+      <Filter>Fichiers sources\Objets</Filter>
+    </ClCompile>
+    <ClCompile Include="Particule.cpp">
+      <Filter>Fichiers sources\Objets</Filter>
+    </ClCompile>
+    <ClCompile Include="Integrateur.cpp">
+      <Filter>Fichiers sources\Objets</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleSystem.cpp">
+      <Filter>Fichiers sources\Objets</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGlGLFW.cpp">
+      <Filter>Fichiers sources\Affichage</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenglImGui.cpp">
+      <Filter>Fichiers sources\Affichage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vecteur3D.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Particule.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Integrateur.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Jeu.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Constantes.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGlGLFW.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenglImGui.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="libs\glad\include\glad\glad.h">
@@ -236,9 +272,6 @@
     <ClInclude Include="CameraControlleur.h">
       <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="ParticuleSystem.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="ParticuleContact.h">
       <Filter>Fichiers d%27en-tête\Collisions</Filter>
     </ClInclude>
@@ -249,37 +282,76 @@
       <Filter>Fichiers d%27en-tête\Collisions</Filter>
     </ClInclude>
     <ClInclude Include="ParticuleFlottabilite.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
     </ClInclude>
     <ClInclude Include="ParticuleForceRegistre.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
     </ClInclude>
     <ClInclude Include="ParticuleGenerateurForce.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
     </ClInclude>
     <ClInclude Include="ParticuleGravite.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
     </ClInclude>
     <ClInclude Include="ParticuleRessort.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
     </ClInclude>
     <ClInclude Include="ParticuleRessortFixe.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
     </ClInclude>
     <ClInclude Include="ParticuleTrainee.h">
-      <Filter>Fichiers d%27en-tête\Forces</Filter>
+      <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideFlottabilite.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideForceRegistre.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideGenerateurForce.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideGravite.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideRessort.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideRessortFixe.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigideTrainee.h">
+      <Filter>Fichiers d%27en-tête\Forces\CorpsRigide</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigide.h">
+      <Filter>Fichiers d%27en-tête\Objets</Filter>
+    </ClInclude>
+    <ClInclude Include="Particule.h">
+      <Filter>Fichiers d%27en-tête\Objets</Filter>
     </ClInclude>
     <ClInclude Include="Matrix3x3.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Maths</Filter>
     </ClInclude>
     <ClInclude Include="Matrix3x4.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Maths</Filter>
     </ClInclude>
     <ClInclude Include="Quaternion.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="CoprsRigide.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Vecteur3D.h">
+      <Filter>Fichiers d%27en-tête\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGlGLFW.h">
+      <Filter>Fichiers d%27en-tête\Affichage</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenglImGui.h">
+      <Filter>Fichiers d%27en-tête\Affichage</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleSystem.h">
+      <Filter>Fichiers d%27en-tête\Objets</Filter>
+    </ClInclude>
+    <ClInclude Include="Integrateur.h">
+      <Filter>Fichiers d%27en-tête\Objets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
