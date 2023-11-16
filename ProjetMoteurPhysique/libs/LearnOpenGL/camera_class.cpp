@@ -291,27 +291,26 @@ void CameraControlleur::MiseAJour(std::vector<CoprsRigide*> listeCorpsRigide) {
     glBindVertexArray(VAO);
 
 
-    // On verifie que la liste des particules a afficher n'est pas nul
+    // On verifie que la liste des corps rigide a afficher n'est pas nul
     if (listeCorpsRigide.size() >= 1) {
 
         for (unsigned int i = 0; i < listeCorpsRigide.size(); i++)
         {
-            // On creer les positions graphiques de la particule
+            // On creer les positions graphiques du corps rigide
             glm::vec3 posParticuleGraphique(listeCorpsRigide[i]->getPosition().getX(), listeCorpsRigide[i]->getPosition().getY(), listeCorpsRigide[i]->getPosition().getZ());
 
-            //on creer notre particul graphique
-            //glm::mat4 model = glm::mat4(1.0f);
-            glm::mat4 model = glm::mat4_cast(glm::quat(listeCorpsRigide[i]->getOrientation().w, listeCorpsRigide[i]->getOrientation().i, listeCorpsRigide[i]->getOrientation().j, listeCorpsRigide[i]->getOrientation().k));
+            //on creer notre corps rigide graphiquement
+            glm::mat4 model = glm::mat4(1.0f);
 
-            //glm::mat4 model = glm::make_mat4(listeCorpsRigide[i]->getTransmationMatrice().getMatrice());
+            //on l'affiche a sa position
             model = glm::translate(model, posParticuleGraphique);
 
-            // Utilisez la matrice de transformation existante ici
-            //for (int row = 0; row < 3; row++) {
-            //    for (int col = 0; col < 4; col++) {
-            //        model[row][col] = listeCorpsRigide[i]->getTransmationMatrice().Value(row, col);
-            //    }
-            //}
+            // on utilise la matrice de transformation pour gérer orientation et rotation
+            for (int row = 0; row < 3; row++) {
+                for (int col = 0; col < 4; col++) {
+                    model[col][row] = listeCorpsRigide[i]->getTransmationMatrice().Value(row, col);
+                }
+            }
 
             ourShader->setMat4("model", model);
 

@@ -36,7 +36,6 @@ void Integrateur::MiseAJourCorpsRigide(CoprsRigide* coprsRigide, double* deltaTi
 	//mise a jour velocite angulaire
 	Vecteur3D nouvelleVelociteAngulaire = coprsRigide->getVelociteAngulaire() + coprsRigide->getAccelerationAngulaire() * (*deltaTime);
 	coprsRigide->SetVelociteAngulaire(nouvelleVelociteAngulaire);
-	//orientation.UpdateByAngularVelocity(velociteAngulaire, deltaTime);
 
 	coprsRigide->CalculerTranformationMatrice();
 }

@@ -43,7 +43,10 @@ int main(int, char**)
         glVertex2f(0.5f, -0.5f);
         glEnd();
 
+        //Mise a jour graphique des particules
         //cameraContolleur.MiseAJour(jeu.getListeParticule());
+
+        //Mise a jour graphique des corps rigides
         cameraContolleur.MiseAJour(jeu.getListeCorpsRigide());
         
 

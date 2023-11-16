@@ -95,27 +95,22 @@ void Jeu::start() {
     this->setEtat(true);
     this->setLastFrameTime(glfwGetTime());
 
-    //particule0 La particule reference au centre du monde
-    Vecteur3D positionParticuleReference(0, 2, 0);
-    Vecteur3D vitesseParticuleReference(0, 0, 0);
-    Vecteur3D accelerationReference(0, 0, 0);
-    Quaternion orientationReference(0,0,0,0);
-    Vecteur3D velociteAngulaireReference(0, 0, 0);
-    Vecteur3D accelerationAngulaireReference(0, 0, 0);
-
-    CoprsRigide* particuleReference = new CoprsRigide(positionParticuleReference, vitesseParticuleReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
-
-    //particule1 Particule soumise la force de gravite
-    Vecteur3D positionParticuleGravite(2, 2, 0);
-    Vecteur3D vitesseParticuleGravite(0, 0, 0);
-    Vecteur3D accelerationGravite(0, 0, 0);
-    Quaternion orientationGravite(0,0,0,0);
-    Vecteur3D velociteAngulaireGravite(10, 0, 0);
-    Vecteur3D accelerationAngulaireGravite(0, 0, 0);
-
-    CoprsRigide* particuleGravite = new CoprsRigide(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
-
 #pragma region Particule
+
+    ////particule0 La particule reference au centre du monde
+    //Vecteur3D positionParticuleReference(0, 2, 0);
+    //Vecteur3D vitesseParticuleReference(0, 0, 0);
+    //Vecteur3D accelerationReference(0, 0, 0);
+
+    //Particule* particuleReference = new Particule(positionParticuleReference, vitesseParticuleReference, accelerationReference, 1000, true);
+
+    ////particule1 Particule soumise la force de gravite
+    //Vecteur3D positionParticuleGravite(2, 2, 0);
+    //Vecteur3D vitesseParticuleGravite(0, 0, 0);
+    //Vecteur3D accelerationGravite(0, 0, 0);
+
+    //Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, true);
+
     /*//particule2 sur lequel on applique la force de traine
     Vecteur3D positionParticuleTraine(-2, 0, 0);
     Vecteur3D vitesseParticuleTraine(0, 0, 0);
@@ -189,20 +184,48 @@ void Jeu::start() {
     ParticuleCable* cable = new ParticuleCable(_contact, 2.5f, 0.5f);
     ParticuleRod* rod = new ParticuleRod(_contact, 2.f);
 
-    contactGenerators.push_back(cable);*/
-#pragma endregion
-
-    //On ajoute tout les particules � une liste pour ensuite les afficher graphiquement
-    //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeCorpsRigide = { particuleReference, particuleGravite/*, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite*/ };
+    contactGenerators.push_back(cable);
     
-    /*NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
+        //On ajoute tout les particules dans une liste pour ensuite les afficher graphiquement
+    //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
+    this->listeParicule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite};
+    
+        NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
 
     contactGenerators.push_back(naive);
 
     WallContactGenerator* ground = new WallContactGenerator(-3.f, 10.f, 0.f, listeParticule);
 
-    contactGenerators.push_back(ground);*/
+    contactGenerators.push_back(ground);
+    */
+#pragma endregion
+
+#pragma region CorpsRigide
+    //CoprsRigide0 CoprsRigide reference au centre du monde
+    Vecteur3D positionCorpsRigideReference(0, 2, 0);
+    Vecteur3D vitesseCorpsRigideReference(0, 0, 0);
+    Vecteur3D accelerationReference(0, 0, 0);
+    Quaternion orientationReference(0, 0, 0, 0);
+    Vecteur3D velociteAngulaireReference(1, 0, 0);
+    Vecteur3D accelerationAngulaireReference(0, 0, 0);
+
+    CoprsRigide* CoprsRigideReference = new CoprsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
+
+    //CoprsRigide1 CoprsRigide soumise la force de gravite
+    Vecteur3D positionCorpsRigideGravite(2, 2, 0);
+    Vecteur3D vitesseCorpsRigideGravite(0, 0, 0);
+    Vecteur3D accelerationGravite(0, 0, 0);
+    Quaternion orientationGravite(1, 1, 10, 0);
+    Vecteur3D velociteAngulaireGravite(1, 0, 0);
+    Vecteur3D accelerationAngulaireGravite(0, 0, 0);
+
+    CoprsRigide* CoprsRigideGravite = new CoprsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 10, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
+
+    //On ajoute tout les CoprsRigideGravite dans une liste pour ensuite les afficher graphiquement
+    //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
+    this->listeCorpsRigide = { CoprsRigideReference, CoprsRigideGravite };
+#pragma endregion   
+
 }
 
 //Fonction qui update le jeu � chaque unit� de temps
@@ -216,6 +239,7 @@ void Jeu::update() {
         //Le registre applique les forces sur les particules
         forceRegistre.MiseAJourForce(deltaTime);
 
+#pragma region ParticuleMiseAJour
         /*std::cout << contact->particules[0]->getAcceleration().getY() << std::endl;
         std::cout << contact->particules[0]->getVitesse().getY() << std::endl;*/
 
@@ -225,8 +249,9 @@ void Jeu::update() {
             integrateur.MiseAJourPositionParticule(*i, &deltaTime);
             integrateur.MiseAJourVelociteParticule(*i, &deltaTime);
         }*/
+#pragma endregion 
 
-        // Methode pour CorpsRigides
+        // Methode pour la mise a jour des CorpsRigides
         for (std::vector<CoprsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
         {
             integrateur.MiseAJourCorpsRigide(*i, &deltaTime);
