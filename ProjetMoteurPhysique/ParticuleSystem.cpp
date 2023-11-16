@@ -20,7 +20,7 @@ unsigned ParticuleSystem::GenerateContact()
 	return maxContacts - max;
 }
 
-void ParticuleSystem::Intergrate(float duration)
+void ParticuleSystem::Integrate(float duration)
 {
 	for (Particules::iterator i = particules.begin(); i != particules.end(); ++i)
 	{
@@ -35,7 +35,7 @@ void ParticuleSystem::LaunchFrame(float duration)
 {
 	registre.MiseAJourForce((double)duration);
 
-	Intergrate(duration);
+	Integrate(duration);
 
 	unsigned usedContacts = GenerateContact();
 
