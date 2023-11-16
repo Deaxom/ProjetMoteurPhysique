@@ -40,7 +40,7 @@ public:
 
 	unsigned GenerateContact();
 
-	void Intergrate(float duration);
+	void Integrate(float duration);
 
 	void LaunchFrame(float duration);
 
