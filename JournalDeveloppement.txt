@@ -1,4 +1,4 @@
-rBonjour, voici le journal de développement!
+Bonjour, voici le journal de développement!
 
 Phase 1:
 Pour cette première partie de projet la plus grosse difficulté à été la mise en place de l'affichage graphique de nos particules via l'utilisation d'OpenGL et d'ImGui pour créer notre petit jeu.
@@ -24,3 +24,14 @@ Contribution:
 Alain: Intégration de LearnOpenGL, correction des forces de gravité, de trainée, des 2 ressorts et de la flottabilité. Modification des classes Particules et Vecteur3D précédentes pour l'implémentation de cette partie. (33%)
 Charles: Implémentation des forces de gravité, de trainée, des 2 ressorts, de flottabilité et du registre des forces et du générateur. Amélioration de la partie graphique. (33%)
 Thomas: Implémentation de ParticuleContact, ParticuleContactGenerator et ParticuleContactResolver. Amélioration de la partie graphique. Mise à jour de la classe Jeu pour l'implémentation des collisions. Modification pour qu'une particule puisse recevoir plusieurs forces d'un coup. (33%)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Phase 3:
+Pour cette troisième partie, nous avons implémenté les matrices 3x3 et 4x3 ainsi que les quaternions.
+Nous avons également créé les objets des corps rigides et avons modifié les forces que nous avions déjà pour qu'elles puissent s'appliquer sur ces corps.
+
+Contribution:
+Alain: Modification des forces pour qu'elles puissent s'appliquer aux corps rigides.
+Charles: Implémentation des Corps Rigides.
+Thomas: Implémentation des matrices 3x3 et 4x3, Implémentation des quaternions.

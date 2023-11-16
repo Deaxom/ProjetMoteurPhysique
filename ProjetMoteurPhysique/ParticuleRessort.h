@@ -12,4 +12,3 @@ public:
 	ParticuleRessort(Particule* autreParticule, float k, float restLenght);
 	void MiseAJourForce(Particule* particule, double deltaTime);
 };
-

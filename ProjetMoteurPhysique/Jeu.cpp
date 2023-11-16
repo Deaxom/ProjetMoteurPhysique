@@ -6,7 +6,7 @@
 #include "ParticuleRessort.h"
 #include "ParticuleTrainee.h"
 #include "ParticuleFlottabilite.h"
-#include "CoprsRigide.h"
+#include "CorpsRigide.h"
 
 //Constructeurs
 Jeu::Jeu() {
@@ -61,7 +61,7 @@ std::vector<Particule*> Jeu::getListeParticule() {
     return this->listeParticule;
 }
 
-std::vector<CoprsRigide*> Jeu::getListeCorpsRigide()
+std::vector<CorpsRigide*> Jeu::getListeCorpsRigide()
 {
     return this->listeCorpsRigide;
 }
@@ -185,7 +185,7 @@ void Jeu::start() {
     ParticuleRod* rod = new ParticuleRod(_contact, 2.f);
 
     contactGenerators.push_back(cable);
-    
+
         //On ajoute tout les particules dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
     this->listeParicule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite};
@@ -209,7 +209,7 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireReference(1, 0, 0);
     Vecteur3D accelerationAngulaireReference(0, 0, 0);
 
-    CoprsRigide* CoprsRigideReference = new CoprsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
+    CorpsRigide* CoprsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
 
     //CoprsRigide1 CoprsRigide soumise la force de gravite
     Vecteur3D positionCorpsRigideGravite(2, 2, 0);
@@ -219,12 +219,12 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireGravite(1, 0, 0);
     Vecteur3D accelerationAngulaireGravite(0, 0, 0);
 
-    CoprsRigide* CoprsRigideGravite = new CoprsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 10, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
+    CorpsRigide* CoprsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 10, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
 
     //On ajoute tout les CoprsRigideGravite dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
     this->listeCorpsRigide = { CoprsRigideReference, CoprsRigideGravite };
-#pragma endregion   
+#pragma endregion
 
 }
 
@@ -249,10 +249,10 @@ void Jeu::update() {
             integrateur.MiseAJourPositionParticule(*i, &deltaTime);
             integrateur.MiseAJourVelociteParticule(*i, &deltaTime);
         }*/
-#pragma endregion 
+#pragma endregion
 
         // Methode pour la mise a jour des CorpsRigides
-        for (std::vector<CoprsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
+        for (std::vector<CorpsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
         {
             integrateur.MiseAJourCorpsRigide(*i, &deltaTime);
         }

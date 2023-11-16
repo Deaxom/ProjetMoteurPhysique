@@ -10,4 +10,3 @@ public:
 	ParticuleGravite(float x, float y, float z);
 	void MiseAJourForce(Particule* particule, double deltaTime);
 };
-
