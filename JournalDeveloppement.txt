@@ -1,4 +1,4 @@
-rBonjour, voici le journal de développement!
+Bonjour, voici le journal de développement!
 
 Phase 1:
 Pour cette première partie de projet la plus grosse difficulté à été la mise en place de l'affichage graphique de nos particules via l'utilisation d'OpenGL et d'ImGui pour créer notre petit jeu.
