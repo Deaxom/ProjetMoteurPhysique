@@ -9,6 +9,7 @@
 #include "ParticuleContactGenerator.h"
 #include "ParticuleContactResolver.h"
 #include "ParticuleContact.h"
+#include "CorpsRigideForceRegistre.h"
 
 class Jeu
 {
@@ -24,6 +25,8 @@ private:
     ParticuleForceRegistre forceRegistre;
     typedef std::vector<ParticuleContactGenerator*> ContactGenerator;
     ContactGenerator contactGenerators;
+    CorpsRigideForceRegistre corpsRigideForceRegistre;
+
 
 public:
     Jeu();
