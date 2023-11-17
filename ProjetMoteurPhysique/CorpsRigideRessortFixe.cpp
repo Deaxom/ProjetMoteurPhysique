@@ -20,6 +20,5 @@ void CorpsRigideRessortFixe::MiseAJourForce(CorpsRigide* corpsRigide, double del
 	Vecteur3D vecteurForce = direction.calculVecteurUnitaire() * force;
 
 	//On applique la force
-	Vecteur3D newAccelerationCorpsRigide(vecteurForce * (1 / corpsRigide->getMasse()));
-	corpsRigide->setAcceleration(newAccelerationCorpsRigide);
+	corpsRigide->AjouterForce(vecteurForce);
 }

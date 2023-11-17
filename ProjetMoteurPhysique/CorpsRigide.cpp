@@ -100,7 +100,8 @@ void CorpsRigide::setVitesse(Vecteur3D newVitesse) {
 }
 
 void CorpsRigide::setAcceleration(Vecteur3D newAcceleration) {
-	this->acceleration = acceleration + newAcceleration;
+	//this->acceleration = acceleration + newAcceleration;
+	this->acceleration =  newAcceleration;
 
 }void CorpsRigide::setMasse(double newMasse) {
 	this->masse = newMasse;

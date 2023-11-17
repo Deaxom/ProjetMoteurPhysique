@@ -12,14 +12,10 @@ CorpsRigideGravite::CorpsRigideGravite(float x, float y, float z) :
 }
 
 void CorpsRigideGravite::MiseAJourForce(CorpsRigide* corpsRigide, double deltaTime) {
-	//Calcul de la force de gravité (f=m*g avec g=G*m_terre/r^2)
-	/*double distanceCorpsRigideTerre = corpsRigide->getPosition().calculNorme();
-	double forceGravite = (GRAVITATIONAL_CONSTANT * corpsRigide->getMasse() * masseTerre) / (distanceCorpsRigideTerre * distanceCorpsRigideTerre);*/
 
-	// Calcul de l'accélération due à la gravité (F=m*a donc a=F/m)
-	float nouvelleAccelerationY = m_gracity.getY() / corpsRigide->getMasse();
+	// Calcul de l'accélération due à la gravité 
+	Vecteur3D nouvelleAcceleration = m_gracity *  corpsRigide->getMasse();
 
 	// Mettre à jour l'accélération du corps rigide
-	Vecteur3D nouvelleAccelerationCorpsRigide(corpsRigide->getAcceleration().getX(), corpsRigide->getAcceleration().getY() + nouvelleAccelerationY, corpsRigide->getAcceleration().getZ());
-	corpsRigide->setAcceleration(nouvelleAccelerationCorpsRigide);
+	corpsRigide->AjouterForce(nouvelleAcceleration);
 }

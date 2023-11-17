@@ -34,7 +34,7 @@ void Integrateur::MiseAJourCorpsRigide(CorpsRigide* corpsRigide, double* deltaTi
 	corpsRigide->CalculerTranformationMatrice();
 
 	//mise a jour acceleration
-	Vecteur3D nouvelleAcceleration =  corpsRigide->getForceAccumulateur() * (1 / corpsRigide->getMasse());
+	Vecteur3D nouvelleAcceleration = corpsRigide->getForceAccumulateur() * (1 / corpsRigide->getMasse());
 	corpsRigide->setAcceleration(nouvelleAcceleration);
 
 	//mise a jour acceleration angulaire

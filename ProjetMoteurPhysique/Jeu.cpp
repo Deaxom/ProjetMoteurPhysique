@@ -117,93 +117,96 @@ void Jeu::start() {
 
     //Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, true);
 
-    /*//particule2 sur lequel on applique la force de traine
-    Vecteur3D positionParticuleTraine(-2, 0, 0);
-    Vecteur3D vitesseParticuleTraine(0, 0, 0);
-    Vecteur3D accelerationTraine(5, 0, 0);
+    //particule2 sur lequel on applique la force de traine
+    //Vecteur3D positionParticuleTraine(2, 0, 0);
+    //Vecteur3D vitesseParticuleTraine(0, 0, 0);
+    //Vecteur3D accelerationTraine(15, 0, 0);
 
-    Particule* particuleTraine = new Particule(positionParticuleTraine, vitesseParticuleTraine, accelerationTraine, 10, true);
+    //Particule* particuleTraine = new Particule(positionParticuleTraine, vitesseParticuleTraine, accelerationTraine, 10, true);
 
-    //particule3 sur lequel on applique la force de ressort fixe
-    Vecteur3D positionParticuleRessortFixe(1, 3, 0);
-    Vecteur3D vitesseParticuleRessortFixe(0, 0, 0);
-    Vecteur3D accelerationRessortFixe(0.2, 0, 0);
+  
+    ////particule3 sur lequel on applique la force de ressort fixe
+    //Vecteur3D positionParticuleRessortFixe(1, 3, 0);
+    //Vecteur3D vitesseParticuleRessortFixe(0, 0, 0);
+    //Vecteur3D accelerationRessortFixe(0.2, 0, 0);
 
-    Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10, true);
+    //Particule* particuleRessortFixe = new Particule(positionParticuleRessortFixe, vitesseParticuleRessortFixe, accelerationRessortFixe, 10, true);
 
-    //particule4 particule sur lequel on applique la force ressort
-    Vecteur3D positionParticuleRessort(-3, -2, 0);
-    Vecteur3D vitesseParticuleRessort(0, 0, 0);
-    Vecteur3D accelerationRessort(0, -1, 0);
+    ////particule4 particule sur lequel on applique la force ressort
+    //Vecteur3D positionParticuleRessort(-3, -2, 0);
+    //Vecteur3D vitesseParticuleRessort(0, 0, 0);
+    //Vecteur3D accelerationRessort(0, -1, 0);
 
-    Particule* particuleRessort = new Particule(positionParticuleRessort, vitesseParticuleRessort, accelerationRessort, 10, true);
+    //Particule* particuleRessort = new Particule(positionParticuleRessort, vitesseParticuleRessort, accelerationRessort, 10, true);
 
-    //particule5 autre particule pour la force ressort
-    Vecteur3D positionAutreParticuleRessort(-3, 0, 0);
-    Vecteur3D vitesseAutreParticuleRessort(0, 0, 0);
-    Vecteur3D accelerationAutreRessort(0, 0, 0);
+    ////particule5 autre particule pour la force ressort
+    //Vecteur3D positionAutreParticuleRessort(-3, 0, 0);
+    //Vecteur3D vitesseAutreParticuleRessort(0, 0, 0);
+    //Vecteur3D accelerationAutreRessort(0, 0, 0);
 
-    Particule* autreParticuleRessort = new Particule(positionAutreParticuleRessort, vitesseAutreParticuleRessort, accelerationAutreRessort, 10, true);
+    //Particule* autreParticuleRessort = new Particule(positionAutreParticuleRessort, vitesseAutreParticuleRessort, accelerationAutreRessort, 10, true);
 
-    //particule6 sur lequel va s'appliquer la force de flotabilite
-    Vecteur3D positionParticuleFlotabilite(4, -2, 0);
-    Vecteur3D vitesseParticuleFlotabilite(0, 0, 0);
-    Vecteur3D accelerationFlotabilite(0, 0, 0);
+    ////particule6 sur lequel va s'appliquer la force de flotabilite
+    //Vecteur3D positionParticuleFlotabilite(4, -2, 0);
+    //Vecteur3D vitesseParticuleFlotabilite(0, 0, 0);
+    //Vecteur3D accelerationFlotabilite(0, 0, 0);
 
-    Particule* ParticuleFlotabilite = new Particule(positionParticuleFlotabilite, vitesseParticuleFlotabilite, accelerationFlotabilite, 10, true);
+    //Particule* ParticuleFlotabilite = new Particule(positionParticuleFlotabilite, vitesseParticuleFlotabilite, accelerationFlotabilite, 10, true);
 
-    //On cree la force de gravite et on la lie � la particule gravite | -98.1 pour la terre
-    ParticuleGravite *forceGravite = new ParticuleGravite(0.0, -98.1, 0.0);
-    ParticuleGravite *forceGraviteBis = new ParticuleGravite(0.0, 98.1, 0.0);
-    this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceGravite);
+    ////On cree la force de gravite et on la lie � la particule gravite | -98.1 pour la terre
+    //ParticuleGravite *forceGravite = new ParticuleGravite(0.0, -98.1, 0.0);
+    //ParticuleGravite *forceGraviteBis = new ParticuleGravite(0.0, 98.1, 0.0);
+    //this->forceRegistre.addParticuleForceRegistre(particuleGravite, forceGravite);
 
 
     //On cree la force de traine et on la lie � la particule traine
-    ParticuleTrainee* forceTrainee = new ParticuleTrainee(1.5f, 13.6f);
-    this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);
+    //ParticuleTrainee* forceTrainee = new ParticuleTrainee(1.5f, 13.6f);
+    //this->forceRegistre.addParticuleForceRegistre(particuleTraine, forceTrainee);
 
-    //On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie � la particule ressort fixe
-    Vecteur3D positionFixe(0, 2, 0);
-    float k = 1;
-    float restLenght = 3;
-    ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(positionFixe, k, restLenght);
-    this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);
+    //this->listeParticule = { particuleTraine };
 
-    //On cree la force de ressort et on la lie � la particule de ressort ainsi que l'autre particule
-    ParticuleRessort* forceRessort = new ParticuleRessort(autreParticuleRessort, k, restLenght);
-    this->forceRegistre.addParticuleForceRegistre(particuleRessort, forceRessort);
+    ////On cree la force de ressort fixe avec une position fixe sur 0,0,0 et on la lie � la particule ressort fixe
+    //Vecteur3D positionFixe(0, 2, 0);
+    //float k = 1;
+    //float restLenght = 3;
+    //ParticuleRessortFixe* forceRessortFixe = new ParticuleRessortFixe(positionFixe, k, restLenght);
+    //this->forceRegistre.addParticuleForceRegistre(particuleRessortFixe, forceRessortFixe);
+
+    ////On cree la force de ressort et on la lie � la particule de ressort ainsi que l'autre particule
+    //ParticuleRessort* forceRessort = new ParticuleRessort(autreParticuleRessort, k, restLenght);
+    //this->forceRegistre.addParticuleForceRegistre(particuleRessort, forceRessort);
 
 
-    //On cree la force de flotabilite et on la lie � la particule de flotabilite
-    ParticuleFlottabilite* forceFlotabilite = new ParticuleFlottabilite(-2, 1, 1, 1);
-    this->forceRegistre.addParticuleForceRegistre(ParticuleFlotabilite, forceFlotabilite);
+    ////On cree la force de flotabilite et on la lie � la particule de flotabilite
+    //ParticuleFlottabilite* forceFlotabilite = new ParticuleFlottabilite(-2, 1, 1, 1);
+    //this->forceRegistre.addParticuleForceRegistre(ParticuleFlotabilite, forceFlotabilite);
 
-    //On initialise un lien de contact entre deux particules
-    ParticuleContact *_contact = new ParticuleContact;
-    contact = new ParticuleContact;
+    ////On initialise un lien de contact entre deux particules
+    //ParticuleContact *_contact = new ParticuleContact;
+    //contact = new ParticuleContact;
 
-    _contact->particules[0] = particuleGravite;
-    _contact->particules[1] = particuleReference;
+    //_contact->particules[0] = particuleGravite;
+    //_contact->particules[1] = particuleReference;
 
-    //On ajoute ce lien dans un type de detection de collision
-    //ParticuleRod rod(contact, 2.f);
-    ParticuleCable* cable = new ParticuleCable(_contact, 2.5f, 0.5f);
-    ParticuleRod* rod = new ParticuleRod(_contact, 2.f);
+    ////On ajoute ce lien dans un type de detection de collision
+    ////ParticuleRod rod(contact, 2.f);
+    //ParticuleCable* cable = new ParticuleCable(_contact, 2.5f, 0.5f);
+    //ParticuleRod* rod = new ParticuleRod(_contact, 2.f);
 
-    contactGenerators.push_back(cable);
+    //contactGenerators.push_back(cable);
 
         //On ajoute tout les particules dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeParicule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite};
+    //this->listeParicule = { particuleReference, particuleGravite, particuleTraine, particuleRessortFixe, particuleRessort, autreParticuleRessort, ParticuleFlotabilite};
+    //
+    //    NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
+
+    //contactGenerators.push_back(naive);
+
+    //WallContactGenerator* ground = new WallContactGenerator(-3.f, 10.f, 0.f, listeParticule);
+
+    //contactGenerators.push_back(ground);
     
-        NaiveParticuleContactGenerator* naive = new NaiveParticuleContactGenerator(1.f, listeParticule);
-
-    contactGenerators.push_back(naive);
-
-    WallContactGenerator* ground = new WallContactGenerator(-3.f, 10.f, 0.f, listeParticule);
-
-    contactGenerators.push_back(ground);
-    */
 #pragma endregion
 
 #pragma region CorpsRigide
@@ -217,108 +220,106 @@ void Jeu::start() {
 
     CorpsRigide* CoprsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
 
-    ////CoprsRigide1 CoprsRigide test orientation a 180 degree
-    //Vecteur3D positionCorpsRigideOrientation(0, 2, 0);
-    //Vecteur3D vitesseCorpsRigideOrientation(0, 0, 0);
-    //Vecteur3D accelerationOrientation(0, 0, 0);
-    //Quaternion orientationOrientation(0, 1, 0, 0); // on change l'orientation de 180 degree
-    //Vecteur3D velociteAngulaireOrientation(0, 0, 0);
-    //Vecteur3D accelerationAngulaireOrientation(0, 0, 0);
+    //CoprsRigide1 CoprsRigide test orientation a 180 degree
+    Vecteur3D positionCorpsRigideOrientation(0, 2, 0);
+    Vecteur3D vitesseCorpsRigideOrientation(0, 0, 0);
+    Vecteur3D accelerationOrientation(0, 0, 0);
+    Quaternion orientationOrientation(0, 1, 0, 0); // on change l'orientation de 180 degree
+    Vecteur3D velociteAngulaireOrientation(0, 0, 0);
+    Vecteur3D accelerationAngulaireOrientation(0, 0, 0);
 
-    //CorpsRigide* CoprsRigideOrientation = new CorpsRigide(positionCorpsRigideOrientation, vitesseCorpsRigideOrientation, accelerationOrientation, 10, orientationOrientation, velociteAngulaireOrientation, accelerationAngulaireOrientation);
-
-
-    ////CoprsRigide2 CoprsRigide de test rotation
-    //Vecteur3D positionCorpsRigideRotation(0, 4, 0);
-    //Vecteur3D vitesseCorpsRigideRotation(0, 0, 0);
-    //Vecteur3D accelerationRotation(0, 0, 0);
-    //Quaternion orientationRotation(1, 1, 1, 0);
-    //Vecteur3D velociteAngulaireRotation(1, 0, 0);
-    //Vecteur3D accelerationAngulaireRotation(0, 0, 0);
-
-    //CorpsRigide* CoprsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation);
-
-    ////CoprsRigide3 CoprsRigide soumise la force de gravite
-    //Vecteur3D positionCorpsRigideGravite(2, 2, 0);
-    //Vecteur3D vitesseCorpsRigideGravite(0, 0, 0);
-    //Vecteur3D accelerationGravite(0, 0, 0);
-    //Quaternion orientationGravite(1, 1, 10, 0);
-    //Vecteur3D velociteAngulaireGravite(1, 0, 0);
-    //Vecteur3D accelerationAngulaireGravite(0, 0, 0);
-
-    //CorpsRigide* CoprsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 10, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
-    // 
-    //CorpsRigideGravite* forceGraviteCorpsRigide = new CorpsRigideGravite(0.f, -1.f, 0.f);
-
-    //this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideGravite, forceGraviteCorpsRigide);
-
-    ////CoprsRigide4 CoprsRigide soumise la force ressort fixe
-    //Vecteur3D positionCorpsRigideRessortFixe(1, 3, 0);
-    //Vecteur3D vitesseCorpsRigideRessortFixe(0, 0, 0);
-    //Vecteur3D accelerationRessortFixe(0.2, 0, 0);
-    //Quaternion orientationRessortFixe(0, 0, 0, 0);
-    //Vecteur3D velociteAngulaireRessortFixe(0, 0, 0);
-    //Vecteur3D accelerationAngulaireRessortFixe(0, 0, 0);
-
-    //CorpsRigide* CoprsRigideRessortFixe = new CorpsRigide(positionCorpsRigideRessortFixe, vitesseCorpsRigideRessortFixe, accelerationRessortFixe, 10, orientationRessortFixe, velociteAngulaireRessortFixe, accelerationAngulaireRessortFixe);
-    //
-    ////On cree la force de ressort fixe pour corps rigide avec une position fixe sur 0,0,0
-    //Vecteur3D positionFixe(0, 2, 0);
-    //float k = 1;
-    //float restLenght = 3;
-    //CorpsRigideRessortFixe* ressortFixeCorpsRigide = new CorpsRigideRessortFixe(positionFixe, k, restLenght);
-
-    ////On applique la force de ressort fixe au corps
-    //this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideRessortFixe, ressortFixeCorpsRigide);
+    CorpsRigide* CoprsRigideOrientation = new CorpsRigide(positionCorpsRigideOrientation, vitesseCorpsRigideOrientation, accelerationOrientation, 10, orientationOrientation, velociteAngulaireOrientation, accelerationAngulaireOrientation);
 
 
-    ////CoprsRigide5 CoprsRigide soumise la force ressort
-    //Vecteur3D positionCorpsRigideRessort(2, 0, 0);
-    //Vecteur3D vitesseCorpsRigideRessort(0, 0, 0);
-    //Vecteur3D accelerationRessort(0.2, 0, 0);
-    //Quaternion orientationRessort(0, 0, 0, 0);
-    //Vecteur3D velociteAngulaireRessort(0, 0, 0);
-    //Vecteur3D accelerationAngulaireRessort(0, 0, 0);
+    //CoprsRigide2 CoprsRigide de test rotation
+    Vecteur3D positionCorpsRigideRotation(0, 4, 0);
+    Vecteur3D vitesseCorpsRigideRotation(0, 0, 0);
+    Vecteur3D accelerationRotation(0, 0, 0);
+    Quaternion orientationRotation(1, 1, 1, 0);
+    Vecteur3D velociteAngulaireRotation(1, 0, 0);
+    Vecteur3D accelerationAngulaireRotation(0, 0, 0);
 
-    //CorpsRigide* CoprsRigideRessort = new CorpsRigide(positionCorpsRigideRessort, vitesseCorpsRigideRessort, accelerationRessort, 10, orientationRessort, velociteAngulaireRessort, accelerationAngulaireRessort);
+    CorpsRigide* CoprsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation);
+
+    //CoprsRigide3 CoprsRigide soumise la force de gravite
+    Vecteur3D positionCorpsRigideGravite(2, 2, 0);
+    Vecteur3D vitesseCorpsRigideGravite(0, 0, 0);
+    Vecteur3D accelerationGravite(0, 0, 0);
+    Quaternion orientationGravite(0, 0, 0, 0);
+    Vecteur3D velociteAngulaireGravite(0, 0, 0);
+    Vecteur3D accelerationAngulaireGravite(0, 0, 0);
+
+    CorpsRigide* CoprsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 100000, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
+     
+    CorpsRigideGravite* forceGraviteCorpsRigide = new CorpsRigideGravite(0, -1, 0);
+
+    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideGravite, forceGraviteCorpsRigide);
+
+    //CoprsRigide4 CoprsRigide soumise la force ressort fixe
+    Vecteur3D positionCorpsRigideRessortFixe(-3, 3, 0);
+    Vecteur3D vitesseCorpsRigideRessortFixe(0, 0, 0);
+    Vecteur3D accelerationRessortFixe(0.2, 0, 0);
+    Quaternion orientationRessortFixe(0, 0, 0, 0);
+    Vecteur3D velociteAngulaireRessortFixe(0, 0, 0);
+    Vecteur3D accelerationAngulaireRessortFixe(0, 0, 0);
+
+    CorpsRigide* CoprsRigideRessortFixe = new CorpsRigide(positionCorpsRigideRessortFixe, vitesseCorpsRigideRessortFixe, accelerationRessortFixe, 10, orientationRessortFixe, velociteAngulaireRessortFixe, accelerationAngulaireRessortFixe);
+    
+    //On cree la force de ressort fixe pour corps rigide avec une position fixe sur 0,0,0
+    Vecteur3D positionFixe(-4, 2, 0);
+    float k = 1;
+    float restLenght = 3;
+    CorpsRigideRessortFixe* ressortFixeCorpsRigide = new CorpsRigideRessortFixe(positionFixe, k, restLenght);
+
+    //On applique la force de ressort fixe au corps
+    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideRessortFixe, ressortFixeCorpsRigide);
+
+    //CoprsRigide5 CoprsRigide soumise la force ressort
+    Vecteur3D positionCorpsRigideRessort(-3, -2, 0);
+    Vecteur3D vitesseCorpsRigideRessort(0, 0, 0);
+    Vecteur3D accelerationRessort(0, -1, 0);
+    Quaternion orientationRessort(0, 0, 0, 0);
+    Vecteur3D velociteAngulaireRessort(0, 0, 0);
+    Vecteur3D accelerationAngulaireRessort(0, 0, 0);
+
+    CorpsRigide* CoprsRigideRessort = new CorpsRigide(positionCorpsRigideRessort, vitesseCorpsRigideRessort, accelerationRessort, 10, orientationRessort, velociteAngulaireRessort, accelerationAngulaireRessort);
 
 
-    ////CoprsRigide6 CoprsRigide autre soumise la force ressort
-    //Vecteur3D positionCorpsRigideRessortAutre(2, -3, 0);
-    //Vecteur3D vitesseCorpsRigideRessortAutre(0, 0, 0);
-    //Vecteur3D accelerationRessortAutre(0, -0.1, 0);
-    //Quaternion orientationRessortAutre(0, 0, 0, 0);
-    //Vecteur3D velociteAngulaireRessortAutre(0, 0, 0);
-    //Vecteur3D accelerationAngulaireRessortAutre(0, 0, 0);
+    //CoprsRigide6 CoprsRigide autre soumise la force ressort
+    Vecteur3D positionCorpsRigideRessortAutre(-3, 0, 0);
+    Vecteur3D vitesseCorpsRigideRessortAutre(0, 0, 0);
+    Vecteur3D accelerationRessortAutre(0, 0, 0);
+    Quaternion orientationRessortAutre(0, 0, 0, 0);
+    Vecteur3D velociteAngulaireRessortAutre(0, 0, 0);
+    Vecteur3D accelerationAngulaireRessortAutre(0, 0, 0);
 
-    //CorpsRigide* CoprsRigideRessortAutre = new CorpsRigide(positionCorpsRigideRessortAutre, vitesseCorpsRigideRessortAutre, accelerationRessortAutre, 10, orientationRessortAutre, velociteAngulaireRessortAutre, accelerationAngulaireRessortAutre);
+    CorpsRigide* CoprsRigideRessortAutre = new CorpsRigide(positionCorpsRigideRessortAutre, vitesseCorpsRigideRessortAutre, accelerationRessortAutre, 10, orientationRessortAutre, velociteAngulaireRessortAutre, accelerationAngulaireRessortAutre);
 
-    ////On cree la force de ressort pour les deux corps
-    //CorpsRigideRessort* ressortCorpsRigide = new CorpsRigideRessort(CoprsRigideRessortAutre, k, restLenght);
+    //On cree la force de ressort pour les deux corps
+    CorpsRigideRessort* ressortCorpsRigide = new CorpsRigideRessort(CoprsRigideRessortAutre, k, restLenght);
 
-    ////On applique la force de ressort au deux corps
-    //this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideRessort, ressortCorpsRigide);
+    //On applique la force de ressort au deux corps
+    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideRessort, ressortCorpsRigide);
 
     //CoprsRigide7 CoprsRigide soumise la force de la trainee
-    Vecteur3D positionCorpsRigideTrainee(-2, -2 , 0);
+    Vecteur3D positionCorpsRigideTrainee(0, -2 , 0);
     Vecteur3D vitesseCorpsRigideTrainee(0, 0, 0);
-    Vecteur3D accelerationTrainee(0.1, 0, 0);
+    Vecteur3D accelerationTrainee(80, 0, 0);
     Quaternion orientationTrainee(0, 0, 0, 0);
-    Vecteur3D velociteAngulaireTrainee(0.2, 0, 0);
+    Vecteur3D velociteAngulaireTrainee(0, 0, 0);
     Vecteur3D accelerationAngulaireTrainee(0, 0, 0);
 
     CorpsRigide* CoprsRigideTrainee = new CorpsRigide(positionCorpsRigideTrainee, vitesseCorpsRigideTrainee, accelerationTrainee, 10, orientationTrainee, velociteAngulaireTrainee, accelerationAngulaireTrainee);
 
     //On cree la force de trainee
-    CorpsRigideTrainee* forceTraineeCorpsRigide = new CorpsRigideTrainee(0.47, 0.001);
+    CorpsRigideTrainee* forceTraineeCorpsRigide = new CorpsRigideTrainee(1.5f, 13.6f);
 
     //On applique la force de trainee
     this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideTrainee, forceTraineeCorpsRigide);
 
     //On ajoute tout les Coprs Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    //this->listeCorpsRigide = { CoprsRigideReference,CoprsRigideOrientation, CoprsRigideRotation, CoprsRigideGravite,  CoprsRigideRessortFixe, CoprsRigideRessort, CoprsRigideRessortAutre, CoprsRigideTrainee };
-    this->listeCorpsRigide = { CoprsRigideReference,  CoprsRigideTrainee };
+    this->listeCorpsRigide = { CoprsRigideReference,CoprsRigideOrientation, CoprsRigideRotation, CoprsRigideGravite,  CoprsRigideRessortFixe, CoprsRigideRessort, CoprsRigideRessortAutre, CoprsRigideTrainee };
 #pragma endregion
 
 }
@@ -340,11 +341,11 @@ void Jeu::update() {
         std::cout << contact->particules[0]->getVitesse().getY() << std::endl;*/
 
         // Methode pour Particules
-        /*for (std::vector<Particule*>::iterator i = listeParticule.begin(); i != listeParticule.end(); ++i)
-        {
-            integrateur.MiseAJourPositionParticule(*i, &deltaTime);
-            integrateur.MiseAJourVelociteParticule(*i, &deltaTime);
-        }*/
+        //for (std::vector<Particule*>::iterator i = listeParticule.begin(); i != listeParticule.end(); ++i)
+        //{
+        //    integrateur.MiseAJourPositionParticule(*i, &deltaTime);
+        //    integrateur.MiseAJourVelociteParticule(*i, &deltaTime);
+        //}
 #pragma endregion
 
         corpsRigideForceRegistre.MiseAJourForce(deltaTime);
@@ -355,18 +356,14 @@ void Jeu::update() {
             integrateur.MiseAJourCorpsRigide(*i, &deltaTime);
         }
 
-       /* std::cout << "Accel: " << listeCorpsRigide[0]->getAcceleration().getX() << ", " << listeCorpsRigide[0]->getAcceleration().getY() << ", " << listeCorpsRigide[0]->getAcceleration().getZ() << std::endl;
-        std::cout << "position:" << listeCorpsRigide[0]->getPosition().getX() << ", " << listeCorpsRigide[0]->getPosition().getY() << ", " << listeCorpsRigide[0]->getPosition().getZ() << std::endl;
-       */
-
         //Iteration sur tout les link
-        for (ContactGenerator::iterator i = contactGenerators.begin(); i != contactGenerators.end(); ++i)
-        {
-            if ((*i)->addContact(contact, 1))
-            {
-                resolver.resolveContacts(contact, 1, deltaTime);
-            }
-        }
+        //for (ContactGenerator::iterator i = contactGenerators.begin(); i != contactGenerators.end(); ++i)
+        //{
+        //    if ((*i)->addContact(contact, 1))
+        //    {
+        //        resolver.resolveContacts(contact, 1, deltaTime);
+        //    }
+        //}
     }
 }
 

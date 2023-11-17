@@ -21,9 +21,6 @@ void CorpsRigideRessort::MiseAJourForce(CorpsRigide* corpsRigide, double deltaTi
 	Vecteur3D vecteurForce = direction.calculVecteurUnitaire() * force;
 
 	//On applique la force aux deux corps rigides
-	Vecteur3D newAccelerationAutreCorpsRigide(vecteurForce * (1 / autreCorpsRigide->getMasse()) * -1);
-	autreCorpsRigide->setAcceleration(newAccelerationAutreCorpsRigide);
-
-	Vecteur3D newAccelerationCorpsRigide(vecteurForce * (1 / corpsRigide->getMasse()));
-	corpsRigide->setAcceleration(newAccelerationCorpsRigide);
+	autreCorpsRigide->AjouterForce(vecteurForce * -1);
+	corpsRigide->AjouterForce(vecteurForce);
 }
