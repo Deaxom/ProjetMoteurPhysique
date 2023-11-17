@@ -80,6 +80,16 @@ Matrix3x4 CorpsRigide::getTransmationMatrice() const
 	return tranformationMatrice;
 }
 
+Vecteur3D CorpsRigide::getForceAccumulateur() const
+{
+	return forceAccumulateur;
+}
+
+Vecteur3D CorpsRigide::getTorqueAccumulateur() const
+{
+	return torqueAccumulateur;
+}
+
 //SETTERS
 void CorpsRigide::setPosition(Vecteur3D newPosition) {
 	this->position = newPosition;
@@ -119,6 +129,33 @@ void CorpsRigide::SetAccelerationAngulaire(Vecteur3D& accelerationAngulaire)
 void CorpsRigide::SetTransformationMatrice(Matrix3x4 transformationMatrice)
 {
 	this->tranformationMatrice = transformationMatrice;
+}
+
+void CorpsRigide::AjouterForce(const Vecteur3D& force)
+{
+	forceAccumulateur = forceAccumulateur + force;
+}
+
+void CorpsRigide::AjouterForcePointMonde(const Vecteur3D& force, const Vecteur3D& pointMonde)
+{
+	Vecteur3D point = pointMonde;
+	point = point - position;
+
+	forceAccumulateur = forceAccumulateur + force;
+	torqueAccumulateur = torqueAccumulateur + point.produitVectoriel(force);
+}
+
+void CorpsRigide::AjouterForcePointCorps(const Vecteur3D& force, const Vecteur3D& pointCorps)
+{
+	Vecteur3D local = pointCorps;
+	Vecteur3D pointMonde =  tranformationMatrice.LocalAuMonde(local);
+	AjouterForcePointMonde(force, pointMonde);
+}
+
+void CorpsRigide::NettoyerAccumulateur()
+{
+	forceAccumulateur.nettoyerVecteur();
+	torqueAccumulateur.nettoyerVecteur();
 }
 
 //void CorpsRigide::MiseAJourCorps(double &deltaTime)

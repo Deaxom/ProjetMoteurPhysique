@@ -22,5 +22,6 @@ public:
 	Vecteur3D operator-(Vecteur3D vecteur);
 	double produitScalaire(Vecteur3D vecteur);
 	Vecteur3D produitVectoriel(Vecteur3D vecteur);
+	void nettoyerVecteur();
 };
 

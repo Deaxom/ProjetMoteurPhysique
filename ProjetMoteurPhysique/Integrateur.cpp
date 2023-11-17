@@ -26,16 +26,28 @@ void Integrateur::MiseAJourCorpsRigide(CorpsRigide* corpsRigide, double* deltaTi
 	// mise a jour position
 	corpsRigide->setPosition(corpsRigide->getPosition() + corpsRigide->getVitesse() * (*deltaTime));
 
-	//mise a jour velocite
-	corpsRigide->setVitesse(corpsRigide->getVitesse() + corpsRigide->getAcceleration() * (*deltaTime));
 
 	//mise a jour de orientation
 	Quaternion w(0, corpsRigide->getVelociteAngulaire().getX(), corpsRigide->getVelociteAngulaire().getY(), corpsRigide->getVelociteAngulaire().getZ());
 	corpsRigide->setOrientation(corpsRigide->getOrientation() + w * corpsRigide->getOrientation() * (*(deltaTime) / 2));
 
+	corpsRigide->CalculerTranformationMatrice();
+
+	//mise a jour acceleration
+	Vecteur3D nouvelleAcceleration =  corpsRigide->getForceAccumulateur() * (1 / corpsRigide->getMasse());
+	corpsRigide->setAcceleration(nouvelleAcceleration);
+
+	//mise a jour acceleration angulaire
+	//TODO
+
+	//mise a jour velocite
+	corpsRigide->setVitesse(corpsRigide->getVitesse() + corpsRigide->getAcceleration() * (*deltaTime));
+
+
 	//mise a jour velocite angulaire
 	Vecteur3D nouvelleVelociteAngulaire = corpsRigide->getVelociteAngulaire() + corpsRigide->getAccelerationAngulaire() * (*deltaTime);
 	corpsRigide->SetVelociteAngulaire(nouvelleVelociteAngulaire);
 
-	corpsRigide->CalculerTranformationMatrice();
+
+	corpsRigide->NettoyerAccumulateur();
 }

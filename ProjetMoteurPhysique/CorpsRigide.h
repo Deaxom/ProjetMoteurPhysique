@@ -25,6 +25,12 @@ private:
 	// Matrice de calcul pour orientation et rotation du corps
 	Matrix3x4 tranformationMatrice;
 
+	float traineeAngulaire;
+
+	Vecteur3D forceAccumulateur;
+
+	Vecteur3D torqueAccumulateur;
+
 public:
 	// Reprise des methodes de particule
 	CorpsRigide();
@@ -38,6 +44,8 @@ public:
 	Vecteur3D getVelociteAngulaire() const;
 	Vecteur3D getAccelerationAngulaire() const;
 	Matrix3x4 getTransmationMatrice() const;
+	Vecteur3D getForceAccumulateur() const;
+	Vecteur3D getTorqueAccumulateur() const;
 	void setPosition(Vecteur3D newPosition);
 	void setVitesse(Vecteur3D newVitesse);
 	void setAcceleration(Vecteur3D newAcceleration);
@@ -49,6 +57,11 @@ public:
 	void SetTransformationMatrice(Matrix3x4 transformationMatrice);
 
 	
+	void AjouterForce(const Vecteur3D& force);
+	void AjouterForcePointMonde(const Vecteur3D& force, const Vecteur3D& pointMonde);
+	void AjouterForcePointCorps(const Vecteur3D& force, const Vecteur3D& pointCorps);
+	void NettoyerAccumulateur();
+
 	//void MiseAJourCorps(double &deltaTime);
 
 	// Methode appeller chaque frame pour le calcule de la matrice de transformation et la normalisation de l'orientation

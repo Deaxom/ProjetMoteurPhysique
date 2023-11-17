@@ -102,3 +102,10 @@ Vecteur3D Vecteur3D::produitVectoriel(Vecteur3D vecteur) {
 	double newZ = this->x * vecteur.getY() - this->y * vecteur.getX();
 	return Vecteur3D(newX, newY, newZ);
 }
+
+void Vecteur3D::nettoyerVecteur()
+{
+	x = 0;
+	y = 0;
+	z = 0;
+}

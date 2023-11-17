@@ -169,6 +169,16 @@ Vecteur3D Matrix3x4::Transform(Vecteur3D& vec) const
     return (*this) * vec;
 }
 
+Vecteur3D Matrix3x4::LocalAuMonde(Vecteur3D& local) const
+{
+    return Transform(local);
+}
+
+Vecteur3D Matrix3x4::MondeALocal(Vecteur3D& monde)
+{
+    return transformInverse(monde);
+}
+
 std::ostream& operator<<(std::ostream& os, const Matrix3x4& mat)
 {
     return os << "Matrix4(" << mat.Value(0, 0) << ", " << mat.Value(0, 1) << ", " << mat.Value(0, 2) << ", " << mat.Value(0, 3) << "\n"

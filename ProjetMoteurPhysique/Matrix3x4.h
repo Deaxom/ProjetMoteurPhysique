@@ -46,6 +46,10 @@ public:
     Vecteur3D operator*(Vecteur3D& vec) const;
     Vecteur3D Transform(Vecteur3D& vec) const;
 
+    //Changer de base
+    Vecteur3D LocalAuMonde(Vecteur3D& local) const;
+    Vecteur3D MondeALocal(Vecteur3D& monde);
+
 private:
     std::array<float, 3 * 4> m_values;
 };

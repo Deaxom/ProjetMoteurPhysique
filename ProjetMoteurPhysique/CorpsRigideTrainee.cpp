@@ -31,5 +31,6 @@ void CorpsRigideTrainee::MiseAJourForce(CorpsRigide* corpsRigide, double deltaTi
     // On l'applique à la vitesse du corps rigide
     /*Vecteur3D newVitesse(vitesse + acceleration * deltaTime);
     CorpsRigide->setVitesse(newVitesse);*/
-    corpsRigide->setAcceleration(acceleration);
+    //corpsRigide->setAcceleration(acceleration);
+    corpsRigide->AjouterForce(acceleration);
 }
