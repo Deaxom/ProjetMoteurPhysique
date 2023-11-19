@@ -1,4 +1,5 @@
 ﻿#include "Quaternion.h"
+#include "Matrix3x3.h"
 #include <cmath>
 
 Quaternion::Quaternion(float w, float i, float j, float k) :
@@ -82,6 +83,24 @@ void Quaternion::UpdateByAngularVelocity(Vecteur3D& rotation, float duration)
     i += q.i * 0.5f;
     j += q.j * 0.5f;
     k += q.k * 0.5f;
+}
+
+Matrix3x3 Quaternion::TransformerEnMatriceRotation()
+{
+    Matrix3x3 result;
+    result.Value(0, 0) = 1 - (2 * j * j + 2 * k * k);
+    result.Value(0, 1) = 2 * i * j + 2 * k * w;
+    result.Value(0, 2) = 2 * i * k - 2 * j * w;
+
+    result.Value(1, 0) = 2 * i * j - 2 * k * w;
+    result.Value(1, 1) = 1 - (2 * i * i + 2 * k * k);
+    result.Value(1, 2) = 2 * j * k + 2 * i * w;
+
+    result.Value(2, 0) = 2 * i * k + 2 * j * w;
+    result.Value(2, 1) = 2 * j * k - 2 * i * w;
+    result.Value(2, 2) = 1 - (2 * i * i + 2 * j * j);
+
+    return result;
 }
 
 

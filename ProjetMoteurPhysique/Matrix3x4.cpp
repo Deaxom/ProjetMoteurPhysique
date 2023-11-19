@@ -1,4 +1,10 @@
 ﻿#include "Matrix3x4.h"
+#include "Quaternion.h"
+
+constexpr float Pi = 3.1415926535897932384626433832795f;
+
+constexpr float Deg2Rad = Pi / 180.f;
+constexpr float Rad2Deg = 180.f / Pi;
 
 Matrix3x4::Matrix3x4(std::array<float, 3 * 4> values) :
 m_values(values)
@@ -63,21 +69,6 @@ void Matrix3x4::SetOrientationAndPos(const Quaternion& q, Vecteur3D& pos)
     result.Value(2,1) = 2*q.j*q.k - 2*q.i*q.w;
     result.Value(2,2) = 1 - (2*q.i*q.i + 2*q.j*q.j);
     result.Value(2,3) = pos.getZ();   
-    
-    //result.Value(0, 0) = 1;
-    //result.Value(0, 1) = 0;
-    //result.Value(0, 2) = 0;
-    //result.Value(0, 3) = 0;
-    //    
-    //result.Value(1, 0) = 0;
-    //result.Value(1, 1) = 1;
-    //result.Value(1, 2) = 0;
-    //result.Value(1, 3) = 0;
-    //    
-    //result.Value(2, 0) = 0;
-    //result.Value(2, 1) = 0;
-    //result.Value(2, 2) = 1;
-    //result.Value(2, 3) = 0;
     
     (*this) = result;
 }

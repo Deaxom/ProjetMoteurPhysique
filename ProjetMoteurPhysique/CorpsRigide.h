@@ -1,7 +1,8 @@
 #pragma once
 #include "Vecteur3D.h"
-#include "Quaternion.h"
+
 #include "Matrix3x4.h"
+#include "Matrix3x3.h"
 
 class CorpsRigide
 {
@@ -25,6 +26,8 @@ private:
 	// Matrice de calcul pour orientation et rotation du corps
 	Matrix3x4 tranformationMatrice;
 
+	Matrix3x3 tenseurInertieInverse;
+
 	float traineeAngulaire;
 
 	Vecteur3D forceAccumulateur;
@@ -34,7 +37,7 @@ private:
 public:
 	// Reprise des methodes de particule
 	CorpsRigide();
-	CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire, Vecteur3D accelerationAngulaire);
+	CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire, Vecteur3D accelerationAngulaire, Matrix3x3 tenseurInertie);
 	Vecteur3D getPosition();
 	Vecteur3D getVitesse() const;
 	Vecteur3D getAcceleration() const;
@@ -44,6 +47,7 @@ public:
 	Vecteur3D getVelociteAngulaire() const;
 	Vecteur3D getAccelerationAngulaire() const;
 	Matrix3x4 getTransmationMatrice() const;
+	Matrix3x3 getTenseurInertieInverse() const;
 	Vecteur3D getForceAccumulateur() const;
 	Vecteur3D getTorqueAccumulateur() const;
 	void setPosition(Vecteur3D newPosition);
@@ -55,6 +59,9 @@ public:
 	void SetVelociteAngulaire(Vecteur3D& velociteAngulaire);
 	void SetAccelerationAngulaire(Vecteur3D& accelerationAngulaire);
 	void SetTransformationMatrice(Matrix3x4 transformationMatrice);
+
+	//On met le tenseur initial et il sera inverse dans le setter
+	void SetTenseurInertieInverse(Matrix3x3 tenseurInertie);
 
 	
 	void AjouterForce(const Vecteur3D& force);

@@ -37,8 +37,16 @@ void Integrateur::MiseAJourCorpsRigide(CorpsRigide* corpsRigide, double* deltaTi
 	Vecteur3D nouvelleAcceleration = corpsRigide->getForceAccumulateur() * (1 / corpsRigide->getMasse());
 	corpsRigide->setAcceleration(nouvelleAcceleration);
 
+	
+	//On transforme le quaternion orientation en matrice 
+	Matrix3x3 matriceRotation = corpsRigide->getOrientation().TransformerEnMatriceRotation();
+
+	// On change la base du tenseur intertie local dans le monde
+	Matrix3x3 tenseurInertieInverseMonde = matriceRotation * corpsRigide->getTenseurInertieInverse() * matriceRotation.Inverse();
+
 	//mise a jour acceleration angulaire
-	//TODO
+	Vecteur3D nouvelleAccelerationAngulaire = corpsRigide->getAccelerationAngulaire() + tenseurInertieInverseMonde * corpsRigide->getTorqueAccumulateur();
+	corpsRigide->SetAccelerationAngulaire(nouvelleAccelerationAngulaire);
 
 	//mise a jour velocite
 	corpsRigide->setVitesse(corpsRigide->getVitesse() + corpsRigide->getAcceleration() * (*deltaTime));

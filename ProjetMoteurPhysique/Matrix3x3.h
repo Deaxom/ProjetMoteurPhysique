@@ -3,18 +3,12 @@
 #include "Vecteur3D.h"
 #include <array>
 #include <iostream>
-
 #include "Quaternion.h"
-
-constexpr float Pi = 3.1415926535897932384626433832795f;
-
-constexpr float Deg2Rad = Pi / 180.f;
-constexpr float Rad2Deg = 180.f / Pi;
 
 class Matrix3x3
 {
 public:
-    Matrix3x3() = default;
+    Matrix3x3();
 
     /// structure =
     /// 1|2|3
@@ -34,7 +28,7 @@ public:
     void SetOrientation(const Quaternion& q);
 
     // Transform operator
-    Vecteur3D operator*(Vecteur3D& vec) const;
+    Vecteur3D operator*(Vecteur3D vec) const;
     Vecteur3D Transform(Vecteur3D& vec) const;
 
     float& Value(std::size_t i, std::size_t j);

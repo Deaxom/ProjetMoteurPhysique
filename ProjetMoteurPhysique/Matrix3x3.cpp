@@ -1,6 +1,16 @@
 ﻿#include "Matrix3x3.h"
 #include <cmath>
 
+constexpr float Pi = 3.1415926535897932384626433832795f;
+
+constexpr float Deg2Rad = Pi / 180.f;
+constexpr float Rad2Deg = 180.f / Pi;
+
+Matrix3x3::Matrix3x3()
+{
+    m_values = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+}
+
 Matrix3x3::Matrix3x3(std::array<float, 3 * 3> value) :
 m_values(value)
 {
@@ -75,7 +85,7 @@ float& Matrix3x3::Value(std::size_t i, std::size_t j)
 
 const float& Matrix3x3::Value(std::size_t i, std::size_t j) const
 {
-    return Value(i, j);
+    return m_values[i * 3 + j];
 }
 
 float& Matrix3x3::operator()(std::size_t i, std::size_t j)
@@ -111,7 +121,7 @@ void Matrix3x3::operator*=(const Matrix3x3& rhs)
     (*this) = (*this) * rhs;
 }
 
-Vecteur3D Matrix3x3::operator*(Vecteur3D& vec) const
+Vecteur3D Matrix3x3::operator*(Vecteur3D vec) const
 {
     Vecteur3D result;
     result.setX(Value(0, 0) * vec.getX() + Value(0, 1) * vec.getY() + Value(0, 2) * vec.getZ());

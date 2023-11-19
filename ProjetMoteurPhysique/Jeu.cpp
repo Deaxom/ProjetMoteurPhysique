@@ -217,8 +217,12 @@ void Jeu::start() {
     Quaternion orientationReference(0, 0, 0, 0);
     Vecteur3D velociteAngulaireReference(0, 0, 0);
     Vecteur3D accelerationAngulaireReference(0, 0, 0);
+    Matrix3x3 tenseurInertieReference({ 3, 2, 2,
+                                        1, 2, 1,
+                                        1, 1, 1
+                                     });
 
-    CorpsRigide* CoprsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
+    CorpsRigide* CoprsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference, tenseurInertieReference);
 
     //CoprsRigide1 CoprsRigide test orientation a 180 degree
     Vecteur3D positionCorpsRigideOrientation(0, 2, 0);
@@ -227,8 +231,9 @@ void Jeu::start() {
     Quaternion orientationOrientation(0, 1, 0, 0); // on change l'orientation de 180 degree
     Vecteur3D velociteAngulaireOrientation(0, 0, 0);
     Vecteur3D accelerationAngulaireOrientation(0, 0, 0);
+    Matrix3x3 tenseurInertieOrientation({ 3, 0, 0,      0, 2, 0,    0, 0, 1});
 
-    CorpsRigide* CoprsRigideOrientation = new CorpsRigide(positionCorpsRigideOrientation, vitesseCorpsRigideOrientation, accelerationOrientation, 10, orientationOrientation, velociteAngulaireOrientation, accelerationAngulaireOrientation);
+    CorpsRigide* CoprsRigideOrientation = new CorpsRigide(positionCorpsRigideOrientation, vitesseCorpsRigideOrientation, accelerationOrientation, 10, orientationOrientation, velociteAngulaireOrientation, accelerationAngulaireOrientation, tenseurInertieOrientation);
 
 
     //CoprsRigide2 CoprsRigide de test rotation
@@ -236,10 +241,11 @@ void Jeu::start() {
     Vecteur3D vitesseCorpsRigideRotation(0, 0, 0);
     Vecteur3D accelerationRotation(0, 0, 0);
     Quaternion orientationRotation(1, 1, 1, 0);
-    Vecteur3D velociteAngulaireRotation(1, 0, 0);
-    Vecteur3D accelerationAngulaireRotation(0, 0, 0);
+    Vecteur3D velociteAngulaireRotation(0, 0, 0);
+    Vecteur3D accelerationAngulaireRotation(1, 0, 0);
+    Matrix3x3 tenseurInertieRotation({ 3, 3, 3,      3, 2, 3,    3, 3, 1 });
 
-    CorpsRigide* CoprsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation);
+    CorpsRigide* CoprsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation, tenseurInertieRotation);
 
     //CoprsRigide3 CoprsRigide soumise la force de gravite
     Vecteur3D positionCorpsRigideGravite(2, 2, 0);
@@ -248,8 +254,9 @@ void Jeu::start() {
     Quaternion orientationGravite(0, 0, 0, 0);
     Vecteur3D velociteAngulaireGravite(0, 0, 0);
     Vecteur3D accelerationAngulaireGravite(0, 0, 0);
+    Matrix3x3 tenseurInertieGravite({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* CoprsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 100000, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
+    CorpsRigide* CoprsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 100000, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite, tenseurInertieGravite);
      
     CorpsRigideGravite* forceGraviteCorpsRigide = new CorpsRigideGravite(0, -1, 0);
 
@@ -262,8 +269,9 @@ void Jeu::start() {
     Quaternion orientationRessortFixe(0, 0, 0, 0);
     Vecteur3D velociteAngulaireRessortFixe(0, 0, 0);
     Vecteur3D accelerationAngulaireRessortFixe(0, 0, 0);
+    Matrix3x3 tenseurInertieRessortFixe({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* CoprsRigideRessortFixe = new CorpsRigide(positionCorpsRigideRessortFixe, vitesseCorpsRigideRessortFixe, accelerationRessortFixe, 10, orientationRessortFixe, velociteAngulaireRessortFixe, accelerationAngulaireRessortFixe);
+    CorpsRigide* CoprsRigideRessortFixe = new CorpsRigide(positionCorpsRigideRessortFixe, vitesseCorpsRigideRessortFixe, accelerationRessortFixe, 10, orientationRessortFixe, velociteAngulaireRessortFixe, accelerationAngulaireRessortFixe, tenseurInertieRessortFixe);
     
     //On cree la force de ressort fixe pour corps rigide avec une position fixe sur 0,0,0
     Vecteur3D positionFixe(-4, 2, 0);
@@ -281,8 +289,9 @@ void Jeu::start() {
     Quaternion orientationRessort(0, 0, 0, 0);
     Vecteur3D velociteAngulaireRessort(0, 0, 0);
     Vecteur3D accelerationAngulaireRessort(0, 0, 0);
+    Matrix3x3 tenseurInertieRessort({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* CoprsRigideRessort = new CorpsRigide(positionCorpsRigideRessort, vitesseCorpsRigideRessort, accelerationRessort, 10, orientationRessort, velociteAngulaireRessort, accelerationAngulaireRessort);
+    CorpsRigide* CoprsRigideRessort = new CorpsRigide(positionCorpsRigideRessort, vitesseCorpsRigideRessort, accelerationRessort, 10, orientationRessort, velociteAngulaireRessort, accelerationAngulaireRessort, tenseurInertieRessort);
 
 
     //CoprsRigide6 CoprsRigide autre soumise la force ressort
@@ -292,8 +301,9 @@ void Jeu::start() {
     Quaternion orientationRessortAutre(0, 0, 0, 0);
     Vecteur3D velociteAngulaireRessortAutre(0, 0, 0);
     Vecteur3D accelerationAngulaireRessortAutre(0, 0, 0);
+    Matrix3x3 tenseurInertieRessortAutre({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* CoprsRigideRessortAutre = new CorpsRigide(positionCorpsRigideRessortAutre, vitesseCorpsRigideRessortAutre, accelerationRessortAutre, 10, orientationRessortAutre, velociteAngulaireRessortAutre, accelerationAngulaireRessortAutre);
+    CorpsRigide* CoprsRigideRessortAutre = new CorpsRigide(positionCorpsRigideRessortAutre, vitesseCorpsRigideRessortAutre, accelerationRessortAutre, 10, orientationRessortAutre, velociteAngulaireRessortAutre, accelerationAngulaireRessortAutre, tenseurInertieRessortAutre);
 
     //On cree la force de ressort pour les deux corps
     CorpsRigideRessort* ressortCorpsRigide = new CorpsRigideRessort(CoprsRigideRessortAutre, k, restLenght);
@@ -308,8 +318,9 @@ void Jeu::start() {
     Quaternion orientationTrainee(0, 0, 0, 0);
     Vecteur3D velociteAngulaireTrainee(0, 0, 0);
     Vecteur3D accelerationAngulaireTrainee(0, 0, 0);
+    Matrix3x3 tenseurInertieTrainee({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* CoprsRigideTrainee = new CorpsRigide(positionCorpsRigideTrainee, vitesseCorpsRigideTrainee, accelerationTrainee, 10, orientationTrainee, velociteAngulaireTrainee, accelerationAngulaireTrainee);
+    CorpsRigide* CoprsRigideTrainee = new CorpsRigide(positionCorpsRigideTrainee, vitesseCorpsRigideTrainee, accelerationTrainee, 10, orientationTrainee, velociteAngulaireTrainee, accelerationAngulaireTrainee, tenseurInertieTrainee);
 
     //On cree la force de trainee
     CorpsRigideTrainee* forceTraineeCorpsRigide = new CorpsRigideTrainee(1.5f, 13.6f);
@@ -355,7 +366,9 @@ void Jeu::update() {
         {
             integrateur.MiseAJourCorpsRigide(*i, &deltaTime);
         }
-
+        
+        //std::cout << "accel angul: " << listeCorpsRigide[2]->getAccelerationAngulaire().getX() << std::endl;
+        //std::cout << "vit angul: " << listeCorpsRigide[2]->getVelociteAngulaire().getX() << std::endl;
         //Iteration sur tout les link
         //for (ContactGenerator::iterator i = contactGenerators.begin(); i != contactGenerators.end(); ++i)
         //{

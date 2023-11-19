@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "Vecteur3D.h"
 
+class Matrix3x3;
+
 class Quaternion
 {
 public:
@@ -16,6 +18,7 @@ public:
 
     void RotateByVector(Vecteur3D& vecteur);
     void UpdateByAngularVelocity(Vecteur3D& rotation, float duration);
+    Matrix3x3 TransformerEnMatriceRotation();
 
     float w, i, j, k;
 };
