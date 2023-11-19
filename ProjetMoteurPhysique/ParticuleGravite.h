@@ -3,7 +3,7 @@
 class ParticuleGravite : public ParticuleGenerateurForce
 {
 private:
-	Vecteur3D m_gracity;
+	Vecteur3D m_gravity;
 
 public:
 	ParticuleGravite(Vecteur3D gravity);

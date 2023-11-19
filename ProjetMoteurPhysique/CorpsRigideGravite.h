@@ -3,7 +3,7 @@
 class CorpsRigideGravite : public CorpsRigideGenerateurForce
 {
 private:
-	Vecteur3D m_gracity;
+	Vecteur3D m_gravity;
 
 public:
 	CorpsRigideGravite(Vecteur3D gravity);
