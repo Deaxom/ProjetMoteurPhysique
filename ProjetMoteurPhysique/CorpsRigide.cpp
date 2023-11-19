@@ -168,6 +168,27 @@ void CorpsRigide::AjouterForcePointCorps(const Vecteur3D& force, const Vecteur3D
 	AjouterForcePointMonde(force, pointMonde);
 }
 
+void CorpsRigide::AjouterTorque(const Vecteur3D& torque)
+{
+	torqueAccumulateur = torqueAccumulateur + torque;
+}
+
+// Apply torque based on a force applied at a point in world coordinates
+void CorpsRigide::AjouterTorquePointMonde(const Vecteur3D& force, const Vecteur3D& pointMonde)
+{
+	// Calculate torque using the cross product
+	Vecteur3D torque = pointMonde - position;
+	AjouterTorque(torque.produitVectoriel(force));
+}
+
+// Apply torque based on a force applied at a point in body coordinates
+void CorpsRigide::AjouterTorquePointCorps(const Vecteur3D& force, const Vecteur3D& pointCorps)
+{
+	// Calculate torque using the cross product
+	Vecteur3D torque = pointCorps.produitVectoriel(force);
+	AjouterTorque(torque);
+}
+
 void CorpsRigide::NettoyerAccumulateur()
 {
 	forceAccumulateur.nettoyerVecteur();

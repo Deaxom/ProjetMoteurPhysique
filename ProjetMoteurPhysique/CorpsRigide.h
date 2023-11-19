@@ -67,6 +67,11 @@ public:
 	void AjouterForce(const Vecteur3D& force);
 	void AjouterForcePointMonde(const Vecteur3D& force, const Vecteur3D& pointMonde);
 	void AjouterForcePointCorps(const Vecteur3D& force, const Vecteur3D& pointCorps);
+	
+	void AjouterTorque(const Vecteur3D& torque);
+	void AjouterTorquePointMonde(const Vecteur3D& force, const Vecteur3D& pointMonde);
+	void AjouterTorquePointCorps(const Vecteur3D& force, const Vecteur3D& pointCorps);
+
 	void NettoyerAccumulateur();
 
 	//void MiseAJourCorps(double &deltaTime);
@@ -75,4 +80,3 @@ public:
 	void CalculerTransformationMatrice();
 
 };
-

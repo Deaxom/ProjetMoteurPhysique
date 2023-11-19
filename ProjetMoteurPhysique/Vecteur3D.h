@@ -14,14 +14,14 @@ public:
 	void setX(double newX);
 	void setY(double newY);
 	void setZ(double newZ);
-	double calculNorme();
-	Vecteur3D calculVecteurUnitaire();
-	Vecteur3D operator*(double scalaire);
-	Vecteur3D operator*(const Vecteur3D vec);
-	Vecteur3D operator+(Vecteur3D vecteur);
-	Vecteur3D operator-(Vecteur3D vecteur);
-	double produitScalaire(Vecteur3D vecteur);
-	Vecteur3D produitVectoriel(Vecteur3D vecteur);
+	double calculNorme() const;
+	Vecteur3D calculVecteurUnitaire() const;
+	Vecteur3D operator*(double scalaire) const;
+	Vecteur3D operator*(const Vecteur3D vec) const;
+	Vecteur3D operator+(Vecteur3D vecteur) const;
+	Vecteur3D operator-(Vecteur3D vecteur) const;
+	double produitScalaire(Vecteur3D vecteur) const;
+	Vecteur3D produitVectoriel(Vecteur3D vecteur) const;
 	void nettoyerVecteur();
 };
 
