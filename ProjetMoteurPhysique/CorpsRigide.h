@@ -23,7 +23,7 @@ private:
 	Vecteur3D accelerationAngulaire;
 
 	// Matrice de calcul pour orientation et rotation du corps
-	Matrix3x4 tranformationMatrice;
+	Matrix3x4 transformationMatrice;
 
 	float traineeAngulaire;
 
@@ -65,7 +65,7 @@ public:
 	//void MiseAJourCorps(double &deltaTime);
 
 	// Methode appeller chaque frame pour le calcule de la matrice de transformation et la normalisation de l'orientation
-	void CalculerTranformationMatrice();
+	void CalculerTransformationMatrice();
 
 };
 

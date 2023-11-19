@@ -31,7 +31,7 @@ void Integrateur::MiseAJourCorpsRigide(CorpsRigide* corpsRigide, double* deltaTi
 	Quaternion w(0, corpsRigide->getVelociteAngulaire().getX(), corpsRigide->getVelociteAngulaire().getY(), corpsRigide->getVelociteAngulaire().getZ());
 	corpsRigide->setOrientation(corpsRigide->getOrientation() + w * corpsRigide->getOrientation() * (*(deltaTime) / 2));
 
-	corpsRigide->CalculerTranformationMatrice();
+	corpsRigide->CalculerTransformationMatrice();
 
 	//mise a jour acceleration
 	Vecteur3D nouvelleAcceleration = corpsRigide->getForceAccumulateur() * (1 / corpsRigide->getMasse());

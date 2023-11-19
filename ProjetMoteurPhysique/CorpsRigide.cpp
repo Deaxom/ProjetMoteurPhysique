@@ -77,7 +77,7 @@ Vecteur3D CorpsRigide::getAccelerationAngulaire() const
 
 Matrix3x4 CorpsRigide::getTransmationMatrice() const
 {
-	return tranformationMatrice;
+	return transformationMatrice;
 }
 
 Vecteur3D CorpsRigide::getForceAccumulateur() const
@@ -129,7 +129,7 @@ void CorpsRigide::SetAccelerationAngulaire(Vecteur3D& accelerationAngulaire)
 
 void CorpsRigide::SetTransformationMatrice(Matrix3x4 transformationMatrice)
 {
-	this->tranformationMatrice = transformationMatrice;
+	this->transformationMatrice = transformationMatrice;
 }
 
 void CorpsRigide::AjouterForce(const Vecteur3D& force)
@@ -149,7 +149,7 @@ void CorpsRigide::AjouterForcePointMonde(const Vecteur3D& force, const Vecteur3D
 void CorpsRigide::AjouterForcePointCorps(const Vecteur3D& force, const Vecteur3D& pointCorps)
 {
 	Vecteur3D local = pointCorps;
-	Vecteur3D pointMonde =  tranformationMatrice.LocalAuMonde(local);
+	Vecteur3D pointMonde =  transformationMatrice.LocalAuMonde(local);
 	AjouterForcePointMonde(force, pointMonde);
 }
 
@@ -175,14 +175,14 @@ void CorpsRigide::NettoyerAccumulateur()
 //	velociteAngulaire = velociteAngulaire + accelerationAngulaire * deltaTime;
 //	//orientation.UpdateByAngularVelocity(velociteAngulaire, deltaTime);
 //
-//	CalculerTranformationMatrice();
+//	CalculerTransformationMatrice();
 //}
 
-void CorpsRigide::CalculerTranformationMatrice()
+void CorpsRigide::CalculerTransformationMatrice()
 {
 	orientation.Normalized();
 
-	tranformationMatrice.SetOrientationAndPos(orientation, position);
+	transformationMatrice.SetOrientationAndPos(orientation, position);
 	
 }
 

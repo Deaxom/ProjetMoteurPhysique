@@ -117,7 +117,7 @@ void Jeu::start() {
 
     //Particule* particuleGravite = new Particule(positionParticuleGravite, vitesseParticuleGravite, accelerationGravite, 10, true);
 
-    //particule2 sur lequel on applique la force de traine
+    ////particule2 sur lequel on applique la force de traine
     //Vecteur3D positionParticuleTraine(2, 0, 0);
     //Vecteur3D vitesseParticuleTraine(0, 0, 0);
     //Vecteur3D accelerationTraine(15, 0, 0);
@@ -210,7 +210,7 @@ void Jeu::start() {
 #pragma endregion
 
 #pragma region CorpsRigide
-    //CoprsRigide0 CoprsRigide reference au centre du monde
+    //CorpsRigide0 CorpsRigide reference au centre du monde
     Vecteur3D positionCorpsRigideReference(0, 0, 0);
     Vecteur3D vitesseCorpsRigideReference(0, 0, 0);
     Vecteur3D accelerationReference(0, 0, 0);
@@ -218,9 +218,9 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireReference(0, 0, 0);
     Vecteur3D accelerationAngulaireReference(0, 0, 0);
 
-    CorpsRigide* CoprsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
+    CorpsRigide* corpsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference);
 
-    //CoprsRigide1 CoprsRigide test orientation a 180 degree
+    //CorpsRigide1 CorpsRigide test orientation a 180 degree
     Vecteur3D positionCorpsRigideOrientation(0, 2, 0);
     Vecteur3D vitesseCorpsRigideOrientation(0, 0, 0);
     Vecteur3D accelerationOrientation(0, 0, 0);
@@ -228,10 +228,10 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireOrientation(0, 0, 0);
     Vecteur3D accelerationAngulaireOrientation(0, 0, 0);
 
-    CorpsRigide* CoprsRigideOrientation = new CorpsRigide(positionCorpsRigideOrientation, vitesseCorpsRigideOrientation, accelerationOrientation, 10, orientationOrientation, velociteAngulaireOrientation, accelerationAngulaireOrientation);
+    CorpsRigide* corpsRigideOrientation = new CorpsRigide(positionCorpsRigideOrientation, vitesseCorpsRigideOrientation, accelerationOrientation, 10, orientationOrientation, velociteAngulaireOrientation, accelerationAngulaireOrientation);
 
 
-    //CoprsRigide2 CoprsRigide de test rotation
+    //CorpsRigide2 CorpsRigide de test rotation
     Vecteur3D positionCorpsRigideRotation(0, 4, 0);
     Vecteur3D vitesseCorpsRigideRotation(0, 0, 0);
     Vecteur3D accelerationRotation(0, 0, 0);
@@ -239,9 +239,9 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireRotation(1, 0, 0);
     Vecteur3D accelerationAngulaireRotation(0, 0, 0);
 
-    CorpsRigide* CoprsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation);
+    CorpsRigide* corpsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation);
 
-    //CoprsRigide3 CoprsRigide soumise la force de gravite
+    //CorpsRigide3 CorpsRigide soumise la force de gravite
     Vecteur3D positionCorpsRigideGravite(2, 2, 0);
     Vecteur3D vitesseCorpsRigideGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
@@ -249,13 +249,13 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireGravite(0, 0, 0);
     Vecteur3D accelerationAngulaireGravite(0, 0, 0);
 
-    CorpsRigide* CoprsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 100000, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
+    CorpsRigide* corpsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 100000, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite);
      
     CorpsRigideGravite* forceGraviteCorpsRigide = new CorpsRigideGravite(0, -1, 0);
 
-    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideGravite, forceGraviteCorpsRigide);
+    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideGravite, forceGraviteCorpsRigide);
 
-    //CoprsRigide4 CoprsRigide soumise la force ressort fixe
+    //CorpsRigide4 CorpsRigide soumise la force ressort fixe
     Vecteur3D positionCorpsRigideRessortFixe(-3, 3, 0);
     Vecteur3D vitesseCorpsRigideRessortFixe(0, 0, 0);
     Vecteur3D accelerationRessortFixe(0.2, 0, 0);
@@ -263,7 +263,7 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireRessortFixe(0, 0, 0);
     Vecteur3D accelerationAngulaireRessortFixe(0, 0, 0);
 
-    CorpsRigide* CoprsRigideRessortFixe = new CorpsRigide(positionCorpsRigideRessortFixe, vitesseCorpsRigideRessortFixe, accelerationRessortFixe, 10, orientationRessortFixe, velociteAngulaireRessortFixe, accelerationAngulaireRessortFixe);
+    CorpsRigide* corpsRigideRessortFixe = new CorpsRigide(positionCorpsRigideRessortFixe, vitesseCorpsRigideRessortFixe, accelerationRessortFixe, 10, orientationRessortFixe, velociteAngulaireRessortFixe, accelerationAngulaireRessortFixe);
     
     //On cree la force de ressort fixe pour corps rigide avec une position fixe sur 0,0,0
     Vecteur3D positionFixe(-4, 2, 0);
@@ -272,9 +272,9 @@ void Jeu::start() {
     CorpsRigideRessortFixe* ressortFixeCorpsRigide = new CorpsRigideRessortFixe(positionFixe, k, restLenght);
 
     //On applique la force de ressort fixe au corps
-    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideRessortFixe, ressortFixeCorpsRigide);
+    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideRessortFixe, ressortFixeCorpsRigide);
 
-    //CoprsRigide5 CoprsRigide soumise la force ressort
+    //CorpsRigide5 CorpsRigide soumise la force ressort
     Vecteur3D positionCorpsRigideRessort(-3, -2, 0);
     Vecteur3D vitesseCorpsRigideRessort(0, 0, 0);
     Vecteur3D accelerationRessort(0, -1, 0);
@@ -282,10 +282,10 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireRessort(0, 0, 0);
     Vecteur3D accelerationAngulaireRessort(0, 0, 0);
 
-    CorpsRigide* CoprsRigideRessort = new CorpsRigide(positionCorpsRigideRessort, vitesseCorpsRigideRessort, accelerationRessort, 10, orientationRessort, velociteAngulaireRessort, accelerationAngulaireRessort);
+    CorpsRigide* corpsRigideRessort = new CorpsRigide(positionCorpsRigideRessort, vitesseCorpsRigideRessort, accelerationRessort, 10, orientationRessort, velociteAngulaireRessort, accelerationAngulaireRessort);
 
 
-    //CoprsRigide6 CoprsRigide autre soumise la force ressort
+    //CorpsRigide6 CorpsRigide autre soumise la force ressort
     Vecteur3D positionCorpsRigideRessortAutre(-3, 0, 0);
     Vecteur3D vitesseCorpsRigideRessortAutre(0, 0, 0);
     Vecteur3D accelerationRessortAutre(0, 0, 0);
@@ -293,15 +293,15 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireRessortAutre(0, 0, 0);
     Vecteur3D accelerationAngulaireRessortAutre(0, 0, 0);
 
-    CorpsRigide* CoprsRigideRessortAutre = new CorpsRigide(positionCorpsRigideRessortAutre, vitesseCorpsRigideRessortAutre, accelerationRessortAutre, 10, orientationRessortAutre, velociteAngulaireRessortAutre, accelerationAngulaireRessortAutre);
+    CorpsRigide* corpsRigideRessortAutre = new CorpsRigide(positionCorpsRigideRessortAutre, vitesseCorpsRigideRessortAutre, accelerationRessortAutre, 10, orientationRessortAutre, velociteAngulaireRessortAutre, accelerationAngulaireRessortAutre);
 
     //On cree la force de ressort pour les deux corps
-    CorpsRigideRessort* ressortCorpsRigide = new CorpsRigideRessort(CoprsRigideRessortAutre, k, restLenght);
+    CorpsRigideRessort* ressortCorpsRigide = new CorpsRigideRessort(corpsRigideRessortAutre, k, restLenght);
 
     //On applique la force de ressort au deux corps
-    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideRessort, ressortCorpsRigide);
+    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideRessort, ressortCorpsRigide);
 
-    //CoprsRigide7 CoprsRigide soumise la force de la trainee
+    //CorpsRigide7 CorpsRigide soumise la force de la trainee
     Vecteur3D positionCorpsRigideTrainee(0, -2 , 0);
     Vecteur3D vitesseCorpsRigideTrainee(0, 0, 0);
     Vecteur3D accelerationTrainee(80, 0, 0);
@@ -309,17 +309,17 @@ void Jeu::start() {
     Vecteur3D velociteAngulaireTrainee(0, 0, 0);
     Vecteur3D accelerationAngulaireTrainee(0, 0, 0);
 
-    CorpsRigide* CoprsRigideTrainee = new CorpsRigide(positionCorpsRigideTrainee, vitesseCorpsRigideTrainee, accelerationTrainee, 10, orientationTrainee, velociteAngulaireTrainee, accelerationAngulaireTrainee);
+    CorpsRigide* corpsRigideTrainee = new CorpsRigide(positionCorpsRigideTrainee, vitesseCorpsRigideTrainee, accelerationTrainee, 10, orientationTrainee, velociteAngulaireTrainee, accelerationAngulaireTrainee);
 
     //On cree la force de trainee
     CorpsRigideTrainee* forceTraineeCorpsRigide = new CorpsRigideTrainee(1.5f, 13.6f);
 
     //On applique la force de trainee
-    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(CoprsRigideTrainee, forceTraineeCorpsRigide);
+    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideTrainee, forceTraineeCorpsRigide);
 
-    //On ajoute tout les Coprs Rigides dans une liste pour ensuite les afficher graphiquement
+    //On ajoute tous les Corps Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeCorpsRigide = { CoprsRigideReference,CoprsRigideOrientation, CoprsRigideRotation, CoprsRigideGravite,  CoprsRigideRessortFixe, CoprsRigideRessort, CoprsRigideRessortAutre, CoprsRigideTrainee };
+    this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation, corpsRigideGravite,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee };
 #pragma endregion
 
 }
