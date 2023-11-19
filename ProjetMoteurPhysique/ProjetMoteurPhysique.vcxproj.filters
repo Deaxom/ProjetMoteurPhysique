@@ -290,9 +290,6 @@
     <ClInclude Include="ParticuleContactResolver.h">
       <Filter>Fichiers d%27en-tête\Collisions</Filter>
     </ClInclude>
-    <ClInclude Include="CorpsRigide.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="ParticuleFlottabilite.h">
       <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
     </ClInclude>
@@ -373,6 +370,9 @@
     </ClInclude>
     <ClInclude Include="Quaternion.h">
       <Filter>Fichiers d%27en-tête\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="CorpsRigide.h">
+      <Filter>Fichiers d%27en-tête\Objets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

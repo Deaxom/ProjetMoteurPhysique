@@ -2,12 +2,11 @@
 #include "Matrix3x3.h"
 #include <cmath>
 
-Quaternion::Quaternion(float w, float i, float j, float k) :
-w(w),
-i(i),
-j(j),
-k(k)
-{
+Quaternion::Quaternion(float w, float i, float j, float k) {
+    this->w = w;
+    this->i = i;
+    this->j = j;
+    this->k = k;
 }
 
 void Quaternion::Normalized()
