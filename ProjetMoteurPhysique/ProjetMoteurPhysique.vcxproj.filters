@@ -132,15 +132,6 @@
     <ClCompile Include="ParticuleContactResolver.cpp">
       <Filter>Fichiers sources\Collisions</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix3x3.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix3x4.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Quaternion.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="ParticuleFlottabilite.cpp">
       <Filter>Fichiers sources\Forces\Particule</Filter>
     </ClCompile>
@@ -212,6 +203,15 @@
     </ClCompile>
     <ClCompile Include="OpenglImGui.cpp">
       <Filter>Fichiers sources\Affichage</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3x3.cpp">
+      <Filter>Fichiers sources\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3x4.cpp">
+      <Filter>Fichiers sources\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Fichiers sources\Maths</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -290,15 +290,6 @@
     <ClInclude Include="ParticuleContactResolver.h">
       <Filter>Fichiers d%27en-tête\Collisions</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix3x3.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix3x4.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Quaternion.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="CorpsRigide.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -373,6 +364,15 @@
     </ClInclude>
     <ClInclude Include="Integrateur.h">
       <Filter>Fichiers d%27en-tête\Objets</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3x3.h">
+      <Filter>Fichiers d%27en-tête\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3x4.h">
+      <Filter>Fichiers d%27en-tête\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Fichiers d%27en-tête\Maths</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
