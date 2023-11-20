@@ -33,5 +33,5 @@ Nous avons également créé les objets des corps rigides et avons modifié les 
 
 Contribution:
 Alain: Modification des forces pour qu'elles puissent s'appliquer aux corps rigides.
-Charles: Implémentation des Corps Rigides.
+Charles: Implémentation des Corps Rigides, Mise en place de l'inertie pour les corps rigides, gestion de l'affichage avec opengl, participation à la mise en place du jeu.
 Thomas: Implémentation des matrices 3x3 et 4x3, Implémentation des quaternions.
