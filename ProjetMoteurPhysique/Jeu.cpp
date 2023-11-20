@@ -328,9 +328,20 @@ void Jeu::start() {
     //On applique la force de trainee
     this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideTrainee, forceTraineeCorpsRigide);
 
+    //CorpsRigide8 CorpsRigide soumis à l'utilisateur
+    Vecteur3D positionCorpsRigideUtilisateur(5, 4, 0);
+    Vecteur3D vitesseCorpsRigideUtilisateur(0, 0, 0);
+    Vecteur3D accelerationUtilisateur(0, 0, 0);
+    Quaternion orientationUtilisateur(0, 0, 0, 0);
+    Vecteur3D velociteAngulaireUtilisateur(0, 0, 0);
+    Vecteur3D accelerationAngulaireUtilisateur(0, 0, 0);
+    Matrix3x3 tenseurInertieUtilisateur({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
+
+    CorpsRigide* corpsRigideUtilisateur = new CorpsRigide(positionCorpsRigideUtilisateur, vitesseCorpsRigideUtilisateur, accelerationUtilisateur, 10, orientationUtilisateur, velociteAngulaireUtilisateur, accelerationAngulaireUtilisateur, tenseurInertieUtilisateur);
+
     //On ajoute tous les Corps Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation, corpsRigideGravite,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee };
+    this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation, corpsRigideGravite,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur };
 #pragma endregion
 
 }
