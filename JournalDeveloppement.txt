@@ -18,7 +18,7 @@ Phase 2:
 Pour cette deuxième partie, nous avons intégré LearnOpenGL qui nous manquait la dernière fois.
 Nous avons ensuite implémenté toutes les forces et ressorts demandés grâce aux formules du cours.
 Nous avons ensuite améliorer notre jeu pour que les particules subissent les forces et ressorts implémentés et qu'elles soient affichées graphiquement.
-Nous avons ensuite implémenté le systéme de collision avec le cable, la tiges, le sols, et l'Interpenetration.
+Nous avons ensuite implémenté le système de collision avec le cable, la tige, le sol, et l'interpenetration.
 
 Contribution:
 Alain: Intégration de LearnOpenGL, correction des forces de gravité, de trainée, des 2 ressorts et de la flottabilité. Modification des classes Particules et Vecteur3D précédentes pour l'implémentation de cette partie. (33%)
@@ -30,8 +30,10 @@ Thomas: Implémentation de ParticuleContact, ParticuleContactGenerator et Partic
 Phase 3:
 Pour cette troisième partie, nous avons implémenté les matrices 3x3 et 4x3 ainsi que les quaternions.
 Nous avons également créé les objets des corps rigides et avons modifié les forces que nous avions déjà pour qu'elles puissent s'appliquer sur ces corps.
+Nous y avons ajouté la vitesse et l'accélération angulaire ainsi que les moments des forces.
+Enfin nous avons modifié notre jeu pour afficher le résultat des forces appliquées aux corps rigides et montrer une rotation d'un corps rigide en fonction de l'input de l'utilisateur.
 
 Contribution:
-Alain: Modification des forces pour qu'elles puissent s'appliquer aux corps rigides.
-Charles: Implémentation des Corps Rigides, Mise en place de l'inertie pour les corps rigides, gestion de l'affichage avec opengl, participation à la mise en place du jeu.
-Thomas: Implémentation des matrices 3x3 et 4x3, Implémentation des quaternions.
+Alain: Modification des forces pour qu'elles puissent s'appliquer aux corps rigides. Implémentation des torques sur les corps rigides. Création d'un corps rigide réagissant aux inputs de l'utilisateur. Corrections de typographie dans l'ensemble du projet. (35%)
+Charles: Implémentation des Corps Rigides, Mise en place de l'inertie pour les corps rigides, gestion de l'affichage avec opengl, participation à la mise en place du jeu. (40%)
+Thomas: Implémentation des matrices 3x3 et 4x3, Implémentation des quaternions. Debuggage afin d'optimiser la précédente phase ainsi que pour la vélocité angulaire. (25%)
