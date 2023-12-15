@@ -85,6 +85,24 @@
     <Filter Include="Fichiers sources\Affichage">
       <UniqueIdentifier>{2289a127-9dc7-4384-a795-4a4b139a85df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Collisions\CorpsRigide">
+      <UniqueIdentifier>{c82e4361-cfc4-432b-aea3-79365fbd5532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Collisions\CorpsRigide\Detection">
+      <UniqueIdentifier>{448e087d-0468-4027-acff-c558a7050b28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Collisions\Particule">
+      <UniqueIdentifier>{58e4e753-0ea6-47f6-b00f-6b16c2dbb6c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Collisions\Particule">
+      <UniqueIdentifier>{a9ed81a2-8916-41c3-9cf8-6ed2ff5cf02e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Collisions\CorpsRigide">
+      <UniqueIdentifier>{16431d34-9dcc-4adb-881d-78c133b3d86b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Collisions\CorpsRigide\Detection">
+      <UniqueIdentifier>{9a0242b1-7b5e-41a2-a547-f72de4ae017e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -122,15 +140,6 @@
     </ClCompile>
     <ClCompile Include="libs\stb_image.cpp">
       <Filter>Fichiers sources\libs</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleContact.cpp">
-      <Filter>Fichiers sources\Collisions</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleContactGenerator.cpp">
-      <Filter>Fichiers sources\Collisions</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticuleContactResolver.cpp">
-      <Filter>Fichiers sources\Collisions</Filter>
     </ClCompile>
     <ClCompile Include="ParticuleFlottabilite.cpp">
       <Filter>Fichiers sources\Forces\Particule</Filter>
@@ -213,6 +222,21 @@
     <ClCompile Include="Quaternion.cpp">
       <Filter>Fichiers sources\Maths</Filter>
     </ClCompile>
+    <ClCompile Include="ParticuleContact.cpp">
+      <Filter>Fichiers sources\Collisions\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleContactGenerator.cpp">
+      <Filter>Fichiers sources\Collisions\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticuleContactResolver.cpp">
+      <Filter>Fichiers sources\Collisions\Particule</Filter>
+    </ClCompile>
+    <ClCompile Include="Noeud.cpp">
+      <Filter>Fichiers sources\Collisions\CorpsRigide\Detection</Filter>
+    </ClCompile>
+    <ClCompile Include="Octree.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Jeu.h">
@@ -280,15 +304,6 @@
     </ClInclude>
     <ClInclude Include="CameraControlleur.h">
       <Filter>Fichiers d%27en-tête\libs\LearnOpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleContact.h">
-      <Filter>Fichiers d%27en-tête\Collisions</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleContactGenerator.h">
-      <Filter>Fichiers d%27en-tête\Collisions</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticuleContactResolver.h">
-      <Filter>Fichiers d%27en-tête\Collisions</Filter>
     </ClInclude>
     <ClInclude Include="ParticuleFlottabilite.h">
       <Filter>Fichiers d%27en-tête\Forces\Particule</Filter>
@@ -373,6 +388,21 @@
     </ClInclude>
     <ClInclude Include="CorpsRigide.h">
       <Filter>Fichiers d%27en-tête\Objets</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleContactGenerator.h">
+      <Filter>Fichiers d%27en-tête\Collisions\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleContact.h">
+      <Filter>Fichiers d%27en-tête\Collisions\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticuleContactResolver.h">
+      <Filter>Fichiers d%27en-tête\Collisions\Particule</Filter>
+    </ClInclude>
+    <ClInclude Include="Noeud.h">
+      <Filter>Fichiers d%27en-tête\Collisions\CorpsRigide\Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="Octree.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

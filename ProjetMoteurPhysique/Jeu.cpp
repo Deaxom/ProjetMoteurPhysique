@@ -12,6 +12,7 @@
 #include "CorpsRigideGravite.h"
 #include "CorpsRigideRessort.h"
 #include "CorpsRigideTrainee.h"
+#include "Octree.h"
 
 
 //Constructeurs
@@ -377,6 +378,11 @@ void Jeu::update() {
         {
             integrateur.MiseAJourCorpsRigide(*i, &deltaTime);
         }
+
+        //Octree octree;
+        //Noeud* arbre = octree.construireOctree(Vecteur3D(0, 0, 0), 5.f, 4);
+        //octree.InsererCorpsRigideOctree(arbre, listeCorpsRigide[0]);
+
 
         //std::cout << "accel angul: " << listeCorpsRigide[2]->getAccelerationAngulaire().getX() << std::endl;
         //std::cout << "vit angul: " << listeCorpsRigide[2]->getVelociteAngulaire().getX() << std::endl;

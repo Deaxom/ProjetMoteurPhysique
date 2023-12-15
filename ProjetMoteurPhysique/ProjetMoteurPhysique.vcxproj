@@ -156,6 +156,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix3x3.cpp" />
     <ClCompile Include="Matrix3x4.cpp" />
+    <ClCompile Include="Noeud.cpp" />
+    <ClCompile Include="Octree.cpp" />
     <ClCompile Include="OpenGlGLFW.cpp" />
     <ClCompile Include="OpenglImGui.cpp" />
     <ClCompile Include="ParticuleContact.cpp" />
@@ -207,6 +209,8 @@
     <ClInclude Include="libs\stb_image.h" />
     <ClInclude Include="Matrix3x3.h" />
     <ClInclude Include="Matrix3x4.h" />
+    <ClInclude Include="Noeud.h" />
+    <ClInclude Include="Octree.h" />
     <ClInclude Include="OpenGlGLFW.h" />
     <ClInclude Include="OpenglImGui.h" />
     <ClInclude Include="ParticuleContact.h" />

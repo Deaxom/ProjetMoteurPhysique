@@ -34,6 +34,11 @@ private:
 
 	Vecteur3D torqueAccumulateur;
 
+
+	//Attribut pour octree
+	float rayonCoprs;
+	CorpsRigide* corpsRigideSuivant;
+
 public:
 	// Reprise des methodes de particule
 	CorpsRigide();
@@ -50,6 +55,8 @@ public:
 	Matrix3x3 getTenseurInertieInverse() const;
 	Vecteur3D getForceAccumulateur() const;
 	Vecteur3D getTorqueAccumulateur() const;
+	float getRayonCorps() const;
+	CorpsRigide* getCorpsRigideSuivant() const;
 	void setPosition(Vecteur3D newPosition);
 	void setVitesse(Vecteur3D newVitesse);
 	void setAcceleration(Vecteur3D newAcceleration);
@@ -62,6 +69,9 @@ public:
 
 	//On met le tenseur initial et il sera inverse dans le setter
 	void SetTenseurInertieInverse(Matrix3x3 tenseurInertie);
+
+	void setRayonCorps(float rayon);
+	void setCorpsRigideSuivant(CorpsRigide* corpsRigideSuivant);
 
 	
 	void AjouterForce(const Vecteur3D& force);

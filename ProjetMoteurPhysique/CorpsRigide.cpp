@@ -101,6 +101,16 @@ Vecteur3D CorpsRigide::getTorqueAccumulateur() const
 	return torqueAccumulateur;
 }
 
+float CorpsRigide::getRayonCorps() const
+{
+	return rayonCoprs;
+}
+
+CorpsRigide* CorpsRigide::getCorpsRigideSuivant() const
+{
+	return corpsRigideSuivant;
+}
+
 //SETTERS
 void CorpsRigide::setPosition(Vecteur3D newPosition) {
 	this->position = newPosition;
@@ -145,6 +155,16 @@ void CorpsRigide::SetTransformationMatrice(Matrix3x4 transformationMatrice)
 void CorpsRigide::SetTenseurInertieInverse(Matrix3x3 tenseurInertie)
 {
 	this->tenseurInertieInverse = tenseurInertie.Inverse();
+}
+
+void CorpsRigide::setRayonCorps(float rayon)
+{
+	this->rayonCoprs = rayon;
+}
+
+void CorpsRigide::setCorpsRigideSuivant(CorpsRigide* corpsRigideSuivant)
+{
+	this->corpsRigideSuivant = corpsRigideSuivant;
 }
 
 void CorpsRigide::AjouterForce(const Vecteur3D& force)
