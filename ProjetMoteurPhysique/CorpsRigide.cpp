@@ -42,6 +42,9 @@ CorpsRigide::CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Ve
 
 	//On met le tenseur initial et il sera inverse dans le setter
 	this->SetTenseurInertieInverse(tenseurInertie);
+
+	// Initialisation du volume englobant pour la detection de contact
+	this->rayonCoprs = 0.5;
 }
 
 //GETTERS

@@ -35,7 +35,7 @@ private:
 	Vecteur3D torqueAccumulateur;
 
 
-	//Attribut pour octree
+	//Attribut de volume englobant corps rigide pour octree
 	float rayonCoprs;
 	CorpsRigide* corpsRigideSuivant;
 

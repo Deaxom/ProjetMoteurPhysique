@@ -11,6 +11,7 @@ Noeud* Octree::construireOctree(Vecteur3D centre, float demiLargeur, int profond
 		pNoeud->centre = centre;
 		pNoeud->demiLargeur = demiLargeur;
 		pNoeud->listeCorpsRigide = NULL;
+		pNoeud->tailleListeCorpsRigide = 0;
 
 		Vecteur3D decalage;
 		float nouvelleDemiLargeur = demiLargeur * 0.5f;
@@ -42,12 +43,15 @@ void Octree::InsererCorpsRigideOctree(Noeud* arbre, CorpsRigide* corpsRigide)
 	}
 
 	// On modifie index en fonction position de notre corps rigide
+	//Si vrai le corps est a droite du centre 
 	if (deltaX > 0.0) {
 		indexEnfant |= 1;
 	}
+	//Si vrai le corps est au dessus du centre 
 	if (deltaY > 0.0) {
 		indexEnfant |= 2;
 	}
+	//Si vrai le corps est devant le centre 
 	if (deltaZ > 0.0) {
 		indexEnfant |= 4;
 	}
@@ -62,5 +66,62 @@ void Octree::InsererCorpsRigideOctree(Noeud* arbre, CorpsRigide* corpsRigide)
 	else {
 		corpsRigide->setCorpsRigideSuivant(arbre->listeCorpsRigide);
 		arbre->listeCorpsRigide = corpsRigide;
+		arbre->tailleListeCorpsRigide++;
+
+		//std::cout << "add octree: " << corpsRigide->getPosition().getX() << std::endl;
+	}
+}
+
+void Octree::DetecterCollisionsPotentielles(Noeud* arbre)
+{
+	// Vérifier les collisions potentielles pour les objets dans ce nœud
+	VerifierCollisionsPotentiellesNoeud(arbre);
+
+	// vérifier les collisions potentielles pour les enfants du nœud
+	for (int i = 0; i < 8; ++i)
+	{
+		if (arbre->listeEnfant[i] != NULL)
+		{
+			DetecterCollisionsPotentielles(arbre->listeEnfant[i]);
+		}
+	}
+}
+
+void Octree::VerifierCollisionsPotentiellesNoeud(Noeud* noeud)
+{
+	// Vérifier les collisions potentielles pour ce nœud
+	CorpsRigide* corpsRigide1 = noeud->listeCorpsRigide;
+	while (corpsRigide1 != NULL)
+	{
+		CorpsRigide* corpsRigide2 = noeud->listeCorpsRigide;
+		while (corpsRigide2 != NULL)
+		{
+			if (corpsRigide1 != corpsRigide2)
+			{
+
+				// Calculer la distance entre les centres des sphères englobantes
+				Vecteur3D distance = corpsRigide1->getPosition() - corpsRigide2->getPosition();
+				double distanceSquared = distance.getX() * distance.getX() + distance.getY() * distance.getY() + distance.getZ() * distance.getZ();
+
+
+				// Calculer la somme des rayons des sphères englobantes
+				double rayonTotal = corpsRigide1->getRayonCorps() + corpsRigide2->getRayonCorps();
+				double rayonTotalSquared = rayonTotal * rayonTotal;
+
+				// Vérifier si la distance est inférieure à la somme des rayons
+				if (distanceSquared <= rayonTotalSquared) {
+			
+					std::cout 
+						<< "Collision potentielle entre les corps rigides "
+						<< corpsRigide1->getPosition().getX() << corpsRigide1->getPosition().getY() << corpsRigide1->getPosition().getZ() 
+						<< " et " 
+						<< corpsRigide2->getPosition().getX() << corpsRigide2->getPosition().getY() << corpsRigide2->getPosition().getZ() 
+						<< std::endl;
+				}
+				
+			}
+			corpsRigide2 = corpsRigide2->getCorpsRigideSuivant();
+		}
+		corpsRigide1 = corpsRigide1->getCorpsRigideSuivant();
 	}
 }

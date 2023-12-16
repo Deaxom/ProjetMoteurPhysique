@@ -212,7 +212,7 @@ void Jeu::start() {
 
 #pragma region CorpsRigide
     //CorpsRigide0 CorpsRigide reference au centre du monde
-    Vecteur3D positionCorpsRigideReference(0, 0, 0);
+    Vecteur3D positionCorpsRigideReference(0, 0, 1);
     Vecteur3D vitesseCorpsRigideReference(0, 0, 0);
     Vecteur3D accelerationReference(0, 0, 0);
     Quaternion orientationReference(0, 0, 0, 0);
@@ -226,7 +226,7 @@ void Jeu::start() {
     CorpsRigide* corpsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference, tenseurInertieReference);
 
     //CorpsRigide1 CorpsRigide test orientation a 180 degree
-    Vecteur3D positionCorpsRigideOrientation(0, 2, 0);
+    Vecteur3D positionCorpsRigideOrientation(0, 2, 2);
     Vecteur3D vitesseCorpsRigideOrientation(0, 0, 0);
     Vecteur3D accelerationOrientation(0, 0, 0);
     Quaternion orientationOrientation(0, 1, 0, 0); // on change l'orientation de 180 degree
@@ -324,10 +324,10 @@ void Jeu::start() {
     CorpsRigide* corpsRigideTrainee = new CorpsRigide(positionCorpsRigideTrainee, vitesseCorpsRigideTrainee, accelerationTrainee, 10, orientationTrainee, velociteAngulaireTrainee, accelerationAngulaireTrainee, tenseurInertieTrainee);
 
     //On cree la force de trainee
-    CorpsRigideTrainee* forceTraineeCorpsRigide = new CorpsRigideTrainee(1.5f, 13.6f);
+    //CorpsRigideTrainee* forceTraineeCorpsRigide = new CorpsRigideTrainee(1.5f, 13.6f);
 
     //On applique la force de trainee
-    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideTrainee, forceTraineeCorpsRigide);
+    //this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideTrainee, forceTraineeCorpsRigide);
 
     //CorpsRigide8 CorpsRigide soumis à l'utilisateur
     Vecteur3D positionCorpsRigideUtilisateur(5, 4, 0);
@@ -343,6 +343,7 @@ void Jeu::start() {
     //On ajoute tous les Corps Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
     this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation, corpsRigideGravite,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur };
+    //this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation };
 #pragma endregion
 
 }
@@ -373,17 +374,20 @@ void Jeu::update() {
 
         corpsRigideForceRegistre.MiseAJourForce(deltaTime);
 
+        Octree octree;
+        Noeud* arbre = octree.construireOctree(Vecteur3D(0, 0, 0), 10.f, 1);
+
         // Methode pour la mise a jour des CorpsRigides
         for (std::vector<CorpsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
         {
             integrateur.MiseAJourCorpsRigide(*i, &deltaTime);
+            octree.InsererCorpsRigideOctree(arbre, *i);
         }
 
-        //Octree octree;
-        //Noeud* arbre = octree.construireOctree(Vecteur3D(0, 0, 0), 5.f, 4);
-        //octree.InsererCorpsRigideOctree(arbre, listeCorpsRigide[0]);
+        octree.DetecterCollisionsPotentielles(arbre);
 
-
+        //std::cout  << std::endl;
+        //std::cout  << std::endl;
         //std::cout << "accel angul: " << listeCorpsRigide[2]->getAccelerationAngulaire().getX() << std::endl;
         //std::cout << "vit angul: " << listeCorpsRigide[2]->getVelociteAngulaire().getX() << std::endl;
         //Iteration sur tout les link

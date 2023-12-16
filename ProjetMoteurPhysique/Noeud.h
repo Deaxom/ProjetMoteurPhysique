@@ -6,6 +6,7 @@ class Noeud
 public:
 	Noeud* listeEnfant[8];
 	CorpsRigide* listeCorpsRigide;
+	size_t tailleListeCorpsRigide;
 	Vecteur3D centre;
 	float demiLargeur;
 
