@@ -91,34 +91,24 @@ void Octree::VerifierCollisionsPotentiellesNoeud(Noeud* noeud, std::vector<std::
 {
 	// Vérifier les collisions potentielles pour ce nœud
 	CorpsRigide* corpsRigide1 = noeud->listeCorpsRigide;
-	while (corpsRigide1 != NULL)
+	while (corpsRigide1 != NULL && corpsRigide1->getCorpsRigideSuivant() != NULL)
 	{
-		CorpsRigide* corpsRigide2 = noeud->listeCorpsRigide;
+		CorpsRigide* corpsRigide2 = corpsRigide1->getCorpsRigideSuivant();
 		while (corpsRigide2 != NULL)
 		{
-			if (corpsRigide1 != corpsRigide2)
-			{
-
-				// Calculer la distance entre les centres des sphères englobantes
-				Vecteur3D distance = corpsRigide1->getPosition() - corpsRigide2->getPosition();
-				double distanceSquared = distance.getX() * distance.getX() + distance.getY() * distance.getY() + distance.getZ() * distance.getZ();
+			// Calculer la distance entre les centres des sphères englobantes
+			Vecteur3D distance = corpsRigide1->getPosition() - corpsRigide2->getPosition();
+			double distanceSquared = distance.getX() * distance.getX() + distance.getY() * distance.getY() + distance.getZ() * distance.getZ();
 
 
-				// Calculer la somme des rayons des sphères englobantes
-				double rayonTotal = corpsRigide1->getRayonCorps() + corpsRigide2->getRayonCorps();
-				double rayonTotalSquared = rayonTotal * rayonTotal;
+			// Calculer la somme des rayons des sphères englobantes
+			double rayonTotal = corpsRigide1->getRayonCorps() + corpsRigide2->getRayonCorps();
+			double rayonTotalSquared = rayonTotal * rayonTotal;
 
-				// Vérifier si la distance est inférieure à la somme des rayons
-				if (distanceSquared <= rayonTotalSquared) {
-					listPairCollider->push_back({corpsRigide1, corpsRigide2});
-					/*std::cout 
-						<< "Collision potentielle entre les corps rigides "
-						<< corpsRigide1->getPosition().getX() << corpsRigide1->getPosition().getY() << corpsRigide1->getPosition().getZ() 
-						<< " et " 
-						<< corpsRigide2->getPosition().getX() << corpsRigide2->getPosition().getY() << corpsRigide2->getPosition().getZ() 
-						<< std::endl;*/
-				}
-				
+			// Vérifier si la distance est inférieure à la somme des rayons
+			if (distanceSquared <= rayonTotalSquared) {
+
+				listPairCollider->push_back({ corpsRigide1, corpsRigide2 });
 			}
 			corpsRigide2 = corpsRigide2->getCorpsRigideSuivant();
 		}
