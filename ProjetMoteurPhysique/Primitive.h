@@ -6,6 +6,8 @@ class CorpsRigide;
 class Primitive
 {
 public:
+    Primitive();
+    
     CorpsRigide *corpsRigide;
     Matrix3x4 offset;
 };

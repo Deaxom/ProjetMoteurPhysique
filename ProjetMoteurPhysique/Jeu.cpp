@@ -1,6 +1,10 @@
 #include "Jeu.h"
 #include "OpenglImGui.h"
 #include <iostream>
+
+#include "collide_narrow.h"
+#include "CollisionData.h"
+#include "Contact.h"
 #include "ParticuleGravite.h"
 #include "ParticuleRessortFixe.h"
 #include "ParticuleRessort.h"
@@ -13,6 +17,9 @@
 #include "CorpsRigideRessort.h"
 #include "CorpsRigideTrainee.h"
 #include "Octree.h"
+#include "Plane.h"
+#include "PrimitiveInSet.h"
+#include "Sphere.h"
 
 
 //Constructeurs
@@ -249,7 +256,7 @@ void Jeu::start() {
     CorpsRigide* corpsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation, tenseurInertieRotation);
 
     //CorpsRigide3 CorpsRigide soumise la force de gravite
-    Vecteur3D positionCorpsRigideGravite(2, 2, 0);
+    Vecteur3D positionCorpsRigideGravite(2, 4, 0);
     Vecteur3D vitesseCorpsRigideGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
     Quaternion orientationGravite(0, 0, 0, 0);
@@ -346,6 +353,8 @@ void Jeu::start() {
     //this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation };
 #pragma endregion
 
+
+    
 }
 
 //Fonction qui update le jeu a chaque unit� de temps
@@ -385,9 +394,48 @@ void Jeu::update() {
         }
 
         octree.DetecterCollisionsPotentielles(arbre);
+        // 1 Maj Position
+        // 2 Collision
+        // 3 Maj Acceleration
+        // 4 Maj Vitesse
 
-        //std::cout  << std::endl;
-        //std::cout  << std::endl;
+        //Test Narrow Phase
+        /*Sphere sphere1 = Sphere(0.5f);
+        sphere1.corpsRigide = listeCorpsRigide.front();
+        sphere1.offset = Matrix3x4();*/
+        Plane plane = Plane(Vecteur3D(0.0, 1.0, 0.0), 0.5f);
+        plane.corpsRigide = listeCorpsRigide.front();
+        
+        Sphere sphere2 = Sphere(0.5f);
+        sphere2.corpsRigide = listeCorpsRigide.at(3);
+        sphere2.offset = Matrix3x4();
+
+        CollisionData* collisionData = new CollisionData;
+        collisionData->contactLeft = 1;
+        
+        collide_narrow collider;
+        collider.sphereAndHalfSpace(sphere2, plane, collisionData);
+
+        for (Contact* contact : collisionData->contacts)
+        {
+            delete contact;
+        }
+
+        // PrimitiveSet Version Test
+        /*PrimitiveInSet sphereInSet01 = {&sphere1, Matrix3x4()};
+        PrimitiveInSet sphereInSet02 = {&sphere2, Matrix3x4()};
+        
+        
+        PrimitiveSet set01, set02;
+        set01.primitives.push_back(sphereInSet01);
+        set01.corpsRigide = set01.primitives.front().primitive->corpsRigide;
+        set02.primitives.push_back(sphereInSet02);
+        set02.corpsRigide = set02.primitives.front().primitive->corpsRigide;
+        collider.generateContacts(set01, set02, collisionData);*/
+        
+        //collider.generateContacts(sphere1, sphere2, collisionData);
+
+
         //std::cout << "accel angul: " << listeCorpsRigide[2]->getAccelerationAngulaire().getX() << std::endl;
         //std::cout << "vit angul: " << listeCorpsRigide[2]->getVelociteAngulaire().getX() << std::endl;
         //Iteration sur tout les link

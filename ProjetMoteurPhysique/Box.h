@@ -5,5 +5,7 @@
 class Box : public Primitive
 {
 public:
+    Box(const Vecteur3D& _halfSize);
+
     Vecteur3D halfSize;
 };
