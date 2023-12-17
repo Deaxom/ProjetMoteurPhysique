@@ -72,24 +72,24 @@ void Octree::InsererCorpsRigideOctree(Noeud* arbre, CorpsRigide* corpsRigide)
 	}
 }
 
-void Octree::DetecterCollisionsPotentielles(Noeud* arbre)
+void Octree::DetecterCollisionsPotentielles(Noeud* arbre, std::vector<std::pair<CorpsRigide*, CorpsRigide*>> *listPairCollider)
 {
-	// VÈrifier les collisions potentielles pour les objets dans ce núud
-	VerifierCollisionsPotentiellesNoeud(arbre);
+	// V√©rifier les collisions potentielles pour les objets dans ce n≈ìud
+	VerifierCollisionsPotentiellesNoeud(arbre, listPairCollider);
 
-	// vÈrifier les collisions potentielles pour les enfants du núud
+	// v√©rifier les collisions potentielles pour les enfants du n≈ìud
 	for (int i = 0; i < 8; ++i)
 	{
 		if (arbre->listeEnfant[i] != NULL)
 		{
-			DetecterCollisionsPotentielles(arbre->listeEnfant[i]);
+			DetecterCollisionsPotentielles(arbre->listeEnfant[i], listPairCollider);
 		}
 	}
 }
 
-void Octree::VerifierCollisionsPotentiellesNoeud(Noeud* noeud)
+void Octree::VerifierCollisionsPotentiellesNoeud(Noeud* noeud, std::vector<std::pair<CorpsRigide*, CorpsRigide*>> *listPairCollider)
 {
-	// VÈrifier les collisions potentielles pour ce núud
+	// V√©rifier les collisions potentielles pour ce n≈ìud
 	CorpsRigide* corpsRigide1 = noeud->listeCorpsRigide;
 	while (corpsRigide1 != NULL)
 	{
@@ -99,24 +99,24 @@ void Octree::VerifierCollisionsPotentiellesNoeud(Noeud* noeud)
 			if (corpsRigide1 != corpsRigide2)
 			{
 
-				// Calculer la distance entre les centres des sphËres englobantes
+				// Calculer la distance entre les centres des sph√®res englobantes
 				Vecteur3D distance = corpsRigide1->getPosition() - corpsRigide2->getPosition();
 				double distanceSquared = distance.getX() * distance.getX() + distance.getY() * distance.getY() + distance.getZ() * distance.getZ();
 
 
-				// Calculer la somme des rayons des sphËres englobantes
+				// Calculer la somme des rayons des sph√®res englobantes
 				double rayonTotal = corpsRigide1->getRayonCorps() + corpsRigide2->getRayonCorps();
 				double rayonTotalSquared = rayonTotal * rayonTotal;
 
-				// VÈrifier si la distance est infÈrieure ‡ la somme des rayons
+				// V√©rifier si la distance est inf√©rieure √† la somme des rayons
 				if (distanceSquared <= rayonTotalSquared) {
-			
-					std::cout 
+					listPairCollider->push_back({corpsRigide1, corpsRigide2});
+					/*std::cout 
 						<< "Collision potentielle entre les corps rigides "
 						<< corpsRigide1->getPosition().getX() << corpsRigide1->getPosition().getY() << corpsRigide1->getPosition().getZ() 
 						<< " et " 
 						<< corpsRigide2->getPosition().getX() << corpsRigide2->getPosition().getY() << corpsRigide2->getPosition().getZ() 
-						<< std::endl;
+						<< std::endl;*/
 				}
 				
 			}

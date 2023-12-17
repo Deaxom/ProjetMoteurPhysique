@@ -222,7 +222,7 @@ void Jeu::start() {
 
 #pragma region CorpsRigide
     //CorpsRigide0 CorpsRigide reference au centre du monde
-    Vecteur3D positionCorpsRigideReference(0, 0, 1);
+    Vecteur3D positionCorpsRigideReference(0, 0, 0);
     Vecteur3D vitesseCorpsRigideReference(0, 0, 0);
     Vecteur3D accelerationReference(0, 0, 0);
     Quaternion orientationReference(0, 0, 0, 0);
@@ -263,7 +263,7 @@ void Jeu::start() {
     CorpsRigide* corpsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation, tenseurInertieRotation);
 
     //CorpsRigide3 CorpsRigide soumise la force de gravite
-    Vecteur3D positionCorpsRigideGravite(2, 4, 0);
+    Vecteur3D positionCorpsRigideGravite(0, 4, 0);
     Vecteur3D vitesseCorpsRigideGravite(0, 0, 0);
     Vecteur3D accelerationGravite(0, 0, 0);
     Quaternion orientationGravite(0, 0, 0, 0);
@@ -360,7 +360,7 @@ void Jeu::start() {
 
     //On ajoute tous les Corps Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation, corpsRigideGravite,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur };
+    this->listeCorpsRigide = { corpsRigideReference,/*corpsRigideOrientation, corpsRigideRotation,*/ corpsRigideGravite/*,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur*/ };
     //this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation };
 #pragma endregion
 
@@ -404,15 +404,15 @@ void Jeu::update() {
             octree.InsererCorpsRigideOctree(arbre, *i);
         }
 
-        octree.DetecterCollisionsPotentielles(arbre);
+        octree.DetecterCollisionsPotentielles(arbre, &listPairCollider);
         // 1 Maj Position
         // 2 Collision
         // 3 Maj Acceleration
         // 4 Maj Vitesse
 
-        listPairCollider.push_back({listeCorpsRigide.at(3), listeCorpsRigide.front()});
+        //listPairCollider.push_back({listeCorpsRigide.at(3), listeCorpsRigide.front()});
         //Test Narrow Phase
-        collisionData->contactLeft = 1;
+        collisionData->contactLeft = listPairCollider.size();
         
         //collider.CheckRealCollision(*listeCorpsRigide.at(3)->primitive, *listeCorpsRigide.front()->primitive, collisionData);
         for (auto pair : listPairCollider)
@@ -420,9 +420,11 @@ void Jeu::update() {
             collider.CheckRealCollision(*pair.first->primitive, *pair.second->primitive, collisionData);
         }
 
+        
         if (!collisionData->contacts.empty())
         {
             collisionData->contacts.clear();
+            collisionData->contactLeft = 0;
         }
 
         if (!listPairCollider.empty())

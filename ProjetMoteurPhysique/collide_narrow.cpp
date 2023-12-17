@@ -47,7 +47,7 @@ unsigned collide_narrow::sphereAndSphere(const Sphere& one, const Sphere& two, C
     data->contacts.push_back(contact);
     data->contactLeft--;
 
-    std::cout << "Collide" << std::endl;
+    std::cout << "Collide | ";
 
     return 1;
 }
@@ -82,7 +82,7 @@ unsigned collide_narrow::sphereAndHalfSpace(const Sphere& sphere, const Plane& p
     data->contacts.push_back(contact);
     data->contactLeft--;
 
-    std::cout << "Collide" << std::endl;
+    std::cout << "Collide | ";
 
     return 1;
 }

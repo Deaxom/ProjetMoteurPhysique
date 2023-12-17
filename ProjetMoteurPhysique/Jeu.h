@@ -32,7 +32,8 @@ private:
 
     CollisionData* collisionData;
     collide_narrow collider;
-    std::vector<std::pair<CorpsRigide*, CorpsRigide*>> listPairCollider;
+    typedef std::vector<std::pair<CorpsRigide*, CorpsRigide*>> PairCollider;
+    PairCollider listPairCollider;
 
 public:
     Jeu();
