@@ -1,6 +1,11 @@
 ﻿#include "Box.h"
 
-Box::Box(const Vecteur3D& _halfSize) :
+Box::Box(Vecteur3D _halfSize) :
 halfSize(_halfSize)
 {
+}
+
+void Box::generateContacts(Primitive& secondPrimitaive, CollisionData* data)
+{
+    return;
 }

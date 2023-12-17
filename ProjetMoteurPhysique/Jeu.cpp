@@ -31,6 +31,7 @@ Jeu::Jeu() {
     Particule* newParticule = new Particule;
     this->setParticule(newParticule);
     this->contact = new ParticuleContact();
+    this->collisionData = new CollisionData;
 }
 
 Jeu::Jeu(OpenGlImGui* window, Particule* particule) {
@@ -39,6 +40,7 @@ Jeu::Jeu(OpenGlImGui* window, Particule* particule) {
     this->setDeltaTime(0.0f);
     this->setLastFrameTime(0.0f);
     this->setParticule(particule);
+    this->collisionData = new CollisionData;
 }
 
 Jeu::Jeu(OpenGlImGui* window) {
@@ -48,6 +50,7 @@ Jeu::Jeu(OpenGlImGui* window) {
     this->setLastFrameTime(0.0f);
     Particule* newParticule = new Particule;
     this->setParticule(newParticule);
+    this->collisionData = new CollisionData;
 }
 
 //GETTERS
@@ -231,7 +234,11 @@ void Jeu::start() {
                                      });
 
     CorpsRigide* corpsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference, tenseurInertieReference);
-
+    // Ajout d'une primitive plane sur le RigideBody Ref car ne bouge pas (PrimitiveSet à l'avenir)
+    Plane* plane = new Plane(Vecteur3D(0.0, 1.0, 0.0), 0.5f);
+    plane->corpsRigide = corpsRigideReference;
+    corpsRigideReference->primitive = plane;
+    
     //CorpsRigide1 CorpsRigide test orientation a 180 degree
     Vecteur3D positionCorpsRigideOrientation(0, 2, 2);
     Vecteur3D vitesseCorpsRigideOrientation(0, 0, 0);
@@ -265,7 +272,11 @@ void Jeu::start() {
     Matrix3x3 tenseurInertieGravite({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
     CorpsRigide* corpsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 100000, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite, tenseurInertieGravite);
-     
+    // Ajout d'une primitive sphere sur le RigideBody gravity (PrimitiveSet à l'avenir)
+    Sphere* sphere2 = new Sphere(0.5f);
+    sphere2->corpsRigide = corpsRigideGravite;
+    corpsRigideGravite->primitive = sphere2;
+    
     CorpsRigideGravite* forceGraviteCorpsRigide = new CorpsRigideGravite(0, -1, 0);
 
     this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideGravite, forceGraviteCorpsRigide);
@@ -399,26 +410,24 @@ void Jeu::update() {
         // 3 Maj Acceleration
         // 4 Maj Vitesse
 
+        listPairCollider.push_back({listeCorpsRigide.at(3), listeCorpsRigide.front()});
         //Test Narrow Phase
-        /*Sphere sphere1 = Sphere(0.5f);
-        sphere1.corpsRigide = listeCorpsRigide.front();
-        sphere1.offset = Matrix3x4();*/
-        Plane plane = Plane(Vecteur3D(0.0, 1.0, 0.0), 0.5f);
-        plane.corpsRigide = listeCorpsRigide.front();
-        
-        Sphere sphere2 = Sphere(0.5f);
-        sphere2.corpsRigide = listeCorpsRigide.at(3);
-        sphere2.offset = Matrix3x4();
-
-        CollisionData* collisionData = new CollisionData;
         collisionData->contactLeft = 1;
         
-        collide_narrow collider;
-        collider.sphereAndHalfSpace(sphere2, plane, collisionData);
-
-        for (Contact* contact : collisionData->contacts)
+        //collider.CheckRealCollision(*listeCorpsRigide.at(3)->primitive, *listeCorpsRigide.front()->primitive, collisionData);
+        for (auto pair : listPairCollider)
         {
-            delete contact;
+            collider.CheckRealCollision(*pair.first->primitive, *pair.second->primitive, collisionData);
+        }
+
+        if (!collisionData->contacts.empty())
+        {
+            collisionData->contacts.clear();
+        }
+
+        if (!listPairCollider.empty())
+        {
+            listPairCollider.clear();
         }
 
         // PrimitiveSet Version Test
@@ -430,8 +439,7 @@ void Jeu::update() {
         set01.primitives.push_back(sphereInSet01);
         set01.corpsRigide = set01.primitives.front().primitive->corpsRigide;
         set02.primitives.push_back(sphereInSet02);
-        set02.corpsRigide = set02.primitives.front().primitive->corpsRigide;
-        collider.generateContacts(set01, set02, collisionData);*/
+        set02.corpsRigide = set02.primitives.front().primitive->corpsRigide;*/
         
         //collider.generateContacts(sphere1, sphere2, collisionData);
 

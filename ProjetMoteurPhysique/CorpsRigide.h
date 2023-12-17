@@ -4,6 +4,9 @@
 #include "Matrix3x4.h"
 #include "Matrix3x3.h"
 
+class Primitive;
+struct PrimitiveSet;
+
 class CorpsRigide
 {
 private:
@@ -38,6 +41,10 @@ private:
 	//Attribut de volume englobant corps rigide pour octree
 	float rayonCoprs;
 	CorpsRigide* corpsRigideSuivant;
+
+	//Primitives du CorpsRigide
+	/*PrimitiveSet* primitiveSet;
+	Primitive* primitive;*/
 
 public:
 	// Reprise des methodes de particule
@@ -88,5 +95,8 @@ public:
 
 	// Methode appeller chaque frame pour le calcule de la matrice de transformation et la normalisation de l'orientation
 	void CalculerTransformationMatrice();
+
+	PrimitiveSet* primitiveSet;
+	Primitive* primitive;
 
 };

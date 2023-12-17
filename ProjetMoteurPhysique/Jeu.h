@@ -4,12 +4,15 @@
 #include "OpenglImGui.h"
 #include <vector>
 
+#include "collide_narrow.h"
 #include "CorpsRigide.h"
 #include "ParticuleForceRegistre.h"
 #include "ParticuleContactGenerator.h"
 #include "ParticuleContactResolver.h"
 #include "ParticuleContact.h"
 #include "CorpsRigideForceRegistre.h"
+
+struct CollisionData;
 
 class Jeu
 {
@@ -27,6 +30,9 @@ private:
     ContactGenerator contactGenerators;
     CorpsRigideForceRegistre corpsRigideForceRegistre;
 
+    CollisionData* collisionData;
+    collide_narrow collider;
+    std::vector<std::pair<CorpsRigide*, CorpsRigide*>> listPairCollider;
 
 public:
     Jeu();

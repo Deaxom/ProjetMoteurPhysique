@@ -10,4 +10,6 @@ public:
     
     Vecteur3D normal;
     float offset;
+
+    void generateContacts(Primitive& secondPrimitaive, CollisionData* data) override;
 };

@@ -5,7 +5,9 @@
 class Box : public Primitive
 {
 public:
-    Box(const Vecteur3D& _halfSize);
+    Box(Vecteur3D _halfSize);
 
     Vecteur3D halfSize;
+
+    void generateContacts(Primitive& secondPrimitaive, CollisionData* data) override;
 };

@@ -9,4 +9,6 @@ public:
     Sphere(float _radius);
     
     float radius;
+
+    void generateContacts(Primitive& secondPrimitaive, CollisionData* data) override;
 };
