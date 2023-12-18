@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <complex>
+
 #include "Primitive.h"
 #include "Vecteur3D.h"
 
@@ -10,4 +12,6 @@ public:
     Vecteur3D halfSize;
 
     void generateContacts(Primitive& secondPrimitaive, CollisionData* data) override;
+
+    float projectBoxOntoAxis(Vecteur3D& axis);
 };

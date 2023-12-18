@@ -197,5 +197,65 @@ unsigned collide_narrow::sphereBoxCollider(const Sphere& sphere, Box& box, Colli
 
 unsigned collide_narrow::boxBoxCollider(Box& one, Box& two, CollisionData* data)
 {
-    return 0;
+    // Axes de séparation potentiels
+    Vecteur3D axes[] = {
+        Vecteur3D(one.offset.Value(0, 0), one.offset.Value(1, 0), one.offset.Value(2, 0)),
+        Vecteur3D(one.offset.Value(0, 1), one.offset.Value(1, 1), one.offset.Value(2, 1)),
+        Vecteur3D(one.offset.Value(0, 2), one.offset.Value(1, 2), one.offset.Value(2, 2)),
+        Vecteur3D(two.offset.Value(0, 0), two.offset.Value(1, 0), two.offset.Value(2, 0)),
+        Vecteur3D(two.offset.Value(0, 1), two.offset.Value(1, 1), two.offset.Value(2, 1)),
+        Vecteur3D(two.offset.Value(0, 2), two.offset.Value(1, 2), two.offset.Value(2, 2)),
+        one.corpsRigide->getPosition() - two.corpsRigide->getPosition()
+    };
+    // Variables pour stocker les informations de collision
+    float minOverlap = std::numeric_limits<float>::max();
+    Vecteur3D collisionNormal;
+    Vecteur3D collisionPoint;
+
+    for (const Vecteur3D& axis : axes) {
+        // Normalise l'axe de séparation
+        Vecteur3D normalizedAxis = axis.calculVecteurUnitaire();
+
+        // Projette les boîtes sur l'axe
+        float projection1 = one.projectBoxOntoAxis(normalizedAxis);
+        float projection2 = two.projectBoxOntoAxis(normalizedAxis);
+
+        // Distance entre les centres projetée sur l'axe
+        float centerSeparation = two.corpsRigide->getPosition().produitScalaire(normalizedAxis) - one.corpsRigide->getPosition().produitScalaire(normalizedAxis);
+
+        // Somme des projections des demi-tailles
+        float sumProjections = projection1 + projection2;
+
+        // Calcule le chevauchement (overlap)
+        float overlap = sumProjections - centerSeparation;
+
+        // Si l'overlap est négatif, il y a séparation sur cet axe, pas de collision
+        if (overlap < 0.0f) {
+            return 0;
+        }
+
+        // Mise à jour des informations de collision si l'overlap est plus petit que le minimum trouvé jusqu'à présent
+        if (overlap < minOverlap) {
+            minOverlap = overlap;
+            collisionNormal = normalizedAxis;
+        }
+    }
+
+    // Calcule le point de contact
+    collisionPoint = (one.corpsRigide->getPosition() + two.corpsRigide->getPosition()) * 0.5f;
+
+
+    // Collision détectée
+    Contact* contact = new Contact();
+    contact->restitution = 0.8f;
+    contact->penetration = minOverlap;
+    contact->contactPoint = collisionPoint;
+    contact->contactNormal = collisionNormal;
+    contact->corpsRigide[0] = one.corpsRigide;
+    contact->corpsRigide[1] = two.corpsRigide;
+    data->contacts.push_back(contact);
+    data->contactLeft--;
+
+    return 1;
 }
+

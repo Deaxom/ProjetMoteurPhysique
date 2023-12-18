@@ -25,3 +25,12 @@ void Box::generateContacts(Primitive& secondPrimitaive, CollisionData* data)
         collide_narrow.boxBoxCollider(*this, *box, data);
     }
 }
+
+float Box::projectBoxOntoAxis(Vecteur3D& axis)
+{
+    float projectedSize = halfSize.getX() * std::abs(axis.produitScalaire(Vecteur3D(1.0f, 0.0f, 0.0f))) +
+                        halfSize.getY() * std::abs(axis.produitScalaire(Vecteur3D(0.0f,1.0f,0.0f))) +
+                        halfSize.getZ() * std::abs(axis.produitScalaire(Vecteur3D(0.0f, 0.0f, 1.0f)));
+
+    return projectedSize;
+}
