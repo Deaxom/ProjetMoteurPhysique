@@ -422,7 +422,7 @@ void Jeu::update() {
         corpsRigideForceRegistre.MiseAJourForce(deltaTime);
 
         Octree octree;
-        Noeud* arbre = octree.construireOctree(Vecteur3D(0, 0, 0), 10.f, 1);
+        Noeud* arbre = octree.construireOctree(Vecteur3D(-1, -1, -1), 10.f, 1);
 
         // Methode pour la mise a jour des CorpsRigides
         for (std::vector<CorpsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
