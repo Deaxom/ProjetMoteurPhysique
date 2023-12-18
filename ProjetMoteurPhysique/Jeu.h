@@ -11,6 +11,7 @@
 #include "ParticuleContactResolver.h"
 #include "ParticuleContact.h"
 #include "CorpsRigideForceRegistre.h"
+#include "CollisionResolver.h"
 
 struct CollisionData;
 
@@ -57,6 +58,7 @@ public:
 
     ParticuleContact* contact;
     ParticuleContactResolver resolver;
+    CollisionResolver resolverCorpsRigide;
     ParticuleLink* link;
 };
 

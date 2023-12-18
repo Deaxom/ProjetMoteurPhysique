@@ -12,4 +12,9 @@ public:
     CorpsRigide* corpsRigide[2];
     float restitution;
     float friction;
+
+    void ResolveInterpenetration();
+    void ResolveVelocity(float duration);
+    float CalculateSeparatingVelocity();
+    void Resolve(float duration);
 };
