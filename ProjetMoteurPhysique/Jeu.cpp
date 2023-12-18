@@ -360,7 +360,7 @@ void Jeu::start() {
 
     //On ajoute tous les Corps Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeCorpsRigide = { corpsRigideReference,/*corpsRigideOrientation, corpsRigideRotation,*/ corpsRigideGravite/*,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur*/ };
+    this->listeCorpsRigide = { corpsRigideReference,/*corpsRigideOrientation, corpsRigideRotation,*/ corpsRigideGravite/*,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee,*/, corpsRigideUtilisateur }; //si on enleve le dernier, enlever la partie dans main avec [2] pour ne pas crash
     //this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation };
 #pragma endregion
 

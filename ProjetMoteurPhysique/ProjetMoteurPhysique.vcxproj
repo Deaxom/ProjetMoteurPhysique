@@ -137,6 +137,7 @@
     <ClCompile Include="collide_narrow.cpp" />
     <ClCompile Include="CollisionData.cpp" />
     <ClCompile Include="Contact.cpp" />
+    <ClCompile Include="CollisionResolver.cpp" />
     <ClCompile Include="CorpsRigide.cpp" />
     <ClCompile Include="CorpsRigideFlottabilite.cpp" />
     <ClCompile Include="CorpsRigideForceRegistre.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="CollisionData.h" />
     <ClInclude Include="Constantes.h" />
     <ClInclude Include="Contact.h" />
+    <ClInclude Include="CollisionResolver.h" />
     <ClInclude Include="CorpsRigide.h" />
     <ClInclude Include="CorpsRigideFlottabilite.h" />
     <ClInclude Include="CorpsRigideForceRegistre.h" />
