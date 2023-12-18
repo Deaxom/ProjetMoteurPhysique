@@ -1,5 +1,6 @@
 ﻿#include "Sphere.h"
 
+#include "Box.h"
 #include "collide_narrow.h"
 #include "Plane.h"
 
@@ -18,5 +19,9 @@ void Sphere::generateContacts(Primitive& secondPrimitaive, CollisionData* data)
     else if (const Plane* plane = dynamic_cast<const Plane*>(&secondPrimitaive))
     {
         collide_narrow.sphereAndHalfSpace(*this, *plane, data);
+    }
+    else if (Box* box = dynamic_cast<Box*>(&secondPrimitaive))
+    {
+        collide_narrow.sphereBoxCollider(*this, *box, data);
     }
 }

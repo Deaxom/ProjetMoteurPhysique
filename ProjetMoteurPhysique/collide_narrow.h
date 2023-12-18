@@ -22,11 +22,15 @@ public:
                             const Plane &plane,
                             CollisionData *data);
 
-    unsigned planeAndBox(const Sphere &sphere,
-                            const Plane &plane,
-                            CollisionData *data);
+    unsigned planeAndBox(Box &box,
+                        Plane &plane,
+                        CollisionData *data);
 
     unsigned sphereBoxCollider(const Sphere &sphere,
                             Box &box,
+                            CollisionData *data);
+    
+    unsigned boxBoxCollider(Box &one,
+                            Box &two,
                             CollisionData *data);
 };
