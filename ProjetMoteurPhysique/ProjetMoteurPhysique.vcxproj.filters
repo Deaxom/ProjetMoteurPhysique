@@ -255,6 +255,9 @@
     <ClCompile Include="CollisionResolver.cpp">
       <Filter>Fichiers sources\Collisions\CorpsRigide\Detection</Filter>
     </ClCompile>
+    <ClCompile Include="Contact.cpp">
+      <Filter>Fichiers sources\Collisions\CorpsRigide\Detection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Jeu.h">
@@ -425,9 +428,6 @@
     <ClInclude Include="Box.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Contact.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Plane.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -447,6 +447,9 @@
       <Filter>Fichiers d%27en-tête\Collisions\CorpsRigide\Detection</Filter>
     </ClInclude>
     <ClInclude Include="CollisionResolver.h">
+      <Filter>Fichiers d%27en-tête\Collisions\CorpsRigide\Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="Contact.h">
       <Filter>Fichiers d%27en-tête\Collisions\CorpsRigide\Detection</Filter>
     </ClInclude>
   </ItemGroup>

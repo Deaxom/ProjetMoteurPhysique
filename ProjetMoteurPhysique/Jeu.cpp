@@ -393,11 +393,8 @@ void Jeu::start() {
 
     //On ajoute tous les Corps Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeCorpsRigide = { corpsRigideReference/*,corpsRigideOrientation, corpsRigideRotation*/, corpsRigideGravite/*,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur*/};
+    this->listeCorpsRigide = { corpsRigideReference/*,corpsRigideOrientation, corpsRigideRotation*/, corpsRigideGravite/*,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, */, corpsRigideUtilisateur }; //si on enleve le dernier, enlever la partie dans main avec [2] pour ne pas crash
 #pragma endregion
-
-
-    
 }
 
 //Fonction qui update le jeu a chaque unit� de temps
@@ -453,6 +450,11 @@ void Jeu::update() {
             collider.CheckRealCollision(*pair.first->primitive, *pair.second->primitive, collisionData);
         }
 
+        for (auto data : collisionData->contacts) {
+            //std::cout << data->CalculateSeparatingVelocity() << std::endl;
+            resolverCorpsRigide.resolveCollision(data, 1, deltaTime);
+        }
+        
         
         if (!collisionData->contacts.empty())
         {
