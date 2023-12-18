@@ -146,29 +146,51 @@ unsigned collide_narrow::planeAndBox(Box& box, Plane& plane, CollisionData* data
 
 unsigned collide_narrow::sphereBoxCollider(const Sphere& sphere, Box& box, CollisionData* data)
 {
+    // Check si il y a des contacts
+    if (data->contactLeft <= 0) return 0;
+    
     // Convertion du centre du sphere en coordonné de la box
     Vecteur3D relCenter = sphere.corpsRigide->getPosition() - box.corpsRigide->getPosition();
 
     // Resserrage des coordonnés du point par rapport à la box
+    float dist;
+    Vecteur3D closestPoint;
     // Pour X :
-    float distX = relCenter.getX();
-    if (distX > box.halfSize.getX()) distX = box.halfSize.getX();
-    if (distX < -box.halfSize.getX()) distX = -box.halfSize.getX();
-
+    dist = relCenter.getX();
+    if (dist > box.halfSize.getX()) dist = box.halfSize.getX();
+    if (dist < -box.halfSize.getX()) dist = -box.halfSize.getX();
+    closestPoint.setX(dist);
     // Pour Y :
-    float distY = relCenter.getY();
-    if (distY > box.halfSize.getY()) distY = box.halfSize.getY();
-    if (distY < -box.halfSize.getY()) distY = -box.halfSize.getY();
-
+    dist = relCenter.getY();
+    if (dist > box.halfSize.getY()) dist = box.halfSize.getY();
+    if (dist < -box.halfSize.getY()) dist = -box.halfSize.getY();
+    closestPoint.setY(dist);
     // Pour Z :
-    float distZ = relCenter.getZ();
-    if (distZ > box.halfSize.getZ()) distZ = box.halfSize.getZ();
-    if (distZ < -box.halfSize.getZ()) distZ = -box.halfSize.getZ();
-
-    Vecteur3D closestPoint(distX, distY, distZ);
+    dist = relCenter.getZ();
+    if (dist > box.halfSize.getZ()) dist = box.halfSize.getZ();
+    if (dist < -box.halfSize.getZ()) dist = -box.halfSize.getZ();
+    closestPoint.setZ(dist);
+    
     Vecteur3D separation = relCenter - closestPoint;
 
     float size = separation.calculNorme();
+
+    if(size < sphere.radius)
+    {
+        Contact* contact = new Contact;
+        contact->contactNormal = box.corpsRigide->getTransmationMatrice().TransformPosition(closestPoint) - sphere.corpsRigide->getPosition();
+        contact->contactNormal.calculNorme();
+        contact->contactPoint = box.corpsRigide->getTransmationMatrice().TransformPosition(closestPoint);
+        contact->penetration = sphere.radius - separation.calculNorme();
+        contact->corpsRigide[0] = box.corpsRigide;
+        contact->corpsRigide[1] = sphere.corpsRigide;
+
+        
+        data->contacts.push_back(contact);
+        data->contactLeft--;
+        
+        return 1;
+    }
 
     return 0;
 }
