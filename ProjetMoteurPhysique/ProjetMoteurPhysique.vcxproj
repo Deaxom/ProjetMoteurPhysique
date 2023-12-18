@@ -136,6 +136,7 @@
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="collide_narrow.cpp" />
     <ClCompile Include="CollisionResolver.cpp" />
+    <ClCompile Include="Contact.cpp" />
     <ClCompile Include="CorpsRigide.cpp" />
     <ClCompile Include="CorpsRigideFlottabilite.cpp" />
     <ClCompile Include="CorpsRigideForceRegistre.cpp" />
