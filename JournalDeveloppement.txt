@@ -42,9 +42,10 @@ Thomas: Implémentation des matrices 3x3 et 4x3, Implémentation des quaternions
 Phase 4:
 Pour cette dernière partie nous avons implémenté la board phase avec un octree et la detection de collision potentielle,nous nous somme inspirer du livre d'Ericson. Real time collision detection (7.3 Trees)
 Nous avons également réalisé la narrow phase, le système de génération de collisions de collision.
+Nous avons enfin réalisé la gestion des collisions
 
 Contribution:
-Alain: Mise en place de la génération de contact
+Alain: Mise en place de la résolution de contact
 Charles: Mise en place de la board phase avec octree et detection de collision potentielle, participation à l'adaptation du jeu
 Thomas:  Mise en place de la narrow phase
 
