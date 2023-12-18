@@ -3,6 +3,6 @@
 
 Primitive::Primitive() :
 corpsRigide(nullptr),
-offset()
+offset(Matrix3x4())
 {
 }
