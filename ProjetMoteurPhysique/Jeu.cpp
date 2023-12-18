@@ -20,6 +20,7 @@
 #include "Plane.h"
 #include "PrimitiveInSet.h"
 #include "Sphere.h"
+#include "Box.h"
 
 
 //Constructeurs
@@ -281,9 +282,13 @@ void Jeu::start() {
 
     CorpsRigide* corpsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 100000, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite, tenseurInertieGravite);
     // Ajout d'une primitive sphere sur le RigideBody gravity (PrimitiveSet à l'avenir)
-    Sphere* sphere2 = new Sphere(0.5f);
+    /*Sphere* sphere2 = new Sphere(0.5f);
     sphere2->corpsRigide = corpsRigideGravite;
-    corpsRigideGravite->primitive = sphere2;
+    corpsRigideGravite->primitive = sphere2;*/
+    Box* box = new Box(Vecteur3D(0.5f, 0.5f, 0.5f));
+    box->corpsRigide = corpsRigideGravite;
+    box->offset = corpsRigideGravite->getTransmationMatrice();
+    corpsRigideGravite->primitive = box;
     
     CorpsRigideGravite* forceGraviteCorpsRigide = new CorpsRigideGravite(0, -1, 0);
 
@@ -388,7 +393,7 @@ void Jeu::start() {
 
     //On ajoute tous les Corps Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation, corpsRigideGravite,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur};
+    this->listeCorpsRigide = { corpsRigideReference/*,corpsRigideOrientation, corpsRigideRotation*/, corpsRigideGravite/*,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur*/};
 #pragma endregion
 
 
@@ -440,6 +445,7 @@ void Jeu::update() {
         //listPairCollider.push_back({listeCorpsRigide.at(3), listeCorpsRigide.front()});
         //Test Narrow Phase
         collisionData->contactLeft = listPairCollider.size();
+        //std::cout << listeCorpsRigide.at(1)->getTransmationMatrice() << std::endl;
         
         //collider.CheckRealCollision(*listeCorpsRigide.at(3)->primitive, *listeCorpsRigide.front()->primitive, collisionData);
         for (auto pair : listPairCollider)

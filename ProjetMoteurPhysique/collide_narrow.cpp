@@ -15,6 +15,16 @@ void collide_narrow::CheckRealCollision(Primitive& _one, Primitive& _two, Collis
     {
         one->generateContacts(_two, data);
     }
+    if (Box* one = dynamic_cast<Box*>(&_one))
+    {
+        one->generateContacts(_two, data);
+    }
+    if (Plane* one = dynamic_cast<Plane*>(&_one))
+    {
+        one->generateContacts(_two, data);
+    }
+
+    // Polyèdres
 }
 
 unsigned collide_narrow::sphereAndSphere(const Sphere& one, const Sphere& two, CollisionData* data)
@@ -47,7 +57,7 @@ unsigned collide_narrow::sphereAndSphere(const Sphere& one, const Sphere& two, C
     data->contacts.push_back(contact);
     data->contactLeft--;
 
-    std::cout << "Collide | ";
+    //std::cout << "Collide | ";
 
     return 1;
 }
@@ -65,7 +75,7 @@ unsigned collide_narrow::sphereAndHalfSpace(const Sphere& sphere, const Plane& p
 
     if (distance > sphere.radius)
     {
-        std::cout << "No Collide" << std::endl;
+        //std::cout << "No Collide" << std::endl;
         return 0;
     }
     
@@ -82,14 +92,56 @@ unsigned collide_narrow::sphereAndHalfSpace(const Sphere& sphere, const Plane& p
     data->contacts.push_back(contact);
     data->contactLeft--;
 
-    std::cout << "Collide | ";
+    //std::cout << "Collide | ";
 
     return 1;
 }
 
-unsigned collide_narrow::planeAndBox(const Sphere& sphere, const Plane& plane, CollisionData* data)
+unsigned collide_narrow::planeAndBox(Box& box, Plane& plane, CollisionData* data)
 {
-    return 0;
+    // Check si il y a des contacts
+    if (data->contactLeft <= 0) return 0;
+    
+    // Vecteurs des coins de la boîte
+    Vecteur3D corners[] = {
+        Vecteur3D(-box.halfSize.getX(), -box.halfSize.getY(), -box.halfSize.getZ()),
+        Vecteur3D(-box.halfSize.getX(), -box.halfSize.getY(), box.halfSize.getZ()),
+        Vecteur3D(-box.halfSize.getX(), box.halfSize.getY(), -box.halfSize.getZ()),
+        Vecteur3D(-box.halfSize.getX(), box.halfSize.getY(), box.halfSize.getZ()),
+        Vecteur3D(box.halfSize.getX(), -box.halfSize.getY(), -box.halfSize.getZ()),
+        Vecteur3D(box.halfSize.getX(), -box.halfSize.getY(), box.halfSize.getZ()),
+        Vecteur3D(box.halfSize.getX(), box.halfSize.getY(), -box.halfSize.getZ()),
+        Vecteur3D(box.halfSize.getX(), box.halfSize.getY(), box.halfSize.getZ())
+    };
+
+    // Transformation des coins de la boîte vers le repère du monde
+    for (int i = 0; i < 8; ++i) {
+        corners[i] = box.corpsRigide->getTransmationMatrice().TransformPosition(corners[i]);
+    }
+
+    // Vérifie si les coins de la boîte sont de part et d'autre du plan
+    Contact* contact = new Contact;
+    unsigned unsedContact = 0;
+    for (int i = 0; i < 8; ++i) {
+        float distance = corners[i].produitScalaire(plane.normal);
+        std::cout << distance << "\n";
+
+        if (distance <= plane.offset)
+        {
+            std::cout << "Collide | ";
+            
+            contact->contactPoint = corners[i] - plane.normal * (distance - plane.offset);
+            contact->contactNormal = plane.normal;
+            contact->penetration = plane.offset - distance;
+            contact->corpsRigide[0] = box.corpsRigide;
+            contact->corpsRigide[1] = NULL;
+            ++unsedContact;
+            data->contacts.push_back(contact);
+            if (unsedContact == data->contactLeft) return unsedContact;
+        }
+    }
+    data->contactLeft -= unsedContact;
+    return unsedContact;
 }
 
 unsigned collide_narrow::sphereBoxCollider(const Sphere& sphere, Box& box, CollisionData* data)
@@ -118,5 +170,10 @@ unsigned collide_narrow::sphereBoxCollider(const Sphere& sphere, Box& box, Colli
 
     float size = separation.calculNorme();
 
+    return 0;
+}
+
+unsigned collide_narrow::boxBoxCollider(Box& one, Box& two, CollisionData* data)
+{
     return 0;
 }

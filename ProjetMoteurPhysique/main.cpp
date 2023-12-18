@@ -21,11 +21,9 @@ int main(int, char**)
     Jeu jeu(&imgui);
     jeu.start();
 
-    bool aKeyPressed = false;
+    bool tKeyPressed = false;
     bool eKeyPressed = false;
     bool rKeyPressed = false;
-    bool xKeyPressed = false;
-    bool wKeyPressed = false;
 
     while (!GLFW.ShouldClose())
     {
@@ -60,16 +58,16 @@ int main(int, char**)
 
         GLFW.SwapBuffers();
         
-        if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS && !aKeyPressed)
+        if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS && !tKeyPressed)
         {
             // Interaction utilisateur - Appliquer un torque spécifique
-            aKeyPressed = true;
+            tKeyPressed = true;
             Vecteur3D torqueUtilisateur(0.0, 1.0, 0.0);
-            jeu.getListeCorpsRigide()[8]->AjouterTorque(torqueUtilisateur);
+            jeu.getListeCorpsRigide()[2]->AjouterTorque(torqueUtilisateur);
         }
         else if (glfwGetKey(window, GLFW_KEY_T) == GLFW_RELEASE)
         {
-            aKeyPressed = false;
+            tKeyPressed = false;
         }
 
         if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS && !eKeyPressed)
@@ -77,7 +75,7 @@ int main(int, char**)
             // Interaction utilisateur - Appliquer un torque spécifique
             eKeyPressed = true;
             Vecteur3D torqueUtilisateur(0.0, 0.0, 1.0);
-            jeu.getListeCorpsRigide()[8]->AjouterTorque(torqueUtilisateur);
+            jeu.getListeCorpsRigide()[2]->AjouterTorque(torqueUtilisateur);
         }
         else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_RELEASE)
         {
@@ -88,36 +86,14 @@ int main(int, char**)
         {
             // Interaction utilisateur - Enlever l'accumulateur
             rKeyPressed = true;
-            jeu.getListeCorpsRigide()[8]->NettoyerAccumulateur();
+            //jeu.getListeCorpsRigide()[8]->NettoyerAccumulateur();
+            Vecteur3D torqueUtilisateur(0.0, 0.0, -1.0);
+            jeu.getListeCorpsRigide()[2]->AjouterTorque(torqueUtilisateur);
         }
         else if (glfwGetKey(window, GLFW_KEY_R) == GLFW_RELEASE)
         {
             rKeyPressed = false;
         }
-
-        /*if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS && !xKeyPressed)
-        {
-            // Interaction utilisateur - Appliquer une force spécifique
-            xKeyPressed = true;
-            Vecteur3D forceUtilisateur(1.0, 0.0, 0.0);
-            jeu.getListeCorpsRigide()[8]->AjouterForce(forceUtilisateur);
-        }
-        else if (glfwGetKey(window, GLFW_KEY_X) == GLFW_RELEASE)
-        {
-            xKeyPressed = false;
-        }
-
-        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS && !wKeyPressed)
-        {
-            // Interaction utilisateur - Appliquer une force spécifique
-            wKeyPressed = true;
-            Vecteur3D forceUtilisateur(-1.0, 0.0, 0.0);
-            jeu.getListeCorpsRigide()[8]->AjouterForce(forceUtilisateur);
-        }
-        else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_RELEASE)
-        {
-            wKeyPressed = false;
-        }*/
 
         jeu.update();
     }
