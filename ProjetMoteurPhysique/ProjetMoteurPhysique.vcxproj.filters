@@ -240,29 +240,20 @@
     <ClCompile Include="Box.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="collide_narrow.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionData.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Contact.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionResolver.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Plane.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Primitive.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="PrimitiveInSet.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Sphere.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="collide_narrow.cpp">
+      <Filter>Fichiers sources\Collisions\CorpsRigide\Detection</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionResolver.cpp">
+      <Filter>Fichiers sources\Collisions\CorpsRigide\Detection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -434,16 +425,7 @@
     <ClInclude Include="Box.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="collide_narrow.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionData.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Contact.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionResolver.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
@@ -457,6 +439,15 @@
     </ClInclude>
     <ClInclude Include="Sphere.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionData.h">
+      <Filter>Fichiers d%27en-tête\Collisions\CorpsRigide\Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="collide_narrow.h">
+      <Filter>Fichiers d%27en-tête\Collisions\CorpsRigide\Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionResolver.h">
+      <Filter>Fichiers d%27en-tête\Collisions\CorpsRigide\Detection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

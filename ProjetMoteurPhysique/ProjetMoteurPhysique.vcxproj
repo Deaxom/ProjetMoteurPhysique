@@ -135,8 +135,6 @@
   <ItemGroup>
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="collide_narrow.cpp" />
-    <ClCompile Include="CollisionData.cpp" />
-    <ClCompile Include="Contact.cpp" />
     <ClCompile Include="CollisionResolver.cpp" />
     <ClCompile Include="CorpsRigide.cpp" />
     <ClCompile Include="CorpsRigideFlottabilite.cpp" />
@@ -179,7 +177,6 @@
     <ClCompile Include="ParticuleTrainee.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Primitive.cpp" />
-    <ClCompile Include="PrimitiveInSet.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Vecteur3D.cpp" />
