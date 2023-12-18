@@ -37,3 +37,14 @@ Contribution:
 Alain: Modification des forces pour qu'elles puissent s'appliquer aux corps rigides. Implémentation des torques sur les corps rigides. Création d'un corps rigide réagissant aux inputs de l'utilisateur. Corrections de typographie dans l'ensemble du projet. (35%)
 Charles: Implémentation des Corps Rigides, Mise en place de l'inertie pour les corps rigides, gestion de l'affichage avec opengl, participation à la mise en place du jeu. (40%)
 Thomas: Implémentation des matrices 3x3 et 4x3, Implémentation des quaternions. Debuggage afin d'optimiser la précédente phase ainsi que pour la vélocité angulaire. (25%)
+
+
+Phase 4:
+Pour cette dernière partie nous avons implémenté la board phase avec un octree et la detection de collision potentielle,nous nous somme inspirer du livre d'Ericson. Real time collision detection (7.3 Trees)
+Nous avons également réalisé la narrow phase, le système de génération de collisions de collision.
+
+Contribution:
+Alain: Mise en place de la génération de contact
+Charles: Mise en place de la board phase avec octree et detection de collision potentielle, participation à l'adaptation du jeu
+Thomas:  Mise en place de la narrow phase
+
