@@ -47,5 +47,5 @@ Nous avons enfin réalisé la gestion des collisions
 Contribution:
 Alain: Mise en place de la résolution de contact (25%)
 Charles: Mise en place de la board phase avec octree et detection de collision potentielle, participation à l'adaptation du jeu (33%)
-Thomas:  Mise en place de la narrow phase avec les différents types de collisions en fonction des primitives, participation à l'adaptation du jeu, aide à l'implémentation de la résolution de collisions. (42%)
+Thomas:  Mise en place de la narrow phase avec les différents types de collisions en fonction des primitives, participation à l'adaptation du jeu, aide à l'implémentation de la résolution de collisions. + Système pause + affichage inGame des CollisionData (42%)
 
