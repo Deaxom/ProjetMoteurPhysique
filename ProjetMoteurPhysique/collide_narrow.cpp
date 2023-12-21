@@ -48,6 +48,7 @@ unsigned collide_narrow::sphereAndSphere(const Sphere& one, const Sphere& two, C
     Vecteur3D normal = midline * (1.0f/size);
 
     auto* contact = new Contact;
+    contact->restitution = 0.8f;
     contact->contactNormal = normal;
     contact->contactPoint = positionOne + midline * 0.5f;
     contact->penetration = one.radius + two.radius - size;
@@ -86,6 +87,7 @@ unsigned collide_narrow::sphereAndHalfSpace(const Sphere& sphere, const Plane& p
     contact->contactNormal = plane.normal;
     contact->penetration = sphere.radius - distance;
     contact->contactPoint = contactPoint;
+    contact->restitution = 0.8f;
     contact->corpsRigide[0] = sphere.corpsRigide;
     contact->corpsRigide[1] = plane.corpsRigide;
 
@@ -133,6 +135,7 @@ unsigned collide_narrow::planeAndBox(Box& box, Plane& plane, CollisionData* data
             contact->contactPoint = corners[i] - plane.normal * (distance - plane.offset);
             contact->contactNormal = plane.normal;
             contact->penetration = plane.offset - distance;
+            contact->restitution = 0.8f;
             contact->corpsRigide[0] = box.corpsRigide;
             contact->corpsRigide[1] = NULL;
             ++unsedContact;
@@ -182,6 +185,7 @@ unsigned collide_narrow::sphereBoxCollider(const Sphere& sphere, Box& box, Colli
         contact->contactNormal.calculNorme();
         contact->contactPoint = box.corpsRigide->getTransmationMatrice().TransformPosition(closestPoint);
         contact->penetration = sphere.radius - separation.calculNorme();
+        contact->restitution = 0.8f;
         contact->corpsRigide[0] = box.corpsRigide;
         contact->corpsRigide[1] = sphere.corpsRigide;
 

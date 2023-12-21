@@ -3,6 +3,7 @@
 
 #include "Matrix3x4.h"
 #include "Matrix3x3.h"
+#include <iostream>
 
 class Primitive;
 struct PrimitiveSet;
@@ -49,7 +50,9 @@ private:
 public:
 	// Reprise des methodes de particule
 	CorpsRigide();
-	CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire, Vecteur3D accelerationAngulaire, Matrix3x3 tenseurInertie);
+	CorpsRigide(Vecteur3D& position,const Vecteur3D& vitesse,const Vecteur3D& acceleration, double masse,
+		Quaternion orientation, Vecteur3D velociteAngulaire, Vecteur3D accelerationAngulaire, Matrix3x3 tenseurInertie,
+		std::string _name = "default");
 	Vecteur3D getPosition();
 	Vecteur3D getVitesse() const;
 	Vecteur3D getAcceleration() const;
@@ -99,4 +102,5 @@ public:
 	PrimitiveSet* primitiveSet;
 	Primitive* primitive;
 
+	std::string name;
 };

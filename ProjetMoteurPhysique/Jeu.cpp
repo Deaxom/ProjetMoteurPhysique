@@ -234,11 +234,18 @@ void Jeu::start() {
                                         1, 1, 1
                                      });
 
-    CorpsRigide* corpsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference, tenseurInertieReference);
+    CorpsRigide* corpsRigideReference = new CorpsRigide(positionCorpsRigideReference, vitesseCorpsRigideReference, accelerationReference, 10000, orientationReference, velociteAngulaireReference, accelerationAngulaireReference, tenseurInertieReference, "corpsRigideReference");
     // Ajout d'une primitive plane sur le RigideBody Ref car ne bouge pas (PrimitiveSet à l'avenir)
-    Plane* plane = new Plane(Vecteur3D(0.0, 1.0, 0.0), 0.5f);
+    /*Plane* plane = new Plane(Vecteur3D(0.0, 1.0, 0.0), 0.5f);
     plane->corpsRigide = corpsRigideReference;
-    corpsRigideReference->primitive = plane;
+    corpsRigideReference->primitive = plane;*/
+    Sphere* sphere2 = new Sphere(0.5f);
+    sphere2->corpsRigide = corpsRigideReference;
+    corpsRigideReference->primitive = sphere2;
+
+    /*CorpsRigideGravite* forceGraviteCorpsRigide1 = new CorpsRigideGravite(0, 1, 0);
+
+    this->corpsRigideForceRegistre.addCorpsRigideForceRegistre(corpsRigideReference, forceGraviteCorpsRigide1);*/
     
     //CorpsRigide1 CorpsRigide test orientation a 180 degree
     Vecteur3D positionCorpsRigideOrientation(0, 2, 0);
@@ -249,7 +256,7 @@ void Jeu::start() {
     Vecteur3D accelerationAngulaireOrientation(0, 0, 0);
     Matrix3x3 tenseurInertieOrientation({ 3, 0, 0,      0, 2, 0,    0, 0, 1});
 
-    CorpsRigide* corpsRigideOrientation = new CorpsRigide(positionCorpsRigideOrientation, vitesseCorpsRigideOrientation, accelerationOrientation, 10, orientationOrientation, velociteAngulaireOrientation, accelerationAngulaireOrientation, tenseurInertieOrientation);
+    CorpsRigide* corpsRigideOrientation = new CorpsRigide(positionCorpsRigideOrientation, vitesseCorpsRigideOrientation, accelerationOrientation, 10, orientationOrientation, velociteAngulaireOrientation, accelerationAngulaireOrientation, tenseurInertieOrientation, "corpsRigideOrientation");
 
 
     Plane* plane1 = new Plane(Vecteur3D(0.0, 1.0, 0.0), 0.5f);
@@ -265,7 +272,7 @@ void Jeu::start() {
     Vecteur3D accelerationAngulaireRotation(1, 0, 0);
     Matrix3x3 tenseurInertieRotation({ 3, 3, 3,      3, 2, 3,    3, 3, 1 });
 
-    CorpsRigide* corpsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation, tenseurInertieRotation);
+    CorpsRigide* corpsRigideRotation = new CorpsRigide(positionCorpsRigideRotation, vitesseCorpsRigideRotation, accelerationRotation, 10, orientationRotation, velociteAngulaireRotation, accelerationAngulaireRotation, tenseurInertieRotation, "corpsRigideRotation");
 
     Plane* plane2 = new Plane(Vecteur3D(0.0, 1.0, 0.0), 0.5f);
     plane2->corpsRigide = corpsRigideRotation;
@@ -280,11 +287,11 @@ void Jeu::start() {
     Vecteur3D accelerationAngulaireGravite(0, 0, 0);
     Matrix3x3 tenseurInertieGravite({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* corpsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 100000, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite, tenseurInertieGravite);
+    CorpsRigide* corpsRigideGravite = new CorpsRigide(positionCorpsRigideGravite, vitesseCorpsRigideGravite, accelerationGravite, 10, orientationGravite, velociteAngulaireGravite, accelerationAngulaireGravite, tenseurInertieGravite, "corpsRigideGravite");
     // Ajout d'une primitive sphere sur le RigideBody gravity (PrimitiveSet à l'avenir)
-    /*Sphere* sphere2 = new Sphere(0.5f);
-    sphere2->corpsRigide = corpsRigideGravite;
-    corpsRigideGravite->primitive = sphere2;*/
+    /*Sphere* sphere = new Sphere(0.5f);
+    sphere->corpsRigide = corpsRigideGravite;
+    corpsRigideGravite->primitive = sphere;*/
     Box* box = new Box(Vecteur3D(0.5f, 0.5f, 0.5f));
     box->corpsRigide = corpsRigideGravite;
     box->offset = corpsRigideGravite->getTransmationMatrice();
@@ -303,7 +310,7 @@ void Jeu::start() {
     Vecteur3D accelerationAngulaireRessortFixe(0, 0, 0);
     Matrix3x3 tenseurInertieRessortFixe({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* corpsRigideRessortFixe = new CorpsRigide(positionCorpsRigideRessortFixe, vitesseCorpsRigideRessortFixe, accelerationRessortFixe, 10, orientationRessortFixe, velociteAngulaireRessortFixe, accelerationAngulaireRessortFixe, tenseurInertieRessortFixe);
+    CorpsRigide* corpsRigideRessortFixe = new CorpsRigide(positionCorpsRigideRessortFixe, vitesseCorpsRigideRessortFixe, accelerationRessortFixe, 10, orientationRessortFixe, velociteAngulaireRessortFixe, accelerationAngulaireRessortFixe, tenseurInertieRessortFixe, "corpsRigideRessortFixe");
     
     Sphere* sphere3 = new Sphere(0.5f);
     sphere3->corpsRigide = corpsRigideRessortFixe;
@@ -328,7 +335,7 @@ void Jeu::start() {
     Vecteur3D accelerationAngulaireRessort(0, 0, 0);
     Matrix3x3 tenseurInertieRessort({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* corpsRigideRessort = new CorpsRigide(positionCorpsRigideRessort, vitesseCorpsRigideRessort, accelerationRessort, 10, orientationRessort, velociteAngulaireRessort, accelerationAngulaireRessort, tenseurInertieRessort);
+    CorpsRigide* corpsRigideRessort = new CorpsRigide(positionCorpsRigideRessort, vitesseCorpsRigideRessort, accelerationRessort, 10, orientationRessort, velociteAngulaireRessort, accelerationAngulaireRessort, tenseurInertieRessort, "corpsRigideRessort");
 
     Sphere* sphere4 = new Sphere(0.5f);
     sphere4->corpsRigide = corpsRigideRessort;
@@ -343,7 +350,7 @@ void Jeu::start() {
     Vecteur3D accelerationAngulaireRessortAutre(0, 0, 0);
     Matrix3x3 tenseurInertieRessortAutre({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* corpsRigideRessortAutre = new CorpsRigide(positionCorpsRigideRessortAutre, vitesseCorpsRigideRessortAutre, accelerationRessortAutre, 10, orientationRessortAutre, velociteAngulaireRessortAutre, accelerationAngulaireRessortAutre, tenseurInertieRessortAutre);
+    CorpsRigide* corpsRigideRessortAutre = new CorpsRigide(positionCorpsRigideRessortAutre, vitesseCorpsRigideRessortAutre, accelerationRessortAutre, 10, orientationRessortAutre, velociteAngulaireRessortAutre, accelerationAngulaireRessortAutre, tenseurInertieRessortAutre, "corpsRigideRessortAutre");
 
     Sphere* sphere5 = new Sphere(0.5f);
     sphere5->corpsRigide = corpsRigideRessortAutre;
@@ -364,7 +371,7 @@ void Jeu::start() {
     Vecteur3D accelerationAngulaireTrainee(0, 0, 0);
     Matrix3x3 tenseurInertieTrainee({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* corpsRigideTrainee = new CorpsRigide(positionCorpsRigideTrainee, vitesseCorpsRigideTrainee, accelerationTrainee, 10, orientationTrainee, velociteAngulaireTrainee, accelerationAngulaireTrainee, tenseurInertieTrainee);
+    CorpsRigide* corpsRigideTrainee = new CorpsRigide(positionCorpsRigideTrainee, vitesseCorpsRigideTrainee, accelerationTrainee, 10, orientationTrainee, velociteAngulaireTrainee, accelerationAngulaireTrainee, tenseurInertieTrainee, "corpsRigideTrainee");
 
     Sphere* sphere6 = new Sphere(0.5f);
     sphere6->corpsRigide = corpsRigideTrainee;
@@ -385,7 +392,7 @@ void Jeu::start() {
     Vecteur3D accelerationAngulaireUtilisateur(0, 0, 0);
     Matrix3x3 tenseurInertieUtilisateur({ 3, 0, 0,      0, 2, 0,    0, 0, 1 });
 
-    CorpsRigide* corpsRigideUtilisateur = new CorpsRigide(positionCorpsRigideUtilisateur, vitesseCorpsRigideUtilisateur, accelerationUtilisateur, 10, orientationUtilisateur, velociteAngulaireUtilisateur, accelerationAngulaireUtilisateur, tenseurInertieUtilisateur);
+    CorpsRigide* corpsRigideUtilisateur = new CorpsRigide(positionCorpsRigideUtilisateur, vitesseCorpsRigideUtilisateur, accelerationUtilisateur, 10, orientationUtilisateur, velociteAngulaireUtilisateur, accelerationAngulaireUtilisateur, tenseurInertieUtilisateur, "corpsRigideUtilisateur");
 
     Sphere* sphere7 = new Sphere(0.5f);
     sphere7->corpsRigide = corpsRigideUtilisateur;
@@ -393,7 +400,7 @@ void Jeu::start() {
 
     //On ajoute tous les Corps Rigides dans une liste pour ensuite les afficher graphiquement
     //avec la methode de mise a jour de la class camera (qui est utilise dans le main)
-    this->listeCorpsRigide = { corpsRigideReference/*,corpsRigideOrientation, corpsRigideRotation*/, corpsRigideGravite/*,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, */, corpsRigideUtilisateur }; //si on enleve le dernier, enlever la partie dans main avec [2] pour ne pas crash
+    this->listeCorpsRigide = { corpsRigideReference,corpsRigideOrientation, corpsRigideRotation, corpsRigideGravite,  corpsRigideRessortFixe, corpsRigideRessort, corpsRigideRessortAutre, corpsRigideTrainee, corpsRigideUtilisateur }; //si on enleve le dernier, enlever la partie dans main avec [2] pour ne pas crash
 #pragma endregion
 }
 
@@ -423,45 +430,50 @@ void Jeu::update() {
 
         corpsRigideForceRegistre.MiseAJourForce(deltaTime);
 
+        // Initialisation octree
         Octree octree;
         Noeud* arbre = octree.construireOctree(Vecteur3D(-1, -1, -1), 10.f, 1);
-
-        // Methode pour la mise a jour des CorpsRigides
+        
         for (std::vector<CorpsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
         {
-            integrateur.MiseAJourCorpsRigide(*i, &deltaTime);
+            // 1 Maj Position
+            integrateur.MiseAJourPositionCorpsRigide(*i, &deltaTime);
+            // Ajout CropsRigide à l'octree
             octree.InsererCorpsRigideOctree(arbre, *i);
         }
 
-        octree.DetecterCollisionsPotentielles(arbre, &listPairCollider);
-        // 1 Maj Position
         // 2 Collision
-        // 3 Maj Acceleration
-        // 4 Maj Vitesse
-
-        //listPairCollider.push_back({listeCorpsRigide.at(3), listeCorpsRigide.front()});
-        //Test Narrow Phase
+        // Broad-Phase by Octree
+        octree.DetecterCollisionsPotentielles(arbre, &listPairCollider);
+        // Narrow-Phase
         collisionData->contactLeft = listPairCollider.size();
-        //std::cout << listeCorpsRigide.at(1)->getTransmationMatrice() << std::endl;
-        
-        //collider.CheckRealCollision(*listeCorpsRigide.at(3)->primitive, *listeCorpsRigide.front()->primitive, collisionData);
         for (auto pair : listPairCollider)
         {
             collider.CheckRealCollision(*pair.first->primitive, *pair.second->primitive, collisionData);
         }
 
+        mainList = collisionData->contacts;
+        
         for (auto data : collisionData->contacts) {
-            //std::cout << data->CalculateSeparatingVelocity() << std::endl;
             resolverCorpsRigide.resolveCollision(data, 1, deltaTime);
         }
-        
-        
+
+        for (std::vector<CorpsRigide*>::iterator i = listeCorpsRigide.begin(); i != listeCorpsRigide.end(); ++i)
+        {
+            // 3 Maj Acceleration
+            integrateur.MiseAJourForceCorpsRigide(*i, &deltaTime);
+            // 4 Maj Vitesse
+            integrateur.MiseAJourVitesseCorpsRigide(*i, &deltaTime);
+        }
+
+        // Nettoyage liste de Contacts.*
         if (!collisionData->contacts.empty())
         {
             collisionData->contacts.clear();
             collisionData->contactLeft = 0;
         }
 
+        // Nettoyage liste des pairs de Corps-Rigide.*
         if (!listPairCollider.empty())
         {
             listPairCollider.clear();
@@ -480,7 +492,7 @@ void Jeu::update() {
         
         //collider.generateContacts(sphere1, sphere2, collisionData);
 
-
+        
         //std::cout << "accel angul: " << listeCorpsRigide[2]->getAccelerationAngulaire().getX() << std::endl;
         //std::cout << "vit angul: " << listeCorpsRigide[2]->getVelociteAngulaire().getX() << std::endl;
         //Iteration sur tout les link
@@ -498,4 +510,9 @@ void Jeu::update() {
 void Jeu::stop() {
     //...
     this->setEtat(false);
+}
+
+std::vector<Contact*>* Jeu::GetCollisionList()
+{
+    return &mainList;
 }

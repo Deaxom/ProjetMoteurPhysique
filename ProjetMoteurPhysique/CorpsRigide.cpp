@@ -24,10 +24,10 @@ CorpsRigide::CorpsRigide() {
 	newMatrice.SetOrientationAndPos(newOrientation, newPosition);
 	this->SetTransformationMatrice(newMatrice);
 	this->SetTenseurInertieInverse(newTenseurInertiveInverse);
-	
+	this->name = "none";
 }
 
-CorpsRigide::CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire, Vecteur3D accelerationAngulaire, Matrix3x3 tenseurInertie) {
+CorpsRigide::CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Vecteur3D& acceleration, double masse, Quaternion orientation, Vecteur3D velociteAngulaire, Vecteur3D accelerationAngulaire, Matrix3x3 tenseurInertie, std::string _name) {
 	this->setPosition(position);
 	this->setVitesse(vitesse);
 	this->setAcceleration(acceleration);
@@ -45,6 +45,8 @@ CorpsRigide::CorpsRigide(Vecteur3D& position, const Vecteur3D& vitesse, const Ve
 
 	// Initialisation du volume englobant pour la detection de contact
 	this->rayonCoprs = 0.5;
+
+	this->name = _name;
 }
 
 //GETTERS

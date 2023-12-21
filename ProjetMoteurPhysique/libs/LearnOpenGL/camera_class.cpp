@@ -18,11 +18,12 @@
 #include "../CorpsRigide.h"
 
 
-
+bool isPressed = false;
+bool isPlaying;
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void processInput(GLFWwindow* window);
+void processInput(GLFWwindow* window, bool& gameState);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -195,7 +196,7 @@ void CameraControlleur::Init(GLFWwindow* _window)
 
 }
 
-void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule) {
+void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule, bool &gameState) {
     // render loop
 
     // per-frame time logic
@@ -206,7 +207,7 @@ void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule) {
 
     // input
     // -----
-    processInput(window);
+    processInput(window, gameState);
 
     // render
     // ------
@@ -252,7 +253,7 @@ void CameraControlleur::MiseAJour(std::vector<Particule*> listeParticule) {
     }
 }
 
-void CameraControlleur::MiseAJour(std::vector<CorpsRigide*> listeCorpsRigide) {
+void CameraControlleur::MiseAJour(std::vector<CorpsRigide*> listeCorpsRigide, bool &gameState) {
     // render loop
 
     // per-frame time logic
@@ -263,7 +264,7 @@ void CameraControlleur::MiseAJour(std::vector<CorpsRigide*> listeCorpsRigide) {
 
     // input
     // -----
-    processInput(window);
+    processInput(window, gameState);
 
     // render
     // ------
@@ -305,7 +306,7 @@ void CameraControlleur::MiseAJour(std::vector<CorpsRigide*> listeCorpsRigide) {
             //on l'affiche a sa position
             model = glm::translate(model, posParticuleGraphique);
 
-            // on utilise la matrice de transformation pour gérer orientation et rotation
+            // on utilise la matrice de transformation pour gÃ©rer orientation et rotation
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 4; col++) {
                     model[col][row] = listeCorpsRigide[i]->getTransmationMatrice().Value(row, col);
@@ -333,11 +334,25 @@ void CameraControlleur::Arret() {
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-void processInput(GLFWwindow* window)
+void processInput(GLFWwindow* window, bool &gameState)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 
+    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+    {
+        if (!isPressed)
+        {
+            isPressed = true;
+            if (gameState)
+                gameState = false;
+            else
+                gameState = true;
+        }
+    }
+    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_RELEASE)
+            isPressed = false;
+    
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -346,6 +361,17 @@ void processInput(GLFWwindow* window)
         camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
+    
+    if (gameState)
+    {
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    }
+    else
+    {
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
+
+    isPlaying = gameState;    
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
@@ -378,7 +404,8 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
     lastX = xpos;
     lastY = ypos;
 
-    camera.ProcessMouseMovement(xoffset, yoffset);
+    if (isPlaying)
+        camera.ProcessMouseMovement(xoffset, yoffset);
 }
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called

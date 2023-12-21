@@ -1,11 +1,18 @@
 #pragma once
+#include <vector>
 struct GLFWwindow;
 struct ImGuiContext;
 struct ImGuiIO;
 //struct ImVec4;
+class Contact;
+
 
 class OpenGlImGui
 {
+private:
+	typedef std::vector<Contact*> Contacts;
+	Contacts contacts;
+	
 public:
 	OpenGlImGui(GLFWwindow* window);
 	OpenGlImGui(const OpenGlImGui&) = delete;
@@ -18,6 +25,8 @@ public:
 	void Render();
 
 	void NewFrame();
+
+	void DataToShow(Contacts* contacts);
 
 	OpenGlImGui& operator=(const OpenGlImGui&) = delete;
 	OpenGlImGui& operator=(OpenGlImGui&&) = delete;

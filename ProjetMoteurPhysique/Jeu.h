@@ -56,6 +56,9 @@ public:
     void update();
     void stop();
 
+    std::vector<Contact*>* GetCollisionList();
+    std::vector<Contact*> mainList;
+
     ParticuleContact* contact;
     ParticuleContactResolver resolver;
     CollisionResolver resolverCorpsRigide;

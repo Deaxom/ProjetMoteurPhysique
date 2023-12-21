@@ -20,8 +20,8 @@ private:
 public:
     void Init(GLFWwindow* _window);
 
-    void MiseAJour(std::vector<Particule*> listeParticule);
-    void MiseAJour(std::vector<CorpsRigide*> listeCorpsRigide);
+    void MiseAJour(std::vector<Particule*> listeParticule, bool &gameState);
+    void MiseAJour(std::vector<CorpsRigide*> listeCorpsRigide, bool &gameState);
 
     void Arret();
 
